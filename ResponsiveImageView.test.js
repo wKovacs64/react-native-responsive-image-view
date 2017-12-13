@@ -165,8 +165,8 @@ describe('ResponsiveImageView', () => {
 
   it('should not render anything if no render prop was provided', () => {
     expect(
-      shallow(<ResponsiveImageView source={{ uri: mockUriGood }} />),
-    ).toMatchSnapshot();
+      shallow(<ResponsiveImageView source={{ uri: mockUriGood }} />).type(),
+    ).toBeNull();
   });
 
   describe('getViewProps', () => {

@@ -21,7 +21,7 @@ class ResponsiveImageView extends Component {
 
   static defaultProps = {
     aspectRatio: undefined,
-    render: () => {},
+    render: () => null,
     onError: () => {},
     onLoad: () => {},
   };

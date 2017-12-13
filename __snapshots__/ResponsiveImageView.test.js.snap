@@ -191,5 +191,3 @@ Array [
   ],
 ]
 `;
-
-exports[`ResponsiveImageView should not render anything if no render prop was provided 1`] = `""`;
