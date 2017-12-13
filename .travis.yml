@@ -1,0 +1,13 @@
+sudo: false
+language: node_js
+cache:
+  yarn: true
+  directories:
+    - node_modules
+node_js:
+  - "node"
+script:
+  - yarn lint
+  - yarn test:coverage --no-cache
+after_success:
+  - "coveralls < coverage/lcov.info"

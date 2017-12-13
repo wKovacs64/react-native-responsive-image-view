@@ -1,0 +1,68 @@
+{
+  "name": "react-native-responsive-image-view",
+  "version": "1.0.0-alpha.0",
+  "description": "React Native component for scaling an Image within the parent View",
+  "keywords": [
+    "react",
+    "react-native",
+    "responsive",
+    "flexible",
+    "fit",
+    "aspect-ratio",
+    "image",
+    "view"
+  ],
+  "author": {
+    "name": "Justin Hall",
+    "email": "justin.r.hall@gmail.com"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "main": "ResponsiveImageView.js",
+  "scripts": {
+    "clean": "rimraf coverage",
+    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run lint && npm run test",
+    "test": "cross-env NODE_ENV=test jest --config jest.config.json",
+    "test:coverage": "npm run test -- --coverage",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wKovacs64/react-native-responsive-image-view.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wKovacs64/react-native-responsive-image-view/issues"
+  },
+  "homepage": "https://github.com/wKovacs64/react-native-responsive-image-view",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.1",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^21.2.1",
+    "prettier": "^1.9.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-native": "^0.51.0",
+    "rimraf": "^2.6.2"
+  },
+  "peerDependencies": {
+    "prop-types": ">=15",
+    "react": ">=15",
+    "react-native": ">=0.41.0"
+  }
+}
