@@ -39,8 +39,6 @@
   "dependencies": {},
   "devDependencies": {
     "babel-eslint": "^8.0.3",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.1",
     "enzyme": "^3.2.0",
