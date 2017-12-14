@@ -4,28 +4,6 @@ import PropTypes from 'prop-types';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 class ResponsiveImageView extends Component {
-  static displayName = 'ResponsiveImageView';
-
-  static propTypes = {
-    aspectRatio: PropTypes.number,
-    render: PropTypes.func,
-    onError: PropTypes.func,
-    onLoad: PropTypes.func,
-    source: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.shape({
-        uri: PropTypes.string.isRequired,
-      }),
-    ]).isRequired,
-  };
-
-  static defaultProps = {
-    aspectRatio: undefined,
-    render: () => null,
-    onError: () => {},
-    onLoad: () => {},
-  };
-
   // eslint-disable-next-line react/sort-comp
   initialState = {
     loading: true,
@@ -134,5 +112,27 @@ class ResponsiveImageView extends Component {
     });
   }
 }
+
+ResponsiveImageView.displayName = 'ResponsiveImageView';
+
+ResponsiveImageView.propTypes = {
+  aspectRatio: PropTypes.number,
+  render: PropTypes.func,
+  onError: PropTypes.func,
+  onLoad: PropTypes.func,
+  source: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.shape({
+      uri: PropTypes.string.isRequired,
+    }),
+  ]).isRequired,
+};
+
+ResponsiveImageView.defaultProps = {
+  aspectRatio: undefined,
+  render: () => null,
+  onError: () => {},
+  onLoad: () => {},
+};
 
 export default ResponsiveImageView;
