@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/wKovacs64/react-native-responsive-image-view/issues"
   },
-  "homepage": "https://github.com/wKovacs64/react-native-responsive-image-view",
+  "homepage": "https://npm.im/react-native-responsive-image-view",
   "dependencies": {},
   "devDependencies": {
     "babel-eslint": "^8.0.3",
