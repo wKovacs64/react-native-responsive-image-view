@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.0.0 _(2017-12-14)_
+
+* Initial release :tada:
+
 ## Version 1.0.0-alpha.2 _(2017-12-13)_
 
 * Removed static class fields as a workaround for an [Expo Snack][snack] bug
