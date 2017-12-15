@@ -54,6 +54,7 @@ everything and you simply apply props to what you're rendering.
   * [Loading and Error Handling](#loading-and-error-handling)
   * [Composing Props](#composing-props)
   * [Success/Failure Callbacks](#successfailure-callbacks)
+* [Snack Playground](#snack-playground)
 * [Inspiration](#inspiration)
 * [Other Solutions](#other-solutions)
 * [LICENSE](#license)
@@ -366,6 +367,13 @@ class MyStatefulComponent extends Component {
 }
 ```
 
+## Snack Playground
+
+Check out the [Snack Playground][snack-playground] for an interactive experience
+where you can try out the various usage patterns. You can see the code run live
+on your own device via the [Expo client][expo-client], or enable the Preview
+option to nuse the in-browser simulators!
+
 ## Inspiration
 
 I was heavily inspired by [`react-native-flex-image`][react-native-flex-image]
@@ -405,6 +413,8 @@ end of the day, these features proved to be too opinionated.
 [npm]: https://www.npmjs.com/
 [yarn]: https://yarnpkg.com/
 [react-native-flex-image]: https://github.com/kodefox/react-native-flex-image
+[snack-playground]: https://snack.expo.io/@wkovacs64/responsiveimageview
+[expo-client]: https://expo.io/tools#client
 [kodefox]: https://github.com/kodefox
 [mjackson]: https://github.com/mjackson
 [use-a-render-prop]: https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
