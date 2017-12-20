@@ -372,7 +372,7 @@ class MyStatefulComponent extends Component {
 Check out the [Snack Playground][snack-playground] for an interactive experience
 where you can try out the various usage patterns. You can see the code run live
 on your own device via the [Expo client][expo-client], or enable the Preview
-option to nuse the in-browser simulators!
+option to use the in-browser simulators!
 
 ## Inspiration
 
