@@ -42,7 +42,7 @@
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.1",
     "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
     "eslint": "^4.13.1",
     "eslint-config-airbnb": "^16.1.0",
