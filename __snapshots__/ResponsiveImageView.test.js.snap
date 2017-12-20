@@ -2,7 +2,7 @@
 
 exports[`ResponsiveImageView getImageProps should compose consumer props with own props 1`] = `
 Object {
-  "onLayout": [Function],
+  "onLayout": [MockFunction Image#onLayout],
   "source": Object {
     "uri": "mockUriGood",
   },
@@ -21,7 +21,7 @@ Object {
 
 exports[`ResponsiveImageView getImageProps should compose consumer props with own props 2`] = `
 Object {
-  "onLayout": [Function],
+  "onLayout": [MockFunction Image#onLayout],
   "source": Object {
     "uri": "mockUriGood",
   },

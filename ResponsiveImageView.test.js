@@ -24,7 +24,7 @@ const consumerViewProps = {
   },
 };
 const consumerImageProps = {
-  onLayout: jest.fn(),
+  onLayout: jest.fn().mockName('Image#onLayout'),
   style: {
     height: '50%',
     width: '50%',
