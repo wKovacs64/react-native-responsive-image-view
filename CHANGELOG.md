@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.0.1 _(2017-12-20)_
+
+* Fixed typo in README
+
 ## Version 1.0.0 _(2017-12-14)_
 
 * Initial release :tada:
