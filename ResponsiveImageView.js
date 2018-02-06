@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
@@ -104,12 +104,41 @@ class ResponsiveImageView extends Component {
   };
 
   render() {
-    return this.props.render({
+    const { component: ComponentOrFunction, render, children } = this.props;
+    const bag = {
       loading: this.state.loading,
       error: this.state.error,
       getImageProps: this.getImageProps,
       getViewProps: this.getViewProps,
-    });
+    };
+
+    // component injection
+    if (ComponentOrFunction) {
+      // class component
+      if (ComponentOrFunction.prototype.render) {
+        return <ComponentOrFunction {...bag} />;
+      }
+
+      // stateless functional component (SFC)
+      return ComponentOrFunction(bag);
+    }
+
+    // render prop
+    if (render) {
+      return render(bag);
+    }
+
+    // function-as-children
+    if (typeof children === 'function') {
+      return children(bag);
+    }
+
+    // no renderer provided, but children exist - just render the children as-is
+    if (children && React.Children.count(children) > 0) {
+      return React.Children.only(children);
+    }
+
+    return null;
   }
 }
 
@@ -117,7 +146,9 @@ ResponsiveImageView.displayName = 'ResponsiveImageView';
 
 ResponsiveImageView.propTypes = {
   aspectRatio: PropTypes.number,
+  component: PropTypes.func,
   render: PropTypes.func,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   onError: PropTypes.func,
   onLoad: PropTypes.func,
   source: PropTypes.oneOfType([
@@ -130,7 +161,9 @@ ResponsiveImageView.propTypes = {
 
 ResponsiveImageView.defaultProps = {
   aspectRatio: undefined,
-  render: () => null,
+  component: undefined,
+  render: undefined,
+  children: undefined,
   onError: () => {},
   onLoad: () => {},
 };
