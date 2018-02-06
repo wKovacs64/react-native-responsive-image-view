@@ -1,156 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ResponsiveImageView getImageProps should compose consumer props with own props 1`] = `
-Object {
-  "onLayout": [MockFunction Image#onLayout],
-  "source": Object {
-    "uri": "mockUriGood",
-  },
-  "style": Array [
-    Object {
-      "height": "50%",
-      "width": "50%",
-    },
-    Object {
-      "height": "100%",
-      "width": "100%",
-    },
-  ],
-}
+exports[`component injection should render class components 1`] = `
+<MyRenderClassComponent
+  error=""
+  getImageProps={[Function]}
+  getViewProps={[Function]}
+  loading={false}
+/>
 `;
 
-exports[`ResponsiveImageView getImageProps should compose consumer props with own props 2`] = `
-Object {
-  "onLayout": [MockFunction Image#onLayout],
-  "source": Object {
-    "uri": "mockUriGood",
-  },
-  "style": Array [
-    Object {
-      "height": "50%",
-      "width": "50%",
-    },
-    Object {
-      "height": "100%",
-      "width": "100%",
-    },
-  ],
-}
+exports[`component injection should render the component with expected parameters on failure 1`] = `
+<View
+  error="mockUriBad"
+  getImageProps={[Function]}
+  getViewProps={[Function]}
+  loading={false}
+/>
 `;
 
-exports[`ResponsiveImageView getImageProps should set height and width to 100% 1`] = `
-Object {
-  "source": Object {
-    "uri": "mockUriGood",
-  },
-  "style": Array [
-    Object {},
-    Object {
-      "height": "100%",
-      "width": "100%",
-    },
-  ],
-}
+exports[`component injection should render the component with expected parameters on success 1`] = `
+<View
+  error=""
+  getImageProps={[Function]}
+  getViewProps={[Function]}
+  loading={false}
+/>
 `;
 
-exports[`ResponsiveImageView getImageProps should set height and width to 100% 2`] = `
-Object {
-  "source": Object {
-    "uri": "mockUriGood",
-  },
-  "style": Array [
-    Object {},
-    Object {
-      "height": "100%",
-      "width": "100%",
-    },
-  ],
-}
-`;
-
-exports[`ResponsiveImageView getViewProps should calculate aspectRatio if not provided 1`] = `
-Object {
-  "style": Array [
-    Object {},
-    Object {
-      "aspectRatio": undefined,
-    },
-  ],
-}
-`;
-
-exports[`ResponsiveImageView getViewProps should calculate aspectRatio if not provided 2`] = `
-Object {
-  "style": Array [
-    Object {},
-    Object {
-      "aspectRatio": 1.3333333333333333,
-    },
-  ],
-}
-`;
-
-exports[`ResponsiveImageView getViewProps should compose consumer props with own props 1`] = `
-Object {
-  "hitSlop": Object {
-    "bottom": 10,
-    "left": 0,
-    "right": 0,
-    "top": 10,
-  },
-  "style": Array [
-    Object {
-      "padding": 20,
-    },
-    Object {
-      "aspectRatio": undefined,
-    },
-  ],
-}
-`;
-
-exports[`ResponsiveImageView getViewProps should compose consumer props with own props 2`] = `
-Object {
-  "hitSlop": Object {
-    "bottom": 10,
-    "left": 0,
-    "right": 0,
-    "top": 10,
-  },
-  "style": Array [
-    Object {
-      "padding": 20,
-    },
-    Object {
-      "aspectRatio": 1.3333333333333333,
-    },
-  ],
-}
-`;
-
-exports[`ResponsiveImageView getViewProps should include consumer provided aspectRatio 1`] = `
-Object {
-  "style": Array [
-    Object {},
-    Object {
-      "aspectRatio": undefined,
-    },
-  ],
-}
-`;
-
-exports[`ResponsiveImageView getViewProps should include consumer provided aspectRatio 2`] = `
-Object {
-  "style": Array [
-    Object {},
-    Object {
-      "aspectRatio": 1.7777777777777777,
-    },
-  ],
-}
-`;
-
-exports[`ResponsiveImageView should call provided render prop with expected parameters on failure 1`] = `
+exports[`function-as-children should call children with expected parameters on failure 1`] = `
 Array [
   Array [
     Object {
@@ -171,7 +48,7 @@ Array [
 ]
 `;
 
-exports[`ResponsiveImageView should call provided render prop with expected parameters on success 1`] = `
+exports[`function-as-children should call children with expected parameters on success 1`] = `
 Array [
   Array [
     Object {
@@ -191,3 +68,264 @@ Array [
   ],
 ]
 `;
+
+exports[`getImageProps should compose consumer props with own props 1`] = `
+Object {
+  "onLayout": [MockFunction Image#onLayout],
+  "source": Object {
+    "uri": "mockUriGood",
+  },
+  "style": Array [
+    Object {
+      "height": "50%",
+      "width": "50%",
+    },
+    Object {
+      "height": "100%",
+      "width": "100%",
+    },
+  ],
+}
+`;
+
+exports[`getImageProps should compose consumer props with own props 2`] = `
+Object {
+  "onLayout": [MockFunction Image#onLayout],
+  "source": Object {
+    "uri": "mockUriGood",
+  },
+  "style": Array [
+    Object {
+      "height": "50%",
+      "width": "50%",
+    },
+    Object {
+      "height": "100%",
+      "width": "100%",
+    },
+  ],
+}
+`;
+
+exports[`getImageProps should set height and width to 100% 1`] = `
+Object {
+  "source": Object {
+    "uri": "mockUriGood",
+  },
+  "style": Array [
+    Object {},
+    Object {
+      "height": "100%",
+      "width": "100%",
+    },
+  ],
+}
+`;
+
+exports[`getImageProps should set height and width to 100% 2`] = `
+Object {
+  "source": Object {
+    "uri": "mockUriGood",
+  },
+  "style": Array [
+    Object {},
+    Object {
+      "height": "100%",
+      "width": "100%",
+    },
+  ],
+}
+`;
+
+exports[`getViewProps should calculate aspectRatio if not provided 1`] = `
+Object {
+  "style": Array [
+    Object {},
+    Object {
+      "aspectRatio": undefined,
+    },
+  ],
+}
+`;
+
+exports[`getViewProps should calculate aspectRatio if not provided 2`] = `
+Object {
+  "style": Array [
+    Object {},
+    Object {
+      "aspectRatio": 1.3333333333333333,
+    },
+  ],
+}
+`;
+
+exports[`getViewProps should compose consumer props with own props 1`] = `
+Object {
+  "hitSlop": Object {
+    "bottom": 10,
+    "left": 0,
+    "right": 0,
+    "top": 10,
+  },
+  "style": Array [
+    Object {
+      "padding": 20,
+    },
+    Object {
+      "aspectRatio": undefined,
+    },
+  ],
+}
+`;
+
+exports[`getViewProps should compose consumer props with own props 2`] = `
+Object {
+  "hitSlop": Object {
+    "bottom": 10,
+    "left": 0,
+    "right": 0,
+    "top": 10,
+  },
+  "style": Array [
+    Object {
+      "padding": 20,
+    },
+    Object {
+      "aspectRatio": 1.3333333333333333,
+    },
+  ],
+}
+`;
+
+exports[`getViewProps should include consumer provided aspectRatio 1`] = `
+Object {
+  "style": Array [
+    Object {},
+    Object {
+      "aspectRatio": undefined,
+    },
+  ],
+}
+`;
+
+exports[`getViewProps should include consumer provided aspectRatio 2`] = `
+Object {
+  "style": Array [
+    Object {},
+    Object {
+      "aspectRatio": 1.7777777777777777,
+    },
+  ],
+}
+`;
+
+exports[`render prop should call render with expected parameters on failure 1`] = `
+Array [
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": true,
+    },
+  ],
+  Array [
+    Object {
+      "error": "mockUriBad",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": false,
+    },
+  ],
+]
+`;
+
+exports[`render prop should call render with expected parameters on success 1`] = `
+Array [
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": true,
+    },
+  ],
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": false,
+    },
+  ],
+]
+`;
+
+exports[`rendering order (component > render > FAC > children > null) should call children function if no component or render prop was provided: children 1`] = `
+Array [
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": true,
+    },
+  ],
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": false,
+    },
+  ],
+]
+`;
+
+exports[`rendering order (component > render > FAC > children > null) should call render if no component was provided: children 1`] = `Array []`;
+
+exports[`rendering order (component > render > FAC > children > null) should call render if no component was provided: render 1`] = `
+Array [
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": true,
+    },
+  ],
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": false,
+    },
+  ],
+]
+`;
+
+exports[`rendering order (component > render > FAC > children > null) should render children if no component, render prop, or FAC was provided 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Hello from non-functional children!
+  </Text>
+</View>
+`;
+
+exports[`rendering order (component > render > FAC > children > null) should render component if provided 1`] = `
+<View
+  error=""
+  getImageProps={[Function]}
+  getViewProps={[Function]}
+  loading={false}
+/>
+`;
+
+exports[`rendering order (component > render > FAC > children > null) should render component if provided: children 1`] = `Array []`;
+
+exports[`rendering order (component > render > FAC > children > null) should render component if provided: render 1`] = `Array []`;

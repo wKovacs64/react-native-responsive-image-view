@@ -41,7 +41,9 @@ everything and you simply apply props to what you're rendering.
   * [onLoad](#onload)
   * [onError](#onerror)
   * [source](#source)
+  * [component](#component)
   * [render](#render)
+  * [children](#children)
 * [Render Prop Function](#render-prop-function)
   * [prop getters](#prop-getters)
     * [`getViewProps`](#getviewprops)
@@ -98,8 +100,13 @@ export default ({ imageUri }) => (
 ```
 
 **N.B.** This component doesn't render anything itself, it just calls your
-render function and renders that. ["Use a render prop!"][use-a-render-prop] Just
-be sure to render the `Image` inside the `View` in your `render` function.
+render function or injected component and renders that. ["Use a render
+prop!"][use-a-render-prop] Just be sure to render the `Image` inside the `View`
+in your `render` function.
+
+> In addition to a literal `render` prop, it also supports the component
+> injection and function-as-children patterns if you prefer. See the
+> [Render Prop Function](#render-prop-function) section for details.
 
 ## Props
 
@@ -135,9 +142,24 @@ The source for your `Image`. This can be a local file resource (the result of an
 `import` or `require` statement) or an object containing a `uri` key with a
 remote URL as its value.
 
+### component
+
+> `component` | _optional_
+
+This is rendered with an object passed in as `props`. Read more about the
+properties of this object in the [Render Prop Function](#render-prop-function)
+section.
+
 ### render
 
-> `function({})` | _required_
+> `function({})` | _optional_
+
+This is called with an object. Read more about the properties of this object in
+the [Render Prop Function](#render-prop-function) section.
+
+### children
+
+> `function({})` | _optional_
 
 This is called with an object. Read more about the properties of this object in
 the [Render Prop Function](#render-prop-function) section.
@@ -145,15 +167,37 @@ the [Render Prop Function](#render-prop-function) section.
 ## Render Prop Function
 
 This is where you render whatever you want to based on the state of
-`react-native-responsive-image-view`. It's a regular prop called `render`:
+`react-native-responsive-image-view`. It's just a function or component,
+available in a few different ways. Read Donavon West's very opinionated but
+informative [post about them][faccs-and-ci] for more information. They all
+receive the same props, so it is purely a stylistic choice left up to you as the
+consumer.
 
 ```jsx
+// component injection
+<ResponsiveImageView component={/* right here */} />
+
+// render prop
 <ResponsiveImageView render={/* right here */} />
+
+// function-as-children
+<ResponsiveImageView>
+  {/* right here */}
+</ResponsiveImageView>
 ```
 
-The function you pass in as the render prop gets called with an object
-containing important properties you'll need for rendering. The properties of
-this object can be split into two categories as indicated below:
+**N.B.** Multiple render methods should not be combined, but in the event that
+they are, `react-native-responsive-image-view` will honor the following order:
+
+1. `component`
+1. `render`
+1. function as `children`
+1. non-functional `children` (render children normally)
+1. `null` (render nothing)
+
+The function or component you pass in gets called with a props object containing
+important properties you'll need for rendering. The properties of this object
+can be split into two categories as indicated below:
 
 ### prop getters
 
@@ -418,6 +462,7 @@ end of the day, these features proved to be too opinionated.
 [kodefox]: https://github.com/kodefox
 [mjackson]: https://github.com/mjackson
 [use-a-render-prop]: https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
+[faccs-and-ci]: http://americanexpress.io/faccs-are-an-antipattern/
 [kentcdodds]: https://github.com/kentcdodds
 [kent-prop-getters]: https://blog.kentcdodds.com/how-to-give-rendering-control-to-users-with-prop-getters-549eaef76acf
 [downshift]: https://github.com/paypal/downshift
