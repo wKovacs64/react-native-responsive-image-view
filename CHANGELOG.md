@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 1.1.0 _(2018-02-06)_
+
+* Added support for component injection and function-as-children render patterns
+  ([#1][#1])
+
 ## Version 1.0.1 _(2017-12-20)_
 
 * Fixed typo in README
@@ -22,3 +27,4 @@
 * Initial prerelease
 
 [snack]: https://snack.expo.io/
+[#1]: https://github.com/wKovacs64/react-native-responsive-image-view/pull/1

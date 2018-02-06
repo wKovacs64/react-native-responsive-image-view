@@ -1,6 +1,6 @@
 {
   "name": "react-native-responsive-image-view",
-  "version": "1.0.2-dev.0",
+  "version": "1.1.0",
   "description": "React Native component for scaling an Image within the parent View",
   "keywords": [
     "react",
