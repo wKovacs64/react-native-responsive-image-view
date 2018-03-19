@@ -1,0 +1,4 @@
+{
+  "extends": ["config:js-lib"],
+  "commitMessage": "Update {{depName}} to {{newVersion}}"
+}
