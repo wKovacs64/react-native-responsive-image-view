@@ -24,7 +24,7 @@
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
     "prepublishOnly": "npm run lint && npm run test",
-    "test": "cross-env NODE_ENV=test jest --config jest.config.json",
+    "test": "cross-env NODE_ENV=test jest",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
   },
