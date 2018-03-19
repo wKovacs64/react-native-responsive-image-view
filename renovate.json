@@ -1,4 +1,6 @@
 {
   "extends": ["config:js-lib"],
-  "commitMessage": "Update {{depName}} to {{newVersion}}"
+  "commitMessage": "Update {{depName}} to {{newVersion}}",
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0
 }
