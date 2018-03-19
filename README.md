@@ -189,11 +189,11 @@ consumer.
 **N.B.** Multiple render methods should not be combined, but in the event that
 they are, `react-native-responsive-image-view` will honor the following order:
 
-1. `component`
-1. `render`
-1. function as `children`
-1. non-functional `children` (render children normally)
-1. `null` (render nothing)
+1.  `component`
+1.  `render`
+1.  function as `children`
+1.  non-functional `children` (render children normally)
+1.  `null` (render nothing)
 
 The function or component you pass in gets called with a props object containing
 important properties you'll need for rendering. The properties of this object
