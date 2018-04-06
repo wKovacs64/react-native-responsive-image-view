@@ -10,7 +10,7 @@ exports[`component injection should render class components 1`] = `
 `;
 
 exports[`component injection should render the component with expected parameters on failure 1`] = `
-<View
+<Component
   error="mockUriBad"
   getImageProps={[Function]}
   getViewProps={[Function]}
@@ -19,7 +19,7 @@ exports[`component injection should render the component with expected parameter
 `;
 
 exports[`component injection should render the component with expected parameters on success 1`] = `
-<View
+<Component
   error=""
   getImageProps={[Function]}
   getViewProps={[Function]}
@@ -306,7 +306,7 @@ Array [
 `;
 
 exports[`rendering order (component > render > FAC > children > null) should render children if no component, render prop, or FAC was provided 1`] = `
-<View>
+<Component>
   <Text
     accessible={true}
     allowFontScaling={true}
@@ -314,11 +314,11 @@ exports[`rendering order (component > render > FAC > children > null) should ren
   >
     Hello from non-functional children!
   </Text>
-</View>
+</Component>
 `;
 
 exports[`rendering order (component > render > FAC > children > null) should render component if provided 1`] = `
-<View
+<Component
   error=""
   getImageProps={[Function]}
   getViewProps={[Function]}
