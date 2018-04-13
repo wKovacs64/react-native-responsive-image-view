@@ -38,7 +38,7 @@
   "homepage": "https://npm.im/react-native-responsive-image-view",
   "dependencies": {},
   "devDependencies": {
-    "babel-eslint": "8.2.2",
+    "babel-eslint": "8.2.3",
     "coveralls": "3.0.0",
     "cross-env": "5.1.4",
     "enzyme": "3.3.0",
