@@ -1,6 +1,6 @@
 {
   "extends": ["config:js-lib"],
-  "commitMessage": "Update {{depName}} to {{newVersion}}",
+  "commitMessageTopic": "{{depName}}",
   "automergeType": "branch-push",
   "automerge": true,
   "major": {
