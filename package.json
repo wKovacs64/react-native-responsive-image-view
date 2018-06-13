@@ -53,8 +53,8 @@
     "jest": "23.1.0",
     "prettier": "1.13.5",
     "prop-types": "15.6.1",
-    "react": "16.4.0",
-    "react-dom": "16.4.0",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
     "react-native": "0.55.4",
     "rimraf": "2.6.2"
   },
