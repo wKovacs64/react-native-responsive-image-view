@@ -52,7 +52,7 @@
     "eslint-plugin-react": "7.9.1",
     "jest": "23.1.0",
     "prettier": "1.13.5",
-    "prop-types": "15.6.1",
+    "prop-types": "15.6.2",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-native": "0.55.4",
