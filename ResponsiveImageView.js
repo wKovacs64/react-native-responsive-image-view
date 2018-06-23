@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 class ResponsiveImageView extends Component {
-  // eslint-disable-next-line react/sort-comp
   initialState = {
     loading: true,
     error: '',
@@ -81,33 +80,35 @@ class ResponsiveImageView extends Component {
   });
 
   handleImageSizeSuccess = (width, height) => {
-    const { aspectRatio } = this.props;
+    const { aspectRatio, onLoad } = this.props;
     this.setState(
       {
         ...this.initialState,
         loading: false,
         aspectRatio: aspectRatio || width / height,
       },
-      () => this.props.onLoad(),
+      () => onLoad(),
     );
   };
 
   handleImageSizeFailure = err => {
+    const { onError } = this.props;
     this.setState(
       {
         ...this.initialState,
         loading: false,
         error: err.message,
       },
-      () => this.props.onError(this.state.error),
+      () => onError(this.state.error),
     );
   };
 
   render() {
     const { component: ComponentOrFunction, render, children } = this.props;
+    const { loading, error } = this.state;
     const bag = {
-      loading: this.state.loading,
-      error: this.state.error,
+      loading,
+      error,
       getImageProps: this.getImageProps,
       getViewProps: this.getViewProps,
     };
