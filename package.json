@@ -39,7 +39,7 @@
   "dependencies": {},
   "devDependencies": {
     "babel-eslint": "8.2.5",
-    "coveralls": "3.0.1",
+    "coveralls": "3.0.2",
     "cross-env": "5.2.0",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
