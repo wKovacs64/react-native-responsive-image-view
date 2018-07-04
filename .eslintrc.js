@@ -8,15 +8,5 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-one-expression-per-line': 'off',
-    'valid-jsdoc': [
-      'error',
-      {
-        prefer: {
-          arg: 'param',
-          argument: 'param',
-          return: 'returns',
-        },
-      },
-    ],
   },
 };
