@@ -18,16 +18,7 @@
   },
   "contributors": [],
   "license": "MIT",
-  "main": "ResponsiveImageView.js",
-  "scripts": {
-    "clean": "rimraf coverage",
-    "format": "prettier --write \"**/*.{js,json,md}\"",
-    "lint": "eslint .",
-    "prepublishOnly": "npm run lint && npm run test",
-    "test": "cross-env NODE_ENV=test jest",
-    "test:coverage": "npm run test -- --coverage",
-    "test:watch": "npm run test -- --watch"
-  },
+  "homepage": "https://npm.im/react-native-responsive-image-view",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/wKovacs64/react-native-responsive-image-view.git"
@@ -35,7 +26,28 @@
   "bugs": {
     "url": "https://github.com/wKovacs64/react-native-responsive-image-view/issues"
   },
-  "homepage": "https://npm.im/react-native-responsive-image-view",
+  "main": "ResponsiveImageView.js",
+  "scripts": {
+    "clean": "rimraf coverage",
+    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "prepublishOnly": "npm run lint && npm run test",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:coverage": "npm run test -- --coverage",
+    "test:watch": "npm run test -- --watch"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-eslint": "8.2.5",
@@ -50,7 +62,9 @@
     "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jsx-a11y": "6.1.0",
     "eslint-plugin-react": "7.10.0",
+    "husky": "0.14.3",
     "jest": "23.3.0",
+    "lint-staged": "7.2.0",
     "prettier": "1.13.7",
     "prop-types": "15.6.2",
     "react": "16.4.1",
