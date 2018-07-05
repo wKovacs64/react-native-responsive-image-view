@@ -68,6 +68,8 @@ class ResponsiveImageView extends Component {
     };
   };
 
+  getAspectRatio = () => this.props.aspectRatio || this.state.aspectRatio;
+
   getImageProps = ({ source, style = {}, ...props } = {}) => ({
     source: this.props.source,
     style: [style, { height: '100%', width: '100%' }],
@@ -75,17 +77,17 @@ class ResponsiveImageView extends Component {
   });
 
   getViewProps = ({ style = {}, ...props } = {}) => ({
-    style: [style, { aspectRatio: this.state.aspectRatio }],
+    style: [style, { aspectRatio: this.getAspectRatio() }],
     ...props,
   });
 
   handleImageSizeSuccess = (width, height) => {
-    const { aspectRatio, onLoad } = this.props;
+    const { onLoad } = this.props;
     this.setState(
       {
         ...this.initialState,
         loading: false,
-        aspectRatio: aspectRatio || width / height,
+        aspectRatio: width / height,
       },
       () => onLoad(),
     );
