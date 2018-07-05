@@ -88,14 +88,13 @@ import { Image, View } from 'react-native';
 import ResponsiveImageView from 'react-native-responsive-image-view';
 
 export default ({ imageUri }) => (
-  <ResponsiveImageView
-    source={{ uri: imageUri }}
-    render={({ getViewProps, getImageProps }) => (
+  <ResponsiveImageView source={{ uri: imageUri }}>
+    {({ getViewProps, getImageProps }) => (
       <View {...getViewProps()}>
         <Image {...getImageProps()} />
       </View>
     )}
-  />
+  </ResponsiveImageView>
 );
 ```
 
@@ -253,14 +252,13 @@ import { Image, View } from 'react-native';
 import ResponsiveImageView from 'react-native-responsive-image-view';
 
 const MyComponent = ({ imageUri }) => (
-  <ResponsiveImageView
-    source={{ uri: imageUri }}
-    render={({ getViewProps, getImageProps }) => (
+  <ResponsiveImageView source={{ uri: imageUri }}>
+    {({ getViewProps, getImageProps }) => (
       <View {...getViewProps()}>
         <Image {...getImageProps()} />
       </View>
     )}
-  />
+  </ResponsiveImageView>
 );
 ```
 
@@ -273,15 +271,13 @@ import ResponsiveImageView from 'react-native-responsive-image-view';
 import headerImage from './header.jpg';
 
 const DrawerHeader = () => (
-  <ResponsiveImageView
-    aspectRatio={16 / 9}
-    source={headerImage}
-    render={({ getViewProps, getImageProps }) => (
+  <ResponsiveImageView aspectRatio={16 / 9} source={headerImage}>
+    {({ getViewProps, getImageProps }) => (
       <View {...getViewProps()}>
         <Image {...getImageProps()} />
       </View>
     )}
-  />
+  </ResponsiveImageView>
 );
 ```
 
@@ -293,16 +289,15 @@ import { Image, TouchableHighlight, View } from 'react-native';
 import ResponsiveImageView from 'react-native-responsive-image-view';
 
 const MyTouchableComponent = ({ imageUri, onPress }) => (
-  <ResponsiveImageView
-    source={{ uri: imageUri }}
-    render={({ getViewProps, getImageProps }) => (
+  <ResponsiveImageView source={{ uri: imageUri }}>
+    {({ getViewProps, getImageProps }) => (
       <View {...getViewProps()}>
         <TouchableHighlight onPress={onPress}>
           <Image {...getImageProps()} />
         </TouchableHighlight>
       </View>
     )}
-  />
+  </ResponsiveImageView>
 );
 ```
 
@@ -314,9 +309,8 @@ import { ActivityIndicator, Image, Text, View } from 'react-native';
 import ResponsiveImageView from 'react-native-responsive-image-view';
 
 const MyComponent = ({ imageUri }) => (
-  <ResponsiveImageView
-    source={{ uri: imageUri }}
-    render={({ error, loading, getViewProps, getImageProps }) => {
+  <ResponsiveImageView source={{ uri: imageUri }}>
+    {({ error, loading, getViewProps, getImageProps }) => {
       if (loading) {
         return <ActivityIndicator animating={true} size="large" />;
       }
@@ -333,7 +327,7 @@ const MyComponent = ({ imageUri }) => (
         </View>
       );
     }}
-  />
+  </ResponsiveImageView>
 );
 ```
 
@@ -354,14 +348,13 @@ const styles = StyleSheet.create({
 });
 
 const MyComponent = ({ imageUri }) => (
-  <ResponsiveImageView
-    source={{ uri: imageUri }}
-    render={({ getViewProps, getImageProps }) => (
+  <ResponsiveImageView source={{ uri: imageUri }}>
+    {({ getViewProps, getImageProps }) => (
       <View {...getViewProps({ style: styles.imageContainer })}>
         <Image {...getImageProps({ style: styles.image })} />
       </View>
     )}
-  />
+  </ResponsiveImageView>
 );
 ```
 
@@ -404,8 +397,9 @@ class MyStatefulComponent extends Component {
         onLoad={this.onLoad}
         onError={this.onError}
         source={{ uri: this.props.imageUri }}
-        render={this.renderImageView}
-      />
+      >
+        {this.renderImageView}
+      </ResponsiveImageView>
     );
   }
 }
