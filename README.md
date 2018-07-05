@@ -34,32 +34,32 @@ everything and you simply apply props to what you're rendering.
 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [Props](#props)
-  * [aspectRatio](#aspectratio)
-  * [onLoad](#onload)
-  * [onError](#onerror)
-  * [source](#source)
-  * [component](#component)
-  * [render](#render)
-  * [children](#children)
-* [Render Prop Function](#render-prop-function)
-  * [prop getters](#prop-getters)
-    * [`getViewProps`](#getviewprops)
-    * [`getImageProps`](#getimageprops)
-  * [state](#state)
-* [Examples](#examples)
-  * [Responsive Remote Image](#responsive-remote-image)
-  * [Fixed Aspect Ratio and Local Image Resource](#fixed-aspect-ratio-and-local-image-resource)
-  * [Touchable](#touchable)
-  * [Loading and Error Handling](#loading-and-error-handling)
-  * [Composing Props](#composing-props)
-  * [Success/Failure Callbacks](#successfailure-callbacks)
-* [Snack Playground](#snack-playground)
-* [Inspiration](#inspiration)
-* [Other Solutions](#other-solutions)
-* [LICENSE](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Props](#props)
+  - [aspectRatio](#aspectratio)
+  - [onLoad](#onload)
+  - [onError](#onerror)
+  - [source](#source)
+  - [component](#component)
+  - [render](#render)
+  - [children](#children)
+- [Render Prop Function](#render-prop-function)
+  - [prop getters](#prop-getters)
+    - [`getViewProps`](#getviewprops)
+    - [`getImageProps`](#getimageprops)
+  - [state](#state)
+- [Examples](#examples)
+  - [Responsive Remote Image](#responsive-remote-image)
+  - [Fixed Aspect Ratio and Local Image Resource](#fixed-aspect-ratio-and-local-image-resource)
+  - [Touchable](#touchable)
+  - [Loading and Error Handling](#loading-and-error-handling)
+  - [Composing Props](#composing-props)
+  - [Success/Failure Callbacks](#successfailure-callbacks)
+- [Snack Playground](#snack-playground)
+- [Inspiration](#inspiration)
+- [Other Solutions](#other-solutions)
+- [LICENSE](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -132,7 +132,7 @@ calculated).
 Called if the image could not be loaded. Called with the error message in the
 form of a string.
 
-* `error`: the error message as a string
+- `error`: the error message as a string
 
 ### source
 
@@ -434,7 +434,7 @@ project, which also provided inspiration for this README).
 After scouring [npm][npm] for solutions and trying most (if not all) of them,
 the best option I found was the following:
 
-* [`react-native-flex-image`][react-native-flex-image]
+- [`react-native-flex-image`][react-native-flex-image]
 
 Unfortunately, it is too restrictive for my use cases. It renders the magic
 `<View><Image /></View>` combination for you, preventing you from customizing
@@ -448,12 +448,16 @@ end of the day, these features proved to be too opinionated.
 
 [MIT][license]
 
-[npm-image]: https://img.shields.io/npm/v/react-native-responsive-image-view.svg?style=flat-square
+[npm-image]:
+  https://img.shields.io/npm/v/react-native-responsive-image-view.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/react-native-responsive-image-view
-[travis-image]: https://img.shields.io/travis/wKovacs64/react-native-responsive-image-view.svg?style=flat-square&branch=master
+[travis-image]:
+  https://img.shields.io/travis/wKovacs64/react-native-responsive-image-view.svg?style=flat-square&branch=master
 [travis-url]: https://travis-ci.org/wKovacs64/react-native-responsive-image-view
-[coverage-image]: https://img.shields.io/coveralls/wKovacs64/react-native-responsive-image-view.svg?style=flat-square&branch=master
-[coverage-url]: https://coveralls.io/github/wKovacs64/react-native-responsive-image-view?branch=master
+[coverage-image]:
+  https://img.shields.io/coveralls/wKovacs64/react-native-responsive-image-view.svg?style=flat-square&branch=master
+[coverage-url]:
+  https://coveralls.io/github/wKovacs64/react-native-responsive-image-view?branch=master
 [npm]: https://www.npmjs.com/
 [yarn]: https://yarnpkg.com/
 [react-native-flex-image]: https://github.com/kodefox/react-native-flex-image
@@ -461,9 +465,12 @@ end of the day, these features proved to be too opinionated.
 [expo-client]: https://expo.io/tools#client
 [kodefox]: https://github.com/kodefox
 [mjackson]: https://github.com/mjackson
-[use-a-render-prop]: https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
+[use-a-render-prop]:
+  https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
 [faccs-and-ci]: http://americanexpress.io/faccs-are-an-antipattern/
 [kentcdodds]: https://github.com/kentcdodds
-[kent-prop-getters]: https://blog.kentcdodds.com/how-to-give-rendering-control-to-users-with-prop-getters-549eaef76acf
+[kent-prop-getters]:
+  https://blog.kentcdodds.com/how-to-give-rendering-control-to-users-with-prop-getters-549eaef76acf
 [downshift]: https://github.com/paypal/downshift
-[license]: https://github.com/wKovacs64/react-native-responsive-image-view/tree/master/LICENSE.txt
+[license]:
+  https://github.com/wKovacs64/react-native-responsive-image-view/tree/master/LICENSE.txt
