@@ -29,21 +29,20 @@ everything and you simply apply props to what you're rendering.
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Props](#props)
-  - [aspectRatio](#aspectratio)
+- [Basic Props](#basic-props)
   - [onLoad](#onload)
   - [onError](#onerror)
   - [source](#source)
   - [component](#component)
   - [render](#render)
   - [children](#children)
+- [Advanced Props](#advanced-props)
+  - [aspectRatio](#aspectratio)
 - [Render Prop Function](#render-prop-function)
   - [prop getters](#prop-getters)
     - [`getViewProps`](#getviewprops)
@@ -51,7 +50,7 @@ everything and you simply apply props to what you're rendering.
   - [state](#state)
 - [Examples](#examples)
   - [Responsive Remote Image](#responsive-remote-image)
-  - [Fixed Aspect Ratio and Local Image Resource](#fixed-aspect-ratio-and-local-image-resource)
+  - [Fixed (Controlled) Aspect Ratio and Local Image Resource](#fixed-controlled-aspect-ratio-and-local-image-resource)
   - [Touchable](#touchable)
   - [Loading and Error Handling](#loading-and-error-handling)
   - [Composing Props](#composing-props)
@@ -107,15 +106,7 @@ in your `render` function.
 > injection and function-as-children patterns if you prefer. See the
 > [Render Prop Function](#render-prop-function) section for details.
 
-## Props
-
-### aspectRatio
-
-> `number` | optional, default: automatically calculated from image dimensions
-
-A fixed aspect ratio to use instead of calculating one from the image. This is
-useful if you want to fit the image into a statically shaped box such as a
-navigation drawer header.
+## Basic Props
 
 ### onLoad
 
@@ -162,6 +153,19 @@ the [Render Prop Function](#render-prop-function) section.
 
 This is called with an object. Read more about the properties of this object in
 the [Render Prop Function](#render-prop-function) section.
+
+## Advanced Props
+
+### aspectRatio
+
+> `number` | **control prop**, default: automatically calculated from image
+> dimensions
+
+By default, `react-native-responsive-image-view` manages this value internally
+based on the dimensions of the source image. However, if more control is needed,
+you can pass in a fixed aspect ratio to use instead. This is useful if you want
+to fit the image into a statically shaped box such as a navigation drawer
+header.
 
 ## Render Prop Function
 
@@ -262,7 +266,7 @@ const MyComponent = ({ imageUri }) => (
 );
 ```
 
-#### Fixed Aspect Ratio and Local Image Resource
+#### Fixed (Controlled) Aspect Ratio and Local Image Resource
 
 ```jsx
 import React from 'react';
