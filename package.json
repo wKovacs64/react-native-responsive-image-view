@@ -46,6 +46,11 @@
     "*.{json,md}": [
       "prettier --write",
       "git add"
+    ],
+    "README.md": [
+      "doctoc",
+      "prettier --write",
+      "git add"
     ]
   },
   "dependencies": {},
