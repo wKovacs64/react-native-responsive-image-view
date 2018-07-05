@@ -64,7 +64,7 @@ jest.mock('react-native/Libraries/Image/resolveAssetSource', () => res => {
 
 // Tests
 describe('rendering order (component > render > FAC > children > null)', () => {
-  it('should render component if provided', () => {
+  it('renders component if provided', () => {
     const MyRenderComponent = props => <View {...props} />;
     const render = jest.fn();
     const children = jest.fn();
@@ -82,7 +82,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
     expect(children.mock.calls).toMatchSnapshot('children');
   });
 
-  it('should call render if no component was provided', () => {
+  it('calls render if no component was provided', () => {
     const render = jest.fn();
     const children = jest.fn();
     shallow(
@@ -94,7 +94,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
     expect(children.mock.calls).toMatchSnapshot('children');
   });
 
-  it('should call children function if no component or render prop was provided', () => {
+  it('calls children function if no component or render prop was provided', () => {
     const children = jest.fn();
     shallow(
       <ResponsiveImageView source={{ uri: mockUriGood }}>
@@ -104,7 +104,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
     expect(children.mock.calls).toMatchSnapshot('children');
   });
 
-  it('should render children if no component, render prop, or FAC was provided', () => {
+  it('renders children if no component, render prop, or FAC was provided', () => {
     expect(
       shallow(
         <ResponsiveImageView source={{ uri: mockUriGood }}>
@@ -116,7 +116,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
     ).toMatchSnapshot();
   });
 
-  it('should not render anything if no renderer was provided', () => {
+  it('renders nothing if no renderer was provided', () => {
     expect(
       shallow(<ResponsiveImageView source={{ uri: mockUriGood }} />).type(),
     ).toBeNull();
@@ -124,7 +124,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
 });
 
 describe('component injection', () => {
-  it('should render the component with expected parameters on success', () => {
+  it('renders the component with expected parameters on success', () => {
     const MyRenderComponent = props => <View {...props} />;
     expect(
       shallow(
@@ -136,7 +136,7 @@ describe('component injection', () => {
     ).toMatchSnapshot();
   });
 
-  it('should render the component with expected parameters on failure', () => {
+  it('renders the component with expected parameters on failure', () => {
     const MyRenderComponent = props => <View {...props} />;
     expect(
       shallow(
@@ -148,7 +148,7 @@ describe('component injection', () => {
     ).toMatchSnapshot();
   });
 
-  it('should render class components', () => {
+  it('renders class components', () => {
     // eslint-disable-next-line react/prefer-stateless-function
     class MyRenderClassComponent extends React.Component {
       render() {
@@ -167,7 +167,7 @@ describe('component injection', () => {
 });
 
 describe('render prop', () => {
-  it('should call render with expected parameters on success', () => {
+  it('calls render with expected parameters on success', () => {
     const render = jest.fn();
     shallow(
       <ResponsiveImageView source={{ uri: mockUriGood }} render={render} />,
@@ -175,7 +175,7 @@ describe('render prop', () => {
     expect(render.mock.calls).toMatchSnapshot();
   });
 
-  it('should call render with expected parameters on failure', () => {
+  it('calls render with expected parameters on failure', () => {
     const render = jest.fn();
     shallow(
       <ResponsiveImageView source={{ uri: mockUriBad }} render={render} />,
@@ -185,7 +185,7 @@ describe('render prop', () => {
 });
 
 describe('function-as-children', () => {
-  it('should call children with expected parameters on success', () => {
+  it('calls children with expected parameters on success', () => {
     const children = jest.fn();
     shallow(
       <ResponsiveImageView source={{ uri: mockUriGood }}>
@@ -195,7 +195,7 @@ describe('function-as-children', () => {
     expect(children.mock.calls).toMatchSnapshot();
   });
 
-  it('should call children with expected parameters on failure', () => {
+  it('calls children with expected parameters on failure', () => {
     const children = jest.fn();
     shallow(
       <ResponsiveImageView source={{ uri: mockUriBad }}>
@@ -207,82 +207,104 @@ describe('function-as-children', () => {
 });
 
 describe('getViewProps', () => {
-  it('should include consumer provided aspectRatio', () =>
-    new Promise((resolve, reject) => {
+  it('includes controlled aspectRatio', () => {
+    expect.assertions(1);
+    return new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
           aspectRatio={aspectRatio}
           source={{ uri: mockUriGood }}
           onError={reject}
           onLoad={resolve}
-          render={({ getViewProps }) => {
-            expect(getViewProps()).toMatchSnapshot();
+          render={({ loading, getViewProps }) => {
+            if (!loading) {
+              expect(getViewProps()).toMatchSnapshot();
+            }
           }}
         />,
       );
-    }));
+    });
+  });
 
-  it('should calculate aspectRatio if not provided', () =>
-    new Promise((resolve, reject) => {
+  it('includes calculated aspectRatio if not provided', () => {
+    expect.assertions(1);
+    return new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           onError={reject}
           onLoad={resolve}
-          render={({ getViewProps }) => {
-            expect(getViewProps()).toMatchSnapshot();
+          render={({ loading, getViewProps }) => {
+            if (!loading) {
+              expect(getViewProps()).toMatchSnapshot();
+            }
           }}
         />,
       );
-    }));
+    });
+  });
 
-  it('should compose consumer props with own props', () =>
-    new Promise((resolve, reject) => {
+  it('composes consumer props with own props', () => {
+    expect.assertions(1);
+    return new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           onError={reject}
           onLoad={resolve}
-          render={({ getViewProps }) => {
-            expect(getViewProps({ ...consumerViewProps })).toMatchSnapshot();
+          render={({ loading, getViewProps }) => {
+            if (!loading) {
+              expect(getViewProps({ ...consumerViewProps })).toMatchSnapshot();
+            }
           }}
         />,
       );
-    }));
+    });
+  });
 });
 
 describe('getImageProps', () => {
-  it('should set height and width to 100%', () =>
-    new Promise((resolve, reject) => {
+  it('sets height and width to 100%', () => {
+    expect.assertions(1);
+    return new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           onError={reject}
           onLoad={resolve}
-          render={({ getImageProps }) => {
-            expect(getImageProps()).toMatchSnapshot();
+          render={({ loading, getImageProps }) => {
+            if (!loading) {
+              expect(getImageProps()).toMatchSnapshot();
+            }
           }}
         />,
       );
-    }));
+    });
+  });
 
-  it('should compose consumer props with own props', () =>
-    new Promise((resolve, reject) => {
+  it('composes consumer props with own props', () => {
+    expect.assertions(1);
+    return new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           onError={reject}
           onLoad={resolve}
-          render={({ getImageProps }) => {
-            expect(getImageProps({ ...consumerImageProps })).toMatchSnapshot();
+          render={({ loading, getImageProps }) => {
+            if (!loading) {
+              expect(
+                getImageProps({ ...consumerImageProps }),
+              ).toMatchSnapshot();
+            }
           }}
         />,
       );
-    }));
+    });
+  });
 });
 
 describe('completion callbacks', () => {
-  it('should call provided onLoad on URI success', () =>
+  it('calls provided onLoad on URI success', () =>
     new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
@@ -293,7 +315,7 @@ describe('completion callbacks', () => {
       );
     }));
 
-  it('should call provided onError on URI failure', () =>
+  it('calls provided onError on URI failure', () =>
     new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
@@ -304,7 +326,7 @@ describe('completion callbacks', () => {
       );
     }));
 
-  it('should call provided onLoad on imported resource success', () =>
+  it('calls provided onLoad on imported resource success', () =>
     new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
@@ -315,7 +337,7 @@ describe('completion callbacks', () => {
       );
     }));
 
-  it('should call provided onError on imported resource failure', () =>
+  it('calls provided onError on imported resource failure', () =>
     new Promise((resolve, reject) => {
       shallow(
         <ResponsiveImageView
@@ -326,7 +348,7 @@ describe('completion callbacks', () => {
       );
     }));
 
-  it('should not call onLoad on success after unmounting', () =>
+  it('does not call onLoad on success after unmounting', () =>
     new Promise((resolve, reject) => {
       const wrapper = shallow(
         <ResponsiveImageView
@@ -339,7 +361,7 @@ describe('completion callbacks', () => {
       setImmediate(resolve);
     }));
 
-  it('should not call onError on failure after unmounting', () =>
+  it('does not call onError on failure after unmounting', () =>
     new Promise((resolve, reject) => {
       const wrapper = shallow(
         <ResponsiveImageView
