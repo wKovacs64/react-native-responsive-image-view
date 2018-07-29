@@ -29,7 +29,7 @@
   "main": "ResponsiveImageView.js",
   "scripts": {
     "clean": "rimraf coverage",
-    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "format": "prettier --write \"**/*.{js,json,md,yml}\"",
     "lint": "eslint .",
     "precommit": "lint-staged",
     "prepublishOnly": "npm run lint && npm run test",
@@ -43,7 +43,7 @@
       "eslint --fix",
       "git add"
     ],
-    "*.{json,md}": [
+    "*.{json,md,yml}": [
       "prettier --write",
       "git add"
     ],
