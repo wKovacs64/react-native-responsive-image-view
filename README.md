@@ -21,10 +21,10 @@ uses a fixed value, if you supply one) and provides you with the appropriate
 props to apply to a `View` container and an `Image` inside it which will produce
 the results you're looking for. The secret sauce is setting both the `height`
 and `width` attributes of the `style` prop on the `Image` to `100%` and wrapping
-it with a `View` that has its `aspectRatio` prop set to match the aspect ratio
-you want. It uses a [render prop][render-props] which gives you maximum
-flexibility with a minimal API because you are responsible for the rendering of
-everything and you simply apply props to what you're rendering.
+it with a `View` that has its [`aspectRatio`][aspectratio] style property set to
+match the aspect ratio you want. It uses a [render prop][render-props] which
+gives you maximum flexibility with a minimal API because you are responsible for
+the rendering of everything and you simply apply props to what you're rendering.
 
 ## Table of Contents
 
@@ -455,6 +455,8 @@ end of the day, these features proved to be too opinionated.
   https://img.shields.io/coveralls/wKovacs64/react-native-responsive-image-view.svg?style=flat-square&branch=master
 [coverage-url]:
   https://coveralls.io/github/wKovacs64/react-native-responsive-image-view?branch=master
+[aspectratio]:
+  https://facebook.github.io/react-native/docs/layout-props#aspectratio
 [render-props]: https://reactjs.org/docs/render-props.html
 [npm]: https://www.npmjs.com/
 [yarn]: https://yarnpkg.com/
