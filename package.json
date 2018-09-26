@@ -31,7 +31,6 @@
     "clean": "rimraf coverage",
     "format": "prettier --write \"**/*.{js,json,md,yml}\"",
     "lint": "eslint .",
-    "precommit": "lint-staged",
     "prepublishOnly": "npm run lint && npm run test",
     "test": "cross-env NODE_ENV=test jest",
     "test:coverage": "npm run test -- --coverage",
