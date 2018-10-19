@@ -74,7 +74,7 @@
     "prop-types": "15.6.2",
     "react": "16.5.2",
     "react-dom": "16.5.2",
-    "react-native": "0.55.4",
+    "react-native": "0.57.3",
     "rimraf": "2.6.2"
   },
   "peerDependencies": {
