@@ -76,7 +76,7 @@
     "metro-react-native-babel-preset": "0.48.1",
     "prettier": "1.14.3",
     "prop-types": "15.6.2",
-    "react": "16.6.0-alpha.8af6728",
+    "react": "16.6.0-alpha.f47a958",
     "react-dom": "16.5.2",
     "react-native": "0.57.3",
     "rimraf": "2.6.2"
