@@ -232,13 +232,9 @@ Array [
 
 exports[`rendering order (component > render > FAC > children > null) renders children if no component, render prop, or FAC was provided 1`] = `
 <Component>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
+  <Component>
     Hello from non-functional children!
-  </Text>
+  </Component>
 </Component>
 `;
 
