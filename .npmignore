@@ -14,6 +14,7 @@
 __snapshots__
 coverage
 jest.config.js
+lint-staged.config.js
 renovate.json
 testSetup.js
 yarn-error.log
