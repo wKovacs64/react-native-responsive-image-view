@@ -27,6 +27,9 @@
     "url": "https://github.com/wKovacs64/react-native-responsive-image-view/issues"
   },
   "main": "ResponsiveImageView.js",
+  "files": [
+    "ResponsiveImageView.js"
+  ],
   "scripts": {
     "clean": "rimraf coverage",
     "format": "prettier --write \"**/*.{js,json,md,yml}\"",
