@@ -51,7 +51,7 @@ jest.mock('Image', () => ({
         });
         break;
       default:
-        throw new Error(`Unexepcted URI value in test: ${uri}`);
+        throw new Error(`Unexpected URI value in test: ${uri}`);
     }
   },
 }));
