@@ -8,4 +8,8 @@ module.exports = {
   coverageReporters: ['html', 'json', 'lcov', 'text'],
   preset: 'react-native',
   setupTestFrameworkScriptFile: '<rootDir>/setupTests.js',
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
 };
