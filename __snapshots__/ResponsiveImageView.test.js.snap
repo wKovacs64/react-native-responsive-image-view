@@ -1,30 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`component injection renders class components 1`] = `
-<MyRenderClassComponent
-  error=""
-  getImageProps={[Function]}
-  getViewProps={[Function]}
-  loading={false}
-/>
+Array [
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": true,
+    },
+  ],
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": false,
+    },
+  ],
+]
 `;
 
 exports[`component injection renders the component with expected parameters on failure 1`] = `
-<View
-  error="mockUriBad"
-  getImageProps={[Function]}
-  getViewProps={[Function]}
-  loading={false}
-/>
+Array [
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": true,
+    },
+  ],
+  Array [
+    Object {
+      "error": "mockUriBad",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": false,
+    },
+  ],
+]
 `;
 
 exports[`component injection renders the component with expected parameters on success 1`] = `
-<View
-  error=""
-  getImageProps={[Function]}
-  getViewProps={[Function]}
-  loading={false}
-/>
+Array [
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": true,
+    },
+  ],
+  Array [
+    Object {
+      "error": "",
+      "getImageProps": [Function],
+      "getViewProps": [Function],
+      "loading": false,
+    },
+  ],
+]
 `;
 
 exports[`function-as-children calls children with expected parameters on failure 1`] = `
@@ -185,68 +221,3 @@ Array [
   ],
 ]
 `;
-
-exports[`rendering order (component > render > FAC > children > null) calls children function if no component or render prop was provided: children 1`] = `
-Array [
-  Array [
-    Object {
-      "error": "",
-      "getImageProps": [Function],
-      "getViewProps": [Function],
-      "loading": true,
-    },
-  ],
-  Array [
-    Object {
-      "error": "",
-      "getImageProps": [Function],
-      "getViewProps": [Function],
-      "loading": false,
-    },
-  ],
-]
-`;
-
-exports[`rendering order (component > render > FAC > children > null) calls render if no component was provided: children 1`] = `Array []`;
-
-exports[`rendering order (component > render > FAC > children > null) calls render if no component was provided: render 1`] = `
-Array [
-  Array [
-    Object {
-      "error": "",
-      "getImageProps": [Function],
-      "getViewProps": [Function],
-      "loading": true,
-    },
-  ],
-  Array [
-    Object {
-      "error": "",
-      "getImageProps": [Function],
-      "getViewProps": [Function],
-      "loading": false,
-    },
-  ],
-]
-`;
-
-exports[`rendering order (component > render > FAC > children > null) renders children if no component, render prop, or FAC was provided 1`] = `
-<View>
-  <Text>
-    Hello from non-functional children!
-  </Text>
-</View>
-`;
-
-exports[`rendering order (component > render > FAC > children > null) renders component if provided 1`] = `
-<View
-  error=""
-  getImageProps={[Function]}
-  getViewProps={[Function]}
-  loading={false}
-/>
-`;
-
-exports[`rendering order (component > render > FAC > children > null) renders component if provided: children 1`] = `Array []`;
-
-exports[`rendering order (component > render > FAC > children > null) renders component if provided: render 1`] = `Array []`;
