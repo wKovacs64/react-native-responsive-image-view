@@ -4,6 +4,7 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/setupTests.js',
+    '<rootDir>/test-fixtures.js',
   ],
   coverageReporters: ['html', 'json', 'lcov', 'text'],
   preset: 'react-native',

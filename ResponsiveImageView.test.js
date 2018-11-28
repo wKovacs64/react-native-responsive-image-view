@@ -2,67 +2,18 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { render as rtlRender } from 'react-native-testing-library';
 import ResponsiveImageView from './ResponsiveImageView';
+import {
+  mockUriGood,
+  mockUriBad,
+  mockUriSlowGood,
+  mockUriSlowBad,
+  mockResourceGood,
+  mockResourceBad,
+  aspectRatio,
+  consumerViewProps,
+  consumerImageProps,
+} from './test-fixtures';
 
-// Test data
-const mockUriGood = 'mockUriGood';
-const mockUriBad = 'mockUriBad';
-const mockUriSlowGood = 'mockUriSlowGood';
-const mockUriSlowBad = 'mockUriSlowBad';
-const mockResourceGood = 1000;
-const mockResourceBad = 9999;
-const mockWidth = 800;
-const mockHeight = 600;
-const aspectRatio = 16 / 9;
-const consumerViewProps = {
-  hitSlop: {
-    top: 10,
-    bottom: 10,
-    left: 0,
-    right: 0,
-  },
-  style: {
-    padding: 20,
-  },
-};
-const consumerImageProps = {
-  onLayout: jest.fn().mockName('Image#onLayout'),
-  style: {
-    height: '50%',
-    width: '50%',
-  },
-};
-
-// Mocks
-jest.mock('Image', () => ({
-  getSize(uri, onLoad, onError) {
-    switch (uri) {
-      case mockUriGood:
-        onLoad(mockWidth, mockHeight);
-        break;
-      case mockUriBad:
-        onError(new Error(uri));
-        break;
-      case mockUriSlowGood:
-        setImmediate(onLoad);
-        break;
-      case mockUriSlowBad:
-        setImmediate(() => {
-          onError(uri);
-        });
-        break;
-      default:
-        throw new Error(`Unexpected URI value in test: ${uri}`);
-    }
-  },
-}));
-jest.mock('react-native/Libraries/Image/resolveAssetSource', () => res => {
-  if (res === mockResourceGood) {
-    return { width: mockWidth, height: mockHeight };
-  }
-  return null;
-});
-
-// Tests
 describe('rendering order (component > render > FAC > children > null)', () => {
   it('renders component if provided', () => {
     const MyRenderComponent = jest.fn(() => null);
