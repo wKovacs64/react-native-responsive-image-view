@@ -9,7 +9,7 @@ import {
   mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
-  aspectRatio,
+  controlledAspectRatio,
   consumerViewProps,
   consumerImageProps,
 } from './test-fixtures';
@@ -187,7 +187,7 @@ describe('getViewProps', () => {
     expect.assertions(1);
     rtlRender(
       <ResponsiveImageView
-        aspectRatio={aspectRatio}
+        aspectRatio={controlledAspectRatio}
         source={{ uri: mockUriGood }}
         render={({ loading, getViewProps }) => {
           if (!loading) {

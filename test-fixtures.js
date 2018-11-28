@@ -6,7 +6,7 @@ export const mockResourceGood = 1000;
 export const mockResourceBad = 9999;
 export const mockWidth = 800;
 export const mockHeight = 600;
-export const aspectRatio = 16 / 9;
+export const controlledAspectRatio = 16 / 9;
 export const consumerViewProps = {
   hitSlop: {
     top: 10,
