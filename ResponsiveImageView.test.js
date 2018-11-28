@@ -285,6 +285,18 @@ describe('getImageProps', () => {
 });
 
 describe('completion callbacks', () => {
+  it("doesn't throw on success if no onLoad was provided", () => {
+    expect(() =>
+      rtlRender(<ResponsiveImageView source={{ uri: mockUriGood }} />),
+    ).not.toThrow();
+  });
+
+  it("doesn't throw on failure if no onError was provided", () => {
+    expect(() =>
+      rtlRender(<ResponsiveImageView source={{ uri: mockUriBad }} />),
+    ).not.toThrow();
+  });
+
   it('calls provided onLoad on URI success', () =>
     new Promise((resolve, reject) => {
       rtlRender(
