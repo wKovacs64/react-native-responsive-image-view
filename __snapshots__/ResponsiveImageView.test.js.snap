@@ -158,28 +158,6 @@ Object {
 }
 `;
 
-exports[`getViewProps includes calculated aspectRatio if not provided 1`] = `
-Object {
-  "style": Array [
-    Object {},
-    Object {
-      "aspectRatio": 1.3333333333333333,
-    },
-  ],
-}
-`;
-
-exports[`getViewProps includes controlled aspectRatio 1`] = `
-Object {
-  "style": Array [
-    Object {},
-    Object {
-      "aspectRatio": 1.7777777777777777,
-    },
-  ],
-}
-`;
-
 exports[`render prop calls render with expected parameters on failure 1`] = `
 Array [
   Array [

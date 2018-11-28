@@ -9,6 +9,7 @@ import {
   mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
+  computedAspectRatio,
   controlledAspectRatio,
   consumerViewProps,
   consumerImageProps,
@@ -191,7 +192,9 @@ describe('getViewProps', () => {
         source={{ uri: mockUriGood }}
         render={({ loading, getViewProps }) => {
           if (!loading) {
-            expect(getViewProps()).toMatchSnapshot();
+            expect(getViewProps().style).toContainEqual({
+              aspectRatio: controlledAspectRatio,
+            });
           }
           return null;
         }}
@@ -206,7 +209,9 @@ describe('getViewProps', () => {
         source={{ uri: mockUriGood }}
         render={({ loading, getViewProps }) => {
           if (!loading) {
-            expect(getViewProps()).toMatchSnapshot();
+            expect(getViewProps().style).toContainEqual({
+              aspectRatio: computedAspectRatio,
+            });
           }
           return null;
         }}
