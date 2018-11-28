@@ -15,22 +15,49 @@ import {
 } from './test-fixtures';
 
 describe('rendering order (component > render > FAC > children > null)', () => {
-  it('renders component if provided', () => {
-    const MyRenderComponent = jest.fn(() => null);
-    const render = jest.fn(() => null);
-    const children = jest.fn(() => null);
-    rtlRender(
-      <ResponsiveImageView
-        source={{ uri: mockUriGood }}
-        component={MyRenderComponent}
-        render={render}
-      >
-        {children}
-      </ResponsiveImageView>,
-    );
-    expect(MyRenderComponent).toHaveBeenCalled();
-    expect(render).not.toHaveBeenCalled();
-    expect(children).not.toHaveBeenCalled();
+  describe('renders component if provided', () => {
+    it('function', () => {
+      const MyRenderComponent = jest.fn(() => null);
+      const render = jest.fn(() => null);
+      const children = jest.fn(() => null);
+      rtlRender(
+        <ResponsiveImageView
+          source={{ uri: mockUriGood }}
+          component={MyRenderComponent}
+          render={render}
+        >
+          {children}
+        </ResponsiveImageView>,
+      );
+      expect(MyRenderComponent).toHaveBeenCalled();
+      expect(render).not.toHaveBeenCalled();
+      expect(children).not.toHaveBeenCalled();
+    });
+
+    it('class', () => {
+      const classRenderMethod = jest.fn(() => null);
+      // eslint-disable-next-line react/prefer-stateless-function
+      class MyRenderClassComponent extends React.Component {
+        render() {
+          return classRenderMethod(this.props);
+        }
+      }
+
+      const render = jest.fn(() => null);
+      const children = jest.fn(() => null);
+      rtlRender(
+        <ResponsiveImageView
+          source={{ uri: mockUriGood }}
+          component={MyRenderClassComponent}
+          render={render}
+        >
+          {children}
+        </ResponsiveImageView>,
+      );
+      expect(classRenderMethod).toHaveBeenCalled();
+      expect(render).not.toHaveBeenCalled();
+      expect(children).not.toHaveBeenCalled();
+    });
   });
 
   it('calls render if no component was provided', () => {
@@ -99,7 +126,7 @@ describe('component injection', () => {
 
   it('renders class components', () => {
     const classRenderMethod = jest.fn(() => null);
-    // eslint-disable-next-line react/prefer-stateless-function
+    // eslint-disable-next-line react/prefer-stateless-function,react/no-multi-comp
     class MyRenderClassComponent extends React.Component {
       render() {
         return classRenderMethod(this.props);
