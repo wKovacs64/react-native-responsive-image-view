@@ -58,7 +58,7 @@
     "jest": "23.6.0",
     "jest-watch-typeahead": "0.2.0",
     "lint-staged": "8.1.0",
-    "metro-react-native-babel-preset": "0.50.0",
+    "metro-react-native-babel-preset": "0.51.0",
     "prettier": "1.15.3",
     "prop-types": "15.6.2",
     "react": "16.6.3",
