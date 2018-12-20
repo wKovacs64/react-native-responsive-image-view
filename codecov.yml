@@ -1,0 +1,3 @@
+comment:
+  layout: 'header, diff, files'
+  require_changes: true # if true: only post the comment if coverage changes

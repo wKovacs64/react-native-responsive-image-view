@@ -20,4 +20,4 @@ jobs:
             - ~/.cache
       - run: yarn lint
       - run: yarn test --coverage
-      - run: ./node_modules/.bin/coveralls < coverage/lcov.info
+      - run: ./node_modules/.bin/codecov
