@@ -1,7 +1,7 @@
 {
   "extends": ["config:js-lib"],
   "commitMessageTopic": "{{depName}}",
-  "automergeType": "branch-push",
+  "automergeType": "branch",
   "automerge": true,
   "major": {
     "automerge": false
