@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 1.1.1 _(2018-12-19)_
+
+- Improved docs
+- Improved tests
+- Moved CI from Travis to Circle
+- Moved test coverage reports from Coveralls to Codecov
+
 ## Version 1.1.0 _(2018-02-06)_
 
 - Added support for component injection and function-as-children render patterns
