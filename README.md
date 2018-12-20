@@ -2,7 +2,7 @@
 
 _React Native component for scaling an `Image` within the parent `View`_
 
-[![npm Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+[![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
 [![Code Coverage][coverage-image]][coverage-url]
 
 ## The problem
@@ -448,13 +448,13 @@ end of the day, these features proved to be too opinionated.
 [npm-image]:
   https://img.shields.io/npm/v/react-native-responsive-image-view.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/react-native-responsive-image-view
-[travis-image]:
-  https://img.shields.io/travis/wKovacs64/react-native-responsive-image-view.svg?style=flat-square&branch=master
-[travis-url]: https://travis-ci.org/wKovacs64/react-native-responsive-image-view
+[ci-image]:
+  https://img.shields.io/circleci/project/github/wKovacs64/react-native-responsive-image-view/master.svg?style=flat-square
+[ci-url]: https://circleci.com/gh/wKovacs64/react-native-responsive-image-view
 [coverage-image]:
-  https://img.shields.io/coveralls/wKovacs64/react-native-responsive-image-view.svg?style=flat-square&branch=master
+  https://img.shields.io/codecov/c/github/wKovacs64/react-native-responsive-image-view/master.svg?style=flat-square
 [coverage-url]:
-  https://coveralls.io/github/wKovacs64/react-native-responsive-image-view?branch=master
+  https://codecov.io/gh/wKovacs64/react-native-responsive-image-view/branch/master
 [aspectratio]:
   https://facebook.github.io/react-native/docs/layout-props#aspectratio
 [render-props]: https://reactjs.org/docs/render-props.html
