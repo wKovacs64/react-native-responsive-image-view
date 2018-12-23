@@ -48,7 +48,7 @@
     "codecov": "3.1.0",
     "cross-env": "5.2.0",
     "doctoc": "1.4.0",
-    "eslint": "5.10.0",
+    "eslint": "5.11.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "3.3.0",
     "eslint-plugin-import": "2.14.0",
