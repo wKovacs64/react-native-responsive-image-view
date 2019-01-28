@@ -6046,10 +6046,10 @@ react-native-testing-library@1.5.0:
   dependencies:
     pretty-format "^23.6.0"
 
-react-native@0.58.2:
-  version "0.58.2"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.58.2.tgz#c11c78e2c3d558d420952ff18dc1ce8a73ef3fe1"
-  integrity sha512-3TCSevho0z1piWCX1neJNPOe8pyccxmXZggDqzcNGVshXdyMBSAF2hl4WBkn/fjDzMDcAyy86YgbzPRKbzUY+Q==
+react-native@0.58.3:
+  version "0.58.3"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.58.3.tgz#90e2dbfef19f3793ba008ab5274daac926424916"
+  integrity sha512-SYzHQ1PXxvDI2oYxcnN/FgGaDdRaGhn1S55pqpsyTzZ5s6x769pyT4nkiDF+XXieVJvk17g4PRSJbdzRgZ9ajQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     absolute-path "^0.0.0"
