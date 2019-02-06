@@ -60,11 +60,11 @@
     "metro-react-native-babel-preset": "0.51.1",
     "prettier": "1.16.4",
     "prop-types": "15.6.2",
-    "react": "16.7.0",
-    "react-dom": "16.7.0",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
     "react-native": "0.58.3",
     "react-native-testing-library": "1.5.0",
-    "react-test-renderer": "16.7.0",
+    "react-test-renderer": "16.8.0",
     "rimraf": "2.6.3"
   },
   "peerDependencies": {
