@@ -62,7 +62,7 @@
     "prop-types": "15.7.2",
     "react": "16.8.2",
     "react-dom": "16.8.2",
-    "react-native": "0.58.4",
+    "react-native": "0.58.5",
     "react-native-testing-library": "1.5.0",
     "react-test-renderer": "16.8.2",
     "rimraf": "2.6.3"
