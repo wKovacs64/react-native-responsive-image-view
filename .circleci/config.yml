@@ -21,3 +21,4 @@ jobs:
       - run: yarn lint
       - run: yarn test --coverage
       - run: ./node_modules/.bin/codecov
+      - run: yarn semantic-release

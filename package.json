@@ -32,20 +32,33 @@
   ],
   "scripts": {
     "clean": "rimraf coverage",
+    "cm": "git-cz",
     "format": "prettier --write \"**/*.{js,json,md,yml}\"",
     "lint": "eslint .",
-    "prepublishOnly": "npm run lint && npm run test",
+    "prepublishOnly": "npm run validate",
     "test": "cross-env NODE_ENV=test jest",
-    "test:coverage": "npm run test -- --coverage",
-    "test:watch": "npm run test -- --watch"
+    "validate": "npm-run-all --parallel lint test"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.3.4",
+    "@commitlint/cli": "7.5.2",
+    "@commitlint/config-conventional": "7.5.0",
     "@wkovacs64/eslint-config-react": "2.1.0",
     "babel-jest": "24.5.0",
     "codecov": "3.2.0",
+    "commitizen": "3.0.7",
     "cross-env": "5.2.0",
+    "cz-conventional-changelog": "2.1.0",
     "doctoc": "1.4.0",
     "eslint": "5.15.1",
     "eslint-plugin-import": "2.16.0",
@@ -58,6 +71,7 @@
     "jest-watch-typeahead": "0.2.1",
     "lint-staged": "8.1.5",
     "metro-react-native-babel-preset": "0.53.0",
+    "npm-run-all": "4.1.5",
     "prettier": "1.16.4",
     "prop-types": "15.7.2",
     "react": "16.8.4",
@@ -65,7 +79,8 @@
     "react-native": "0.59.0",
     "react-native-testing-library": "1.6.0",
     "react-test-renderer": "16.8.4",
-    "rimraf": "2.6.3"
+    "rimraf": "2.6.3",
+    "semantic-release": "15.13.3"
   },
   "peerDependencies": {
     "prop-types": ">=15",

@@ -4,6 +4,7 @@ _React Native component for scaling an `Image` within the parent `View`_
 
 [![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
 [![Code Coverage][coverage-image]][coverage-url]
+[![semantic-release][semantic-release-image]][semantic-release-url]
 
 ## The problem
 
@@ -455,6 +456,9 @@ end of the day, these features proved to be too opinionated.
   https://img.shields.io/codecov/c/github/wKovacs64/react-native-responsive-image-view/master.svg?style=flat-square
 [coverage-url]:
   https://codecov.io/gh/wKovacs64/react-native-responsive-image-view/branch/master
+[semantic-release-image]:
+  https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square
+[semantic-release-url]: https://github.com/semantic-release/semantic-release
 [aspectratio]:
   https://facebook.github.io/react-native/docs/layout-props#aspectratio
 [render-props]: https://reactjs.org/docs/render-props.html

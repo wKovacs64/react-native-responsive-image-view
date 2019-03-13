@@ -1,5 +1,5 @@
 {
-  "extends": ["config:js-lib"],
+  "extends": ["config:js-lib", ":semanticCommits"],
   "commitMessageTopic": "{{depName}}",
   "automergeType": "branch",
   "automerge": true,
