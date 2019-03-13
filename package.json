@@ -10,7 +10,8 @@
     "fit",
     "aspect-ratio",
     "image",
-    "view"
+    "view",
+    "hook"
   ],
   "author": {
     "name": "Justin Hall",
@@ -28,7 +29,8 @@
   },
   "main": "ResponsiveImageView.js",
   "files": [
-    "ResponsiveImageView.js"
+    "ResponsiveImageView.js",
+    "useResponsiveImageView.js"
   ],
   "scripts": {
     "clean": "rimraf coverage",
@@ -48,7 +50,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "use-deep-compare-effect": "1.1.0"
+  },
   "devDependencies": {
     "@babel/core": "7.3.4",
     "@commitlint/cli": "7.5.2",
@@ -84,7 +88,7 @@
   },
   "peerDependencies": {
     "prop-types": ">=15",
-    "react": ">=15",
-    "react-native": ">=0.41.0"
+    "react": ">=16.8.3",
+    "react-native": ">=0.59.0"
   }
 }

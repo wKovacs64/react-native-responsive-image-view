@@ -17,15 +17,14 @@ Bootstrap 3's `img-responsive` class or manually applying `max-width: 100%` and
 
 ## This solution
 
-This is a component that calculates the aspect ratio of your image for you (or
-uses a fixed value, if you supply one) and provides you with the appropriate
-props to apply to a `View` container and an `Image` inside it which will produce
-the results you're looking for. The secret sauce is setting both the `height`
-and `width` attributes of the `style` prop on the `Image` to `100%` and wrapping
-it with a `View` that has its [`aspectRatio`][aspectratio] style property set to
-match the aspect ratio you want. It uses a [render prop][render-props] which
-gives you maximum flexibility with a minimal API because you are responsible for
-the rendering of everything and you simply apply props to what you're rendering.
+This calculates the aspect ratio of your image for you (or uses a fixed value,
+if you supply one) and provides you with the appropriate props to apply to a
+`View` container and an `Image` inside it which will produce the results you're
+looking for. The secret sauce is setting both the `height` and `width`
+attributes of the `style` prop on the `Image` to `100%` and wrapping it with a
+`View` that has its [`aspectRatio`][aspectratio] style property set to match the
+aspect ratio you want. The package provides both a [render prop
+component][render-props] and a [custom hook][hooks-intro].
 
 ## Table of Contents
 
@@ -34,27 +33,26 @@ the rendering of everything and you simply apply props to what you're rendering.
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Basic Props](#basic-props)
-  - [onLoad](#onload)
-  - [onError](#onerror)
-  - [source](#source)
-  - [component](#component)
-  - [render](#render)
-  - [children](#children)
-- [Advanced Props](#advanced-props)
-  - [aspectRatio](#aspectratio)
-- [Render Prop Function](#render-prop-function)
+  - [Component](#component)
+  - [Hook](#hook)
+- [Input](#input)
+  - [Basic Inputs](#basic-inputs)
+    - [onLoad](#onload)
+    - [onError](#onerror)
+    - [source](#source)
+  - [Advanced Inputs](#advanced-inputs)
+    - [aspectRatio](#aspectratio)
+  - [Component-only Inputs](#component-only-inputs)
+    - [Render Prop Function](#render-prop-function)
+      - [component](#component)
+      - [render](#render)
+      - [children](#children)
+- [Output](#output)
   - [prop getters](#prop-getters)
     - [`getViewProps`](#getviewprops)
     - [`getImageProps`](#getimageprops)
   - [state](#state)
 - [Examples](#examples)
-  - [Responsive Remote Image](#responsive-remote-image)
-  - [Fixed (Controlled) Aspect Ratio and Local Image Resource](#fixed-controlled-aspect-ratio-and-local-image-resource)
-  - [Touchable](#touchable)
-  - [Loading and Error Handling](#loading-and-error-handling)
-  - [Composing Props](#composing-props)
-  - [Success/Failure Callbacks](#successfailure-callbacks)
 - [Snack Playground](#snack-playground)
 - [Inspiration](#inspiration)
 - [Other Solutions](#other-solutions)
@@ -73,13 +71,19 @@ yarn add react-native-responsive-image-view
 Or, [npm][npm]:
 
 ```shell
-npm install --save react-native-responsive-image-view
+npm install react-native-responsive-image-view
 ```
 
 > This package also depends on `react`, `prop-types`, and `react-native`. Please
 > make sure you have those installed as well.
 
 ## Usage
+
+As mentioned above, this package includes both a render prop component (the
+default export) and a custom hook (a named export). They provide the same
+functionality, so choose whichever is most appropriate for your project.
+
+### Component
 
 ```jsx
 import React from 'react';
@@ -106,16 +110,42 @@ in your `render` function.
 > injection and function-as-children patterns if you prefer. See the
 > [Render Prop Function](#render-prop-function) section for details.
 
-## Basic Props
+### Hook
 
-### onLoad
+```jsx
+import React from 'react';
+import { Image, View } from 'react-native';
+import { useResponsiveImageView } from 'react-native-responsive-image-view';
+
+export default ({ imageUri }) => {
+  const { getViewProps, getImageProps } = useResponsiveImageView({
+    source: { uri: imageUri },
+  });
+
+  return (
+    <View {...getViewProps()}>
+      <Image {...getImageProps()} />
+    </View>
+  );
+};
+```
+
+## Input
+
+The component takes its inputs as individual props, while the hook takes its
+inputs as an object (the only parameter), but the inputs themselves are
+primarily the same:
+
+### Basic Inputs
+
+#### onLoad
 
 > `function()` | optional, no useful default
 
 Called after the image has been loaded (and the aspect ratio has been
 calculated).
 
-### onError
+#### onError
 
 > `function(error: string)` | optional, no useful default
 
@@ -124,7 +154,7 @@ form of a string.
 
 - `error`: the error message as a string
 
-### source
+#### source
 
 > `number`/`object` | _required_
 
@@ -132,31 +162,9 @@ The source for your `Image`. This can be a local file resource (the result of an
 `import` or `require` statement) or an object containing a `uri` key with a
 remote URL as its value.
 
-### component
+### Advanced Inputs
 
-> `component` | _optional_
-
-This is rendered with an object passed in as `props`. Read more about the
-properties of this object in the [Render Prop Function](#render-prop-function)
-section.
-
-### render
-
-> `function({})` | _optional_
-
-This is called with an object. Read more about the properties of this object in
-the [Render Prop Function](#render-prop-function) section.
-
-### children
-
-> `function({})` | _optional_
-
-This is called with an object. Read more about the properties of this object in
-the [Render Prop Function](#render-prop-function) section.
-
-## Advanced Props
-
-### aspectRatio
+#### aspectRatio
 
 > `number` | **control prop**, default: automatically calculated from image
 > dimensions
@@ -167,14 +175,16 @@ you can pass in a fixed aspect ratio to use instead. This is useful if you want
 to fit the image into a statically shaped box such as a navigation drawer
 header.
 
-## Render Prop Function
+### Component-only Inputs
+
+#### Render Prop Function
 
 This is where you render whatever you want to based on the state of
-`react-native-responsive-image-view`. It's just a function or component,
-available in a few different ways. Read Donavon West's very opinionated but
-informative [post about them][faccs-and-ci] for more information. They all
-receive the same props, so it is purely a stylistic choice left up to you as the
-consumer.
+`react-native-responsive-image-view` when using the component (not applicable
+when using the hook). It's just a function or component, available in a few
+different ways. Read Donavon West's very opinionated but informative [post about
+them][faccs-and-ci] for more information. They all receive the same props, so it
+is purely a stylistic choice left up to you as the consumer.
 
 ```jsx
 // component injection
@@ -189,6 +199,29 @@ consumer.
 </ResponsiveImageView>
 ```
 
+Choose your approach by passing one of the following props:
+
+##### component
+
+> `component` | _optional_
+
+This is rendered with an object passed in as `props`. Read more about the
+properties of this object in the [Output](#output) section.
+
+##### render
+
+> `function({})` | _optional_
+
+This is called with an object. Read more about the properties of this object in
+the [Output](#output) section.
+
+##### children
+
+> `function({})` | _optional_
+
+This is called with an object. Read more about the properties of this object in
+the [Output](#output) section.
+
 **N.B.** Multiple render methods should not be combined, but in the event that
 they are, `react-native-responsive-image-view` will honor the following order:
 
@@ -198,9 +231,13 @@ they are, `react-native-responsive-image-view` will honor the following order:
 1.  non-functional `children` (render children normally)
 1.  `null` (render nothing)
 
-The function or component you pass in gets called with a props object containing
-important properties you'll need for rendering. The properties of this object
-can be split into two categories as indicated below:
+## Output
+
+Regardless of whether you are using the component or the hook, the results are
+an object containing important properties you'll need for rendering. It will be
+passed to the [Render Prop Function](#render-prop-function) when using the
+component, and returned from the hook invocation when using the hook. The
+properties of this object can be split into two categories as indicated below:
 
 ### prop getters
 
@@ -248,166 +285,8 @@ These are values that represent the current state of the component.
 
 ## Examples
 
-#### Responsive Remote Image
-
-```jsx
-import React from 'react';
-import { Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
-
-const MyComponent = ({ imageUri }) => (
-  <ResponsiveImageView source={{ uri: imageUri }}>
-    {({ getViewProps, getImageProps }) => (
-      <View {...getViewProps()}>
-        <Image {...getImageProps()} />
-      </View>
-    )}
-  </ResponsiveImageView>
-);
-```
-
-#### Fixed (Controlled) Aspect Ratio and Local Image Resource
-
-```jsx
-import React from 'react';
-import { Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
-import headerImage from './header.jpg';
-
-const DrawerHeader = () => (
-  <ResponsiveImageView aspectRatio={16 / 9} source={headerImage}>
-    {({ getViewProps, getImageProps }) => (
-      <View {...getViewProps()}>
-        <Image {...getImageProps()} />
-      </View>
-    )}
-  </ResponsiveImageView>
-);
-```
-
-#### Touchable
-
-```jsx
-import React from 'react';
-import { Image, TouchableHighlight, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
-
-const MyTouchableComponent = ({ imageUri, onPress }) => (
-  <ResponsiveImageView source={{ uri: imageUri }}>
-    {({ getViewProps, getImageProps }) => (
-      <View {...getViewProps()}>
-        <TouchableHighlight onPress={onPress}>
-          <Image {...getImageProps()} />
-        </TouchableHighlight>
-      </View>
-    )}
-  </ResponsiveImageView>
-);
-```
-
-#### Loading and Error Handling
-
-```jsx
-import React from 'react';
-import { ActivityIndicator, Image, Text, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
-
-const MyComponent = ({ imageUri }) => (
-  <ResponsiveImageView source={{ uri: imageUri }}>
-    {({ error, loading, getViewProps, getImageProps }) => {
-      if (loading) {
-        return <ActivityIndicator animating={true} size="large" />;
-      }
-      if (error) {
-        return (
-          <View>
-            <Text>{error}</Text>
-          </View>
-        );
-      }
-      return (
-        <View {...getViewProps()}>
-          <Image {...getImageProps()} />
-        </View>
-      );
-    }}
-  </ResponsiveImageView>
-);
-```
-
-#### Composing Props
-
-```jsx
-import React from 'react';
-import { StyleSheet, Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
-
-const styles = StyleSheet.create({
-  imageContainer: {
-    padding: 20, // will be merged into ResponsiveImageView View props!
-  },
-  image: {
-    width: '50%', // will be overwritten by ResponsiveImageView Image props!
-  },
-});
-
-const MyComponent = ({ imageUri }) => (
-  <ResponsiveImageView source={{ uri: imageUri }}>
-    {({ getViewProps, getImageProps }) => (
-      <View {...getViewProps({ style: styles.imageContainer })}>
-        <Image {...getImageProps({ style: styles.image })} />
-      </View>
-    )}
-  </ResponsiveImageView>
-);
-```
-
-#### Success/Failure Callbacks
-
-```jsx
-import { Component } from 'react';
-import { Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
-
-class MyStatefulComponent extends Component {
-  state = {
-    success: false,
-    error: '',
-  };
-
-  onLoad = () => {
-    this.setState({
-      success: true,
-      error: '',
-    });
-  };
-
-  onError = error => {
-    this.setState({
-      success: false,
-      error,
-    });
-  };
-
-  renderImageView = ({ getViewProps, getImageProps }) => (
-    <View {...getViewProps()}>
-      <Image {...getImageProps()} />
-    </View>
-  );
-
-  render() {
-    return (
-      <ResponsiveImageView
-        onLoad={this.onLoad}
-        onError={this.onError}
-        source={{ uri: this.props.imageUri }}
-      >
-        {this.renderImageView}
-      </ResponsiveImageView>
-    );
-  }
-}
-```
+See the [`examples`][examples-directory] directory for examples using both the
+component and the hook.
 
 ## Snack Playground
 
@@ -420,12 +299,11 @@ option to use the in-browser simulators!
 
 I was heavily inspired by [`react-native-flex-image`][react-native-flex-image]
 from [KodeFox][kodefox] (see the [Other Solutions](#other-solutions) section)
-with regards to how to display the image to get the desired behavior. For the
-actual implementation and API, I was primarily inspired by [Michael
+with regards to how to display the image to get the desired behavior. The
+original implementation and API were primarily inspired by [Michael
 Jackson][mjackson]'s ["Use a Render Prop!"][use-a-render-prop] post and video,
 as well as [Kent C. Dodds][kentcdodds]' [introduction to prop
-getters][kent-prop-getters] (popularized by his [`downshift`][downshift]
-project, which also provided inspiration for this README).
+getters][kent-prop-getters].
 
 ## Other Solutions
 
@@ -462,6 +340,7 @@ end of the day, these features proved to be too opinionated.
 [aspectratio]:
   https://facebook.github.io/react-native/docs/layout-props#aspectratio
 [render-props]: https://reactjs.org/docs/render-props.html
+[hooks-intro]: https://reactjs.org/docs/hooks-intro.html
 [npm]: https://www.npmjs.com/
 [yarn]: https://yarnpkg.com/
 [react-native-flex-image]: https://github.com/kodefox/react-native-flex-image
@@ -475,6 +354,7 @@ end of the day, these features proved to be too opinionated.
 [kentcdodds]: https://github.com/kentcdodds
 [kent-prop-getters]:
   https://blog.kentcdodds.com/how-to-give-rendering-control-to-users-with-prop-getters-549eaef76acf
-[downshift]: https://github.com/paypal/downshift
+[examples-directory]:
+  https://github.com/wKovacs64/react-native-responsive-image-view/tree/master/examples
 [license]:
   https://github.com/wKovacs64/react-native-responsive-image-view/tree/master/LICENSE.txt
