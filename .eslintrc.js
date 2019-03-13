@@ -1,12 +1,3 @@
 module.exports = {
-  env: {
-    jest: true,
-  },
-  extends: ['airbnb', 'prettier'],
-  parser: 'babel-eslint',
-  rules: {
-    'react/destructuring-assignment': 'off',
-    'react/jsx-filename-extension': 'off',
-    'react/jsx-one-expression-per-line': 'off',
-  },
+  extends: ['@wkovacs64/eslint-config-react'],
 };
