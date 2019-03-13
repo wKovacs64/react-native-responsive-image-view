@@ -1,5 +1,11 @@
 # Change Log
 
+The changelog is automatically updated using
+[semantic-release](https://github.com/semantic-release/semantic-release). You
+can see it on the [releases page](../../releases).
+
+# v1 Change Log
+
 ## Version 1.1.1 _(2018-12-19)_
 
 - Improved docs
