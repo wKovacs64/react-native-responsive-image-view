@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { render as rtlRender } from 'react-native-testing-library';
-import ResponsiveImageView from './ResponsiveImageView';
 import {
   mockUriGood,
   mockUriBad,
@@ -13,7 +12,8 @@ import {
   controlledAspectRatio,
   consumerViewProps,
   consumerImageProps,
-} from './test-fixtures';
+} from './test/fixtures';
+import ResponsiveImageView from './ResponsiveImageView';
 
 describe('rendering order (component > render > FAC > children > null)', () => {
   describe('renders component if provided', () => {

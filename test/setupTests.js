@@ -6,7 +6,7 @@ import {
   mockResourceGood,
   mockWidth,
   mockHeight,
-} from './test-fixtures';
+} from './fixtures';
 
 jest.mock('Image', () => ({
   getSize(uri, onLoad, onError) {
