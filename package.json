@@ -50,9 +50,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "use-deep-compare-effect": "1.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.3.4",
     "@commitlint/cli": "7.5.2",

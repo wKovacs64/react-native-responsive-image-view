@@ -1,7 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
-import useDeepCompareEffect from 'use-deep-compare-effect';
 
 // A cancelable version of Image.getSize, adapted from
 // https://github.com/kodefox/react-native-flex-image
@@ -94,11 +93,7 @@ function useResponsiveImageView({
     };
   }
 
-  // Using deep compare here because the `source` parameter can be a nested
-  // object. The alternative is requiring the user to memoize the parameters,
-  // but that would add usage overhead and potential confusion (at least in the
-  // early days of hooks).
-  useDeepCompareEffect(() => {
+  React.useEffect(() => {
     let pendingGetImageSize = {
       cancel: /* istanbul ignore next: just a stub  */ () => {},
     };
@@ -136,7 +131,12 @@ function useResponsiveImageView({
     return () => {
       pendingGetImageSize.cancel();
     };
-  }, [initialSource, onLoad, onError]);
+    // Using JSON.stringify here because the `source` parameter can be a nested
+    // object. The alternative is requiring the user to memoize the parameters,
+    // but that would add usage overhead and potential confusion (at least in
+    // the early days of hooks).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(initialSource), onLoad, onError]);
 
   return {
     loading: state.loading,
