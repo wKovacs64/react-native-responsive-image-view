@@ -8,10 +8,6 @@ import {
   mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
-  computedAspectRatio,
-  controlledAspectRatio,
-  consumerViewProps,
-  consumerImageProps,
 } from './test/fixtures';
 import ResponsiveImageView from './ResponsiveImageView';
 
@@ -37,7 +33,6 @@ describe('rendering order (component > render > FAC > children > null)', () => {
 
     it('class', () => {
       const classRenderMethod = jest.fn(() => null);
-      // eslint-disable-next-line react/prefer-stateless-function
       class MyRenderClassComponent extends React.Component {
         render() {
           return classRenderMethod(this.props);
@@ -99,171 +94,6 @@ describe('rendering order (component > render > FAC > children > null)', () => {
       <ResponsiveImageView source={{ uri: mockUriGood }} />,
     );
     expect(toJSON()).toBeNull();
-  });
-});
-
-describe('component injection', () => {
-  it('renders the component with expected parameters on success', () => {
-    const MyRenderComponent = jest.fn(() => null);
-    rtlRender(
-      <ResponsiveImageView
-        source={{ uri: mockUriGood }}
-        component={MyRenderComponent}
-      />,
-    );
-    expect(MyRenderComponent.mock.calls).toMatchSnapshot();
-  });
-
-  it('renders the component with expected parameters on failure', () => {
-    const MyRenderComponent = jest.fn(() => null);
-    rtlRender(
-      <ResponsiveImageView
-        source={{ uri: mockUriBad }}
-        component={MyRenderComponent}
-      />,
-    );
-    expect(MyRenderComponent.mock.calls).toMatchSnapshot();
-  });
-
-  it('renders class components', () => {
-    const classRenderMethod = jest.fn(() => null);
-    // eslint-disable-next-line react/prefer-stateless-function,react/no-multi-comp
-    class MyRenderClassComponent extends React.Component {
-      render() {
-        return classRenderMethod(this.props);
-      }
-    }
-    rtlRender(
-      <ResponsiveImageView
-        source={{ uri: mockUriGood }}
-        component={MyRenderClassComponent}
-      />,
-    );
-    expect(classRenderMethod.mock.calls).toMatchSnapshot();
-  });
-});
-
-describe('render prop', () => {
-  it('calls render with expected parameters on success', () => {
-    const render = jest.fn(() => null);
-    rtlRender(
-      <ResponsiveImageView source={{ uri: mockUriGood }} render={render} />,
-    );
-    expect(render.mock.calls).toMatchSnapshot();
-  });
-
-  it('calls render with expected parameters on failure', () => {
-    const render = jest.fn(() => null);
-    rtlRender(
-      <ResponsiveImageView source={{ uri: mockUriBad }} render={render} />,
-    );
-    expect(render.mock.calls).toMatchSnapshot();
-  });
-});
-
-describe('function-as-children', () => {
-  it('calls children with expected parameters on success', () => {
-    const children = jest.fn(() => null);
-    rtlRender(
-      <ResponsiveImageView source={{ uri: mockUriGood }}>
-        {children}
-      </ResponsiveImageView>,
-    );
-    expect(children.mock.calls).toMatchSnapshot();
-  });
-
-  it('calls children with expected parameters on failure', () => {
-    const children = jest.fn(() => null);
-    rtlRender(
-      <ResponsiveImageView source={{ uri: mockUriBad }}>
-        {children}
-      </ResponsiveImageView>,
-    );
-    expect(children.mock.calls).toMatchSnapshot();
-  });
-});
-
-describe('getViewProps', () => {
-  it('includes controlled aspectRatio', () => {
-    expect.assertions(1);
-    rtlRender(
-      <ResponsiveImageView
-        aspectRatio={controlledAspectRatio}
-        source={{ uri: mockUriGood }}
-        render={({ loading, getViewProps }) => {
-          if (!loading) {
-            expect(getViewProps().style).toContainEqual({
-              aspectRatio: controlledAspectRatio,
-            });
-          }
-          return null;
-        }}
-      />,
-    );
-  });
-
-  it('includes calculated aspectRatio if not provided', () => {
-    expect.assertions(1);
-    rtlRender(
-      <ResponsiveImageView
-        source={{ uri: mockUriGood }}
-        render={({ loading, getViewProps }) => {
-          if (!loading) {
-            expect(getViewProps().style).toContainEqual({
-              aspectRatio: computedAspectRatio,
-            });
-          }
-          return null;
-        }}
-      />,
-    );
-  });
-
-  it('composes consumer props with own props', () => {
-    expect.assertions(1);
-    rtlRender(
-      <ResponsiveImageView
-        source={{ uri: mockUriGood }}
-        render={({ loading, getViewProps }) => {
-          if (!loading) {
-            expect(getViewProps({ ...consumerViewProps })).toMatchSnapshot();
-          }
-          return null;
-        }}
-      />,
-    );
-  });
-});
-
-describe('getImageProps', () => {
-  it('sets height and width to 100%', () => {
-    expect.assertions(1);
-    rtlRender(
-      <ResponsiveImageView
-        source={{ uri: mockUriGood }}
-        render={({ loading, getImageProps }) => {
-          if (!loading) {
-            expect(getImageProps()).toMatchSnapshot();
-          }
-          return null;
-        }}
-      />,
-    );
-  });
-
-  it('composes consumer props with own props', () => {
-    expect.assertions(1);
-    rtlRender(
-      <ResponsiveImageView
-        source={{ uri: mockUriGood }}
-        render={({ loading, getImageProps }) => {
-          if (!loading) {
-            expect(getImageProps({ ...consumerImageProps })).toMatchSnapshot();
-          }
-          return null;
-        }}
-      />,
-    );
   });
 });
 
