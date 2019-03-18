@@ -79,7 +79,7 @@
     "react": "16.8.4",
     "react-dom": "16.8.4",
     "react-native": "0.59.1",
-    "react-native-testing-library": "1.6.0",
+    "react-native-testing-library": "1.6.1",
     "react-test-renderer": "16.8.4",
     "rimraf": "2.6.3",
     "semantic-release": "15.13.3"
