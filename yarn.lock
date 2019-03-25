@@ -8458,10 +8458,10 @@ react-native-testing-library@1.6.1:
   dependencies:
     pretty-format "^24.0.0"
 
-react-native@0.59.1:
-  version "0.59.1"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.1.tgz#3274dcc0f9558799bd41c8092acac2a79bd627ce"
-  integrity sha512-KA/MyoCQLGavPBc/Q2QRfdbxHuKHTcYTks9xwwRPzgDqTfmTuDcyoC6jUBTfhZ0LEes5GMoKVM4eVrYUbprOmw==
+react-native@0.59.2:
+  version "0.59.2"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.2.tgz#c2e2d9e185b04e54948f170841d97c24661a0fa9"
+  integrity sha512-gIygrCr42rGEQnfjcAZdCOqgjC0oZtTIp+mdbUW+yqHpNUU1PbYKzUkLlvSFGeN+IUcL8WTaC1JtJvghKhaLmA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^1.2.1"
