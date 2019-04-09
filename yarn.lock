@@ -8559,10 +8559,10 @@ react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
-react-native-testing-library@1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.6.2.tgz#c578dc149dcc0321fb84e810f9fe11911ddac9e0"
-  integrity sha512-zYnkXwbAIDdbhV6ljyd5tK+Q6DacvOYjE4zNAXBV+aQ9U7zGZp6pGBmrIWs7MwVd3t6CDniC4O8dzBIbhZdBdw==
+react-native-testing-library@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.7.0.tgz#8b53d5361faaa276bf67cd0e50dab1d2e26754ad"
+  integrity sha512-aciXmBjZ8GXbkgwBTyXUBSUBqYyIa/m+mZM3ZqU44pfeu+LihuvpljucSQaUutbUEywKb2sgEJWeS8GwEBa09w==
   dependencies:
     pretty-format "^24.0.0"
 
