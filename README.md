@@ -353,7 +353,7 @@ end of the day, these features proved to be too opinionated.
 [faccs-and-ci]: http://americanexpress.io/faccs-are-an-antipattern/
 [kentcdodds]: https://github.com/kentcdodds
 [kent-prop-getters]:
-  https://blog.kentcdodds.com/how-to-give-rendering-control-to-users-with-prop-getters-549eaef76acf
+  https://kentcdodds.com/blog/how-to-give-rendering-control-to-users-with-prop-getters
 [examples-directory]:
   https://github.com/wKovacs64/react-native-responsive-image-view/tree/master/examples
 [license]:
