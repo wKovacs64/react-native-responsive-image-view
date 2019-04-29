@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { render as rtlRender } from 'react-native-testing-library';
+import { render as ntlRender } from 'native-testing-library';
 import {
   mockUriGood,
   mockUriBad,
@@ -17,7 +17,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
       const MyRenderComponent = jest.fn(() => null);
       const render = jest.fn(() => null);
       const children = jest.fn(() => null);
-      rtlRender(
+      ntlRender(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           component={MyRenderComponent}
@@ -41,7 +41,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
 
       const render = jest.fn(() => null);
       const children = jest.fn(() => null);
-      rtlRender(
+      ntlRender(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           component={MyRenderClassComponent}
@@ -59,7 +59,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
   it('calls render if no component was provided', () => {
     const render = jest.fn(() => null);
     const children = jest.fn(() => null);
-    rtlRender(
+    ntlRender(
       <ResponsiveImageView source={{ uri: mockUriGood }} render={render}>
         {children}
       </ResponsiveImageView>,
@@ -70,7 +70,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
 
   it('calls children function if no component or render prop was provided', () => {
     const children = jest.fn(() => null);
-    rtlRender(
+    ntlRender(
       <ResponsiveImageView source={{ uri: mockUriGood }}>
         {children}
       </ResponsiveImageView>,
@@ -79,7 +79,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
   });
 
   it('renders children if no component, render prop, or FAC was provided', () => {
-    const { getByText } = rtlRender(
+    const { getByText } = ntlRender(
       <ResponsiveImageView source={{ uri: mockUriGood }}>
         <View>
           <Text>Hello from non-functional children!</Text>
@@ -90,29 +90,29 @@ describe('rendering order (component > render > FAC > children > null)', () => {
   });
 
   it('renders null if no renderer was provided', () => {
-    const { toJSON } = rtlRender(
+    const { queryByText } = ntlRender(
       <ResponsiveImageView source={{ uri: mockUriGood }} />,
     );
-    expect(toJSON()).toBeNull();
+    expect(queryByText(/.*/)).toBeNull();
   });
 });
 
 describe('completion callbacks', () => {
   it("doesn't throw on success if no onLoad was provided", () => {
     expect(() =>
-      rtlRender(<ResponsiveImageView source={{ uri: mockUriGood }} />),
+      ntlRender(<ResponsiveImageView source={{ uri: mockUriGood }} />),
     ).not.toThrow();
   });
 
   it("doesn't throw on failure if no onError was provided", () => {
     expect(() =>
-      rtlRender(<ResponsiveImageView source={{ uri: mockUriBad }} />),
+      ntlRender(<ResponsiveImageView source={{ uri: mockUriBad }} />),
     ).not.toThrow();
   });
 
   it('calls provided onLoad on URI success', () =>
     new Promise((resolve, reject) => {
-      rtlRender(
+      ntlRender(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           onLoad={resolve}
@@ -123,7 +123,7 @@ describe('completion callbacks', () => {
 
   it('calls provided onError on URI failure', () =>
     new Promise((resolve, reject) => {
-      rtlRender(
+      ntlRender(
         <ResponsiveImageView
           source={{ uri: mockUriBad }}
           onLoad={reject}
@@ -134,7 +134,7 @@ describe('completion callbacks', () => {
 
   it('calls provided onLoad on imported resource success', () =>
     new Promise((resolve, reject) => {
-      rtlRender(
+      ntlRender(
         <ResponsiveImageView
           source={mockResourceGood}
           onLoad={resolve}
@@ -145,7 +145,7 @@ describe('completion callbacks', () => {
 
   it('calls provided onError on imported resource failure', () =>
     new Promise((resolve, reject) => {
-      rtlRender(
+      ntlRender(
         <ResponsiveImageView
           source={mockResourceBad}
           onLoad={reject}
@@ -156,7 +156,7 @@ describe('completion callbacks', () => {
 
   it('does not call onLoad on success after unmounting', () =>
     new Promise((resolve, reject) => {
-      const { unmount } = rtlRender(
+      const { unmount } = ntlRender(
         <ResponsiveImageView
           source={{ uri: mockUriSlowGood }}
           onLoad={reject}
@@ -169,7 +169,7 @@ describe('completion callbacks', () => {
 
   it('does not call onError on failure after unmounting', () =>
     new Promise((resolve, reject) => {
-      const { unmount } = rtlRender(
+      const { unmount } = ntlRender(
         <ResponsiveImageView
           source={{ uri: mockUriSlowBad }}
           onLoad={reject}
