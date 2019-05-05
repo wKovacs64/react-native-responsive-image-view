@@ -7184,10 +7184,10 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-native-testing-library@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/native-testing-library/-/native-testing-library-2.0.1.tgz#19233eb3e0ef3001b044aa41747590a456a41af4"
-  integrity sha512-Cur1rGW9j1pAfymLr2jIqgquxTC6PbgXQ6sNP4j1hmnwXm+iSHpSkpeoD15xOh/37E1HNphuBv3MmVBO+G+Ekg==
+native-testing-library@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/native-testing-library/-/native-testing-library-2.1.0.tgz#b015b66b9794ba6484149471d2b417472fea6e22"
+  integrity sha512-veMij+y++ctFodIRD4sPfueS0mfy/KEFG9O8wgojVA593AEXtB343V5cf/CNzOphuuyviq15mRyN32Nd19p6/Q==
   dependencies:
     pretty-format "^24.5.0"
     react-test-renderer "^16.8.5"
