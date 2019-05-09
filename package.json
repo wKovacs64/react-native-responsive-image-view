@@ -53,7 +53,7 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.4.4",
-    "@commitlint/cli": "7.6.0",
+    "@commitlint/cli": "7.6.1",
     "@commitlint/config-conventional": "7.6.0",
     "@wkovacs64/eslint-config-react": "2.1.0",
     "babel-jest": "24.8.0",
