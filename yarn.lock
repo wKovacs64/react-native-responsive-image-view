@@ -7209,10 +7209,10 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-native-testing-library@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/native-testing-library/-/native-testing-library-3.0.0.tgz#655d505241042e2fbff1a22a7f297b3983095d96"
-  integrity sha512-f9enT/w6X0FOeEa+KUCYuq/Ee4rRR/G4w43LZLM4HsWq1Yrq/7XbrQQ+w19G1/pS5FXUoZu58LZ9yQJKxMaNJA==
+native-testing-library@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/native-testing-library/-/native-testing-library-3.1.0.tgz#4902c0c0576b1ee95f28c35e4d0bd9d30af4ed98"
+  integrity sha512-eGP/OgAceFzZ4B+6+mloM0Gvc6djZ1CC5Il1jkUcVIIVo1xIt1Xvi1dBBUojipAhetRgHhMxiLZnrQg8UpBkPg==
   dependencies:
     jest-native "2.0.0-alpha.5"
     pretty-format "^24.5.0"
