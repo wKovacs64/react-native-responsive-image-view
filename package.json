@@ -22,7 +22,7 @@
   "homepage": "https://npm.im/react-native-responsive-image-view",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/wKovacs64/react-native-responsive-image-view.git"
+    "url": "https://github.com/wKovacs64/react-native-responsive-image-view.git"
   },
   "bugs": {
     "url": "https://github.com/wKovacs64/react-native-responsive-image-view/issues"
