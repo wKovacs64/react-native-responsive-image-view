@@ -65,7 +65,7 @@
     "eslint": "5.16.0",
     "eslint-plugin-import": "2.18.0",
     "eslint-plugin-jest": "22.7.1",
-    "eslint-plugin-jsx-a11y": "6.2.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.14.2",
     "eslint-plugin-react-hooks": "1.6.1",
     "husky": "2.7.0",
