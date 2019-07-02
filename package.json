@@ -79,7 +79,7 @@
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-native": "0.59.9",
+    "react-native": "0.59.10",
     "react-test-renderer": "16.8.6",
     "rimraf": "2.6.3",
     "semantic-release": "15.13.18"
