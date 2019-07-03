@@ -1395,14 +1395,14 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@wkovacs64/eslint-config-react@2.2.2":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-react/-/eslint-config-react-2.2.2.tgz#ecbe21b5d9bfbabfc225bc9417cb8ea09be324fc"
-  integrity sha512-F2ROx85dJa3VCLX0R0TLE8tgcXbGMhXs61r4m423RedcmB08xaJBWxL6+C1BUOBBkTsYr4h+VnfXyFn31FmrLw==
+"@wkovacs64/eslint-config-react@2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-react/-/eslint-config-react-2.2.3.tgz#7ea9a31c43699a59319683007f3795609b1f9e38"
+  integrity sha512-law/F+SOCj7nMXVLlZRc52NNAnxUdfA2HqvZqae6sl5435PZZyLU/e/xpQ9Lxbqo/skJZ8TjKEX91eZxcWefSw==
   dependencies:
     "@wkovacs64/eslint-config" "^5.0.0"
     eslint-config-airbnb "^17.1.0"
-    eslint-config-prettier "^5.0.0"
+    eslint-config-prettier "^6.0.0"
 
 "@wkovacs64/eslint-config@^5.0.0":
   version "5.0.0"
@@ -3496,6 +3496,13 @@ eslint-config-prettier@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-5.0.0.tgz#f7a94b2b8ae7cbf25842c36fa96c6d32cd0a697c"
   integrity sha512-c17Aqiz5e8LEqoc/QPmYnaxQFAHTx2KlCZBPxXXjEMmNchOLnV/7j0HoPZuC+rL/tDC9bazUYOKJW9bOhftI/w==
+  dependencies:
+    get-stdin "^6.0.0"
+
+eslint-config-prettier@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.0.0.tgz#f429a53bde9fc7660e6353910fd996d6284d3c25"
+  integrity sha512-vDrcCFE3+2ixNT5H83g28bO/uYAwibJxerXPj+E7op4qzBCsAV36QfvdAyVOoNxKAH2Os/e01T/2x++V0LPukA==
   dependencies:
     get-stdin "^6.0.0"
 
