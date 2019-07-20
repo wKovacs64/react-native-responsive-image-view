@@ -58,7 +58,7 @@
     "@wkovacs64/eslint-config-react": "2.2.3",
     "babel-jest": "24.8.0",
     "codecov": "3.5.0",
-    "commitizen": "4.0.2",
+    "commitizen": "4.0.3",
     "cross-env": "5.2.0",
     "cz-conventional-changelog": "3.0.1",
     "doctoc": "1.4.0",
