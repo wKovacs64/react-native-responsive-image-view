@@ -1472,23 +1472,23 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@wkovacs64/eslint-config-react@2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-react/-/eslint-config-react-2.2.3.tgz#7ea9a31c43699a59319683007f3795609b1f9e38"
-  integrity sha512-law/F+SOCj7nMXVLlZRc52NNAnxUdfA2HqvZqae6sl5435PZZyLU/e/xpQ9Lxbqo/skJZ8TjKEX91eZxcWefSw==
+"@wkovacs64/eslint-config-react@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-react/-/eslint-config-react-3.0.0.tgz#1837eb8fd446b434186908c81193cf346f3b2fd8"
+  integrity sha512-INBzwP2btttOSgc5JHqpAVTJajo53BeeTszW/n68xMoi6JgLnYbPv6luY9IfEgUe+anyvUdoWa+f+VTi4rTh7w==
   dependencies:
-    "@wkovacs64/eslint-config" "^5.0.0"
+    "@wkovacs64/eslint-config" "^6.0.0"
     eslint-config-airbnb "^17.1.0"
     eslint-config-prettier "^6.0.0"
 
-"@wkovacs64/eslint-config@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config/-/eslint-config-5.0.0.tgz#b4793c6902e5f151cde9617a332cccecac3124f0"
-  integrity sha512-9VOKN1lLJJvPbRLam3ViUEA9alA1hXrBI+r3PGib7xcElJDokzmD0/D8dWGV/fbdhmKoSBB+x6h/udQmAPCZ0A==
+"@wkovacs64/eslint-config@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config/-/eslint-config-6.0.0.tgz#e7c97e3050f119889b9d6e855ec3c11f99dd9ed8"
+  integrity sha512-+KK2aa2XYLeqx2hIiWVjiz21tq3BHoJ4S9Bej3GcgbDjbDklHpprmEUDJGnLMCmO/ma14gFv9GBr54ZY8XIn3w==
   dependencies:
     babel-eslint "^10.0.1"
     eslint-config-airbnb-base "^13.1.0"
-    eslint-config-prettier "^5.0.0"
+    eslint-config-prettier "^6.0.0"
 
 JSONStream@^1.0.4, JSONStream@^1.3.4:
   version "1.3.5"
@@ -3591,13 +3591,6 @@ eslint-config-airbnb@^17.1.0:
     eslint-config-airbnb-base "^13.1.0"
     object.assign "^4.1.0"
     object.entries "^1.0.4"
-
-eslint-config-prettier@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-5.0.0.tgz#f7a94b2b8ae7cbf25842c36fa96c6d32cd0a697c"
-  integrity sha512-c17Aqiz5e8LEqoc/QPmYnaxQFAHTx2KlCZBPxXXjEMmNchOLnV/7j0HoPZuC+rL/tDC9bazUYOKJW9bOhftI/w==
-  dependencies:
-    get-stdin "^6.0.0"
 
 eslint-config-prettier@^6.0.0:
   version "6.0.0"
