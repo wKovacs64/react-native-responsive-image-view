@@ -55,7 +55,7 @@
     "@babel/core": "7.5.5",
     "@commitlint/cli": "8.1.0",
     "@commitlint/config-conventional": "8.1.0",
-    "@wkovacs64/eslint-config-react": "2.2.3",
+    "@wkovacs64/eslint-config-react": "3.0.0",
     "babel-jest": "24.8.0",
     "codecov": "3.5.0",
     "commitizen": "4.0.3",
