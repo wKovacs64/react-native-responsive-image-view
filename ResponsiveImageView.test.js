@@ -11,6 +11,13 @@ import {
 } from './test/fixtures';
 import ResponsiveImageView from './ResponsiveImageView';
 
+const expectedShape = expect.objectContaining({
+  loading: expect.any(Boolean),
+  error: expect.any(String),
+  getViewProps: expect.any(Function),
+  getImageProps: expect.any(Function),
+});
+
 describe('rendering order (component > render > FAC > children > null)', () => {
   describe('renders component if provided', () => {
     it('function', () => {
@@ -26,7 +33,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
           {children}
         </ResponsiveImageView>,
       );
-      expect(MyRenderComponent).toHaveBeenCalled();
+      expect(MyRenderComponent).toHaveBeenCalledWith(expectedShape);
       expect(render).not.toHaveBeenCalled();
       expect(children).not.toHaveBeenCalled();
     });
@@ -50,7 +57,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
           {children}
         </ResponsiveImageView>,
       );
-      expect(classRenderMethod).toHaveBeenCalled();
+      expect(classRenderMethod).toHaveBeenCalledWith(expectedShape);
       expect(render).not.toHaveBeenCalled();
       expect(children).not.toHaveBeenCalled();
     });
@@ -64,7 +71,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
         {children}
       </ResponsiveImageView>,
     );
-    expect(render).toHaveBeenCalled();
+    expect(render).toHaveBeenCalledWith(expectedShape);
     expect(children).not.toHaveBeenCalled();
   });
 
@@ -75,7 +82,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
         {children}
       </ResponsiveImageView>,
     );
-    expect(children).toHaveBeenCalled();
+    expect(children).toHaveBeenCalledWith(expectedShape);
   });
 
   it('renders children if no component, render prop, or FAC was provided', () => {
