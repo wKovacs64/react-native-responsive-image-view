@@ -1,24 +1,44 @@
-version: 2
+version: 2.1
+
+orbs:
+  node: circleci/node@1.1.3
+
+defaults: &defaults
+  executor:
+    name: node/default
+    tag: lts
+
 jobs:
-  build:
-    docker:
-      - image: circleci/node
-    working_directory: ~/repo
+  test:
+    <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install --frozen-lockfile
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache
-      - run: yarn lint
-      - run: yarn test --coverage
-      - run: ./node_modules/.bin/codecov
+      - node/install-yarn
+      - node/with-cache:
+          steps:
+            - run: yarn install --frozen-lockfile
+            - run: yarn lint
+            - run: yarn test --coverage --no-cache --maxWorkers 4
+            - run: yarn codecov
+            - persist_to_workspace:
+                root: ~/
+                paths:
+                  - project
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/
       - run: yarn semantic-release
+
+workflows:
+  version: 2
+  test_and_release:
+    jobs:
+      - test
+      - release:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
