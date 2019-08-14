@@ -76,7 +76,7 @@
     "react-dom": "16.9.0",
     "react-native": "0.60.5",
     "react-test-renderer": "16.9.0",
-    "rimraf": "2.6.3",
+    "rimraf": "2.7.0",
     "semantic-release": "15.13.21"
   },
   "peerDependencies": {
