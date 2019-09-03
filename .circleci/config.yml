@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@1.1.4
+  node: circleci/node@1.1.6
 
 defaults: &defaults
   executor:
