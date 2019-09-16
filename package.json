@@ -53,8 +53,8 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.6.0",
-    "@commitlint/cli": "8.1.0",
-    "@commitlint/config-conventional": "8.1.0",
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
     "babel-jest": "24.9.0",
     "codecov": "3.5.0",
     "commitizen": "4.0.3",
