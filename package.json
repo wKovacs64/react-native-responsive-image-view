@@ -56,7 +56,7 @@
     "@commitlint/cli": "8.2.0",
     "@commitlint/config-conventional": "8.2.0",
     "babel-jest": "24.9.0",
-    "codecov": "3.5.0",
+    "codecov": "3.6.0",
     "commitizen": "4.0.3",
     "cross-env": "6.0.0",
     "cz-conventional-changelog": "3.0.2",
