@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { render as ntlRender } from 'native-testing-library';
+import { render as ntlRender } from '@testing-library/react-native';
 import {
   mockUriGood,
   mockUriBad,
