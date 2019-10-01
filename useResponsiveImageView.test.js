@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'native-testing-library';
+import { render } from '@testing-library/react-native';
 import {
   mockUriGood,
   mockUriBad,
