@@ -55,7 +55,7 @@
     "@babel/core": "7.6.4",
     "@commitlint/cli": "8.2.0",
     "@commitlint/config-conventional": "8.2.0",
-    "@testing-library/react-native": "4.0.13",
+    "@testing-library/react-native": "4.0.14",
     "babel-jest": "24.9.0",
     "codecov": "3.6.1",
     "commitizen": "4.0.3",
