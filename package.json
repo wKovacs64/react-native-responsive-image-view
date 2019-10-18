@@ -77,7 +77,7 @@
     "react-native": "0.61.2",
     "react-test-renderer": "16.10.2",
     "rimraf": "3.0.0",
-    "semantic-release": "15.13.24"
+    "semantic-release": "15.13.27"
   },
   "peerDependencies": {
     "prop-types": ">=15",
