@@ -74,7 +74,7 @@
     "prop-types": "15.7.2",
     "react": "16.11.0",
     "react-dom": "16.11.0",
-    "react-native": "0.61.3",
+    "react-native": "0.61.4",
     "react-test-renderer": "16.11.0",
     "rimraf": "3.0.0",
     "semantic-release": "15.13.30"
