@@ -1446,10 +1446,10 @@
     into-stream "^4.0.0"
     lodash "^4.17.4"
 
-"@testing-library/react-native@4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/react-native/-/react-native-4.2.0.tgz#562315b0438348a69c26a76860c98a639198f0db"
-  integrity sha512-oPCGB4MKCtmX77hkpOQP1DZ1tImQVyLyELBZUCw8X6x4J3Ud3mEPnwcBHYMEBCzqte7pPZEoE1d/RQ5l4/erog==
+"@testing-library/react-native@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/react-native/-/react-native-5.0.0.tgz#9ba1fa3387f012f3647787502762c52ed94cf3dd"
+  integrity sha512-boupJ1qA/434t7TPgtY+6v3+vK8RyLSQMKYnAY0dzYUC5AMjZitNjwbgrjvl8nxf4O1B04Gt/UQnL2VLWeygWg==
   dependencies:
     pretty-format "^24.9.0"
     wait-for-expect "^3.0.0"
