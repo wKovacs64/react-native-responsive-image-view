@@ -3984,10 +3984,10 @@ eslint-plugin-react@^7.16.0:
     prop-types "^15.7.2"
     resolve "^1.12.0"
 
-eslint-plugin-wkovacs64@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-2.2.0.tgz#53f5395c2f4b8dbf6289f307319b5eb1f32cb4f7"
-  integrity sha512-M5jN1ag4GN7TxXQT7QTo52k2D6RRfzNtloTL87xRP3xHMXVPzqj33wFr2MSkwHIJHCd38CNhjZAUWfznGay9Pg==
+eslint-plugin-wkovacs64@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-2.2.1.tgz#086a15561b8bda9494646ceeaf33b7f0db181f97"
+  integrity sha512-x/8eCbxFNr0/zGJ6lHFxthdcoPgtbIo0rPgRGcts2bYfAoGISyaK4gFOPI2oB653+wonr3pozFoJYeeV7cGQDg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.9.0"
     "@typescript-eslint/parser" "^2.9.0"
