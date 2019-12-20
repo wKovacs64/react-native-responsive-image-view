@@ -62,7 +62,7 @@
     "cross-env": "6.0.3",
     "cz-conventional-changelog": "3.0.2",
     "doctoc": "1.4.0",
-    "eslint": "6.7.2",
+    "eslint": "6.8.0",
     "eslint-plugin-wkovacs64": "2.3.0",
     "husky": "3.1.0",
     "jest": "24.9.0",
