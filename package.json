@@ -53,8 +53,8 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.7.7",
-    "@commitlint/cli": "8.3.3",
-    "@commitlint/config-conventional": "8.3.3",
+    "@commitlint/cli": "8.3.4",
+    "@commitlint/config-conventional": "8.3.4",
     "@testing-library/react-native": "5.0.3",
     "babel-jest": "24.9.0",
     "codecov": "3.6.1",
