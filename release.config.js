@@ -1,3 +1,3 @@
 module.exports = {
-  branch: 'master',
+  branches: 'master',
 };
