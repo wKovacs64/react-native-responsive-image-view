@@ -14,7 +14,7 @@ function getImageSize(uri, onImageSizeSuccess, onImageSizeFailure) {
         onImageSizeSuccess(width, height);
       }
     },
-    err => {
+    (err) => {
       if (!totallyCanceled) {
         onImageSizeFailure(err);
       }

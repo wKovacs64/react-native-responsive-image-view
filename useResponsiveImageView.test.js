@@ -90,7 +90,7 @@ describe('getViewProps', () => {
     const { children } = renderHook({ source: { uri: mockUriGood } });
     const { getViewProps } = children.mock.calls[1][0];
     const mergedProps = getViewProps(consumerViewProps);
-    Object.keys(consumerViewProps).forEach(consumerProp => {
+    Object.keys(consumerViewProps).forEach((consumerProp) => {
       expect(mergedProps[consumerProp]).toMatchSnapshot(consumerProp);
     });
   });
@@ -111,7 +111,7 @@ describe('getImageProps', () => {
     const { children } = renderHook({ source: { uri: mockUriGood } });
     const { getImageProps } = children.mock.calls[1][0];
     const mergedProps = getImageProps(consumerImageProps);
-    Object.keys(consumerImageProps).forEach(consumerProp => {
+    Object.keys(consumerImageProps).forEach((consumerProp) => {
       expect(mergedProps[consumerProp]).toMatchSnapshot(consumerProp);
     });
   });

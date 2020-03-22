@@ -140,7 +140,7 @@ const MyComponentWithCallbacks = ({ imageUri }) => {
     console.log('Image has been loaded.');
   }, []);
 
-  const onError = React.useCallback(err => {
+  const onError = React.useCallback((err) => {
     console.error(err);
   }, []);
 

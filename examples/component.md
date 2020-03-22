@@ -126,7 +126,7 @@ class MyClassComponent extends React.Component {
     console.log('Image has been loaded.');
   };
 
-  onError = err => {
+  onError = (err) => {
     console.error(err);
   };
 

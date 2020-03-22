@@ -30,7 +30,7 @@ jest.spyOn(Image, 'getSize').mockImplementation((uri, onLoad, onError) => {
   }
 });
 
-jest.mock('react-native/Libraries/Image/resolveAssetSource', () => res => {
+jest.mock('react-native/Libraries/Image/resolveAssetSource', () => (res) => {
   if (res === mockResourceGood) {
     return { width: mockWidth, height: mockHeight };
   }
