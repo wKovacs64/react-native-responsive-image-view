@@ -4565,10 +4565,10 @@ eslint-plugin-relay@1.4.1:
   dependencies:
     graphql "^14.0.0"
 
-eslint-plugin-wkovacs64@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-2.5.0.tgz#7b9ca701d7fc0516747641b52b4c2fe9016fa228"
-  integrity sha512-7JbwSSgX3UyLk5zmoXqRLmI0JiKt8R5czGaPtKkWk56zyBFTyjcN45Razb9P3SGM7DLab0CiG+LBxAVxmeTJCA==
+eslint-plugin-wkovacs64@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-3.0.0.tgz#54483df5fd231ec1ae0f6afc82ddf339533c30dd"
+  integrity sha512-7EQ3zYEzN5P6qkYVUf0Vw/hUiuyr1qDcYVVUn3zbY+LCGC0yvgR9UWiPrnW0vKPlWMdxvrl1GAc8n5dWaz3nDA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.22.0"
     "@typescript-eslint/parser" "^2.22.0"
