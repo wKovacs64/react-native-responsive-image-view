@@ -4650,10 +4650,10 @@ eslint-plugin-jsx-a11y@^6.2.3:
     has "^1.0.3"
     jsx-ast-utils "^2.2.1"
 
-eslint-plugin-react-hooks@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-3.0.0.tgz#9e80c71846eb68dd29c3b21d832728aa66e5bd35"
-  integrity sha512-EjxTHxjLKIBWFgDJdhKKzLh5q+vjTFrqNZX36uIxWS4OfyXe5DawqPj3U5qeJ1ngLwatjzQnmR0Lz0J0YH3kxw==
+eslint-plugin-react-hooks@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.0.0.tgz#81196b990043cde339e25c6662aeebe32ac52d01"
+  integrity sha512-YKBY+kilK5wrwIdQnCF395Ya6nDro3EAMoe+2xFkmyklyhF16fH83TrQOo9zbZIDxBsXFgBbywta/0JKRNFDkw==
 
 eslint-plugin-react@^7.19.0:
   version "7.19.0"
@@ -4680,10 +4680,10 @@ eslint-plugin-relay@1.4.1:
   dependencies:
     graphql "^14.0.0"
 
-eslint-plugin-wkovacs64@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-3.1.0.tgz#f6ebcdbcdfa3c1f205e00c042b74599557d3886e"
-  integrity sha512-e8OHsDv/jYfT4WFqIe17l0IOUtzjiZ+YTnp2ocrDGGtV7ntLw05CTK5vj9YDGMqPx3wWQtmdoNdFNP8TJyHPCA==
+eslint-plugin-wkovacs64@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-4.0.0.tgz#7f5a784c6b12fc9e5616839efbf69591eaf5964d"
+  integrity sha512-UeeLkQ3qZS/boNjFgQ+fmVh0W1ARO/tR8FZDOMYG7ETypJMJfx5x/B9ifAsgkUA/Q/i1sofx/bDo5UYz84TjxQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.29.0"
     "@typescript-eslint/parser" "^2.29.0"
@@ -4695,7 +4695,7 @@ eslint-plugin-wkovacs64@3.1.0:
     eslint-plugin-jest "^23.8.2"
     eslint-plugin-jsx-a11y "^6.2.3"
     eslint-plugin-react "^7.19.0"
-    eslint-plugin-react-hooks "^3.0.0"
+    eslint-plugin-react-hooks "^4.0.0"
     merge "^1.2.1"
 
 eslint-scope@^5.0.0:
