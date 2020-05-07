@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image } from 'react-native';
-import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 // A cancelable version of Image.getSize, adapted from
 // https://github.com/kodefox/react-native-flex-image
@@ -117,7 +116,7 @@ function useResponsiveImageView({
       );
     } else {
       // Retrieve image dimensions from imported resource
-      const imageSource = resolveAssetSource(initialSource);
+      const imageSource = Image.resolveAssetSource(initialSource);
       if (imageSource && imageSource.width && imageSource.height) {
         const { width, height } = imageSource;
         handleImageSizeSuccess(width, height);
