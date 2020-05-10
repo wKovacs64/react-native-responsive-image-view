@@ -6,4 +6,7 @@ module.exports = {
     'prettier',
     'prettier/react',
   ],
+  rules: {
+    'testing-library/prefer-screen-queries': 'off',
+  },
 };
