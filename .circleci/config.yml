@@ -6,7 +6,7 @@ orbs:
 defaults: &defaults
   executor:
     name: node/default
-    tag: '12.16.1'
+    tag: lts
 
 jobs:
   test:
