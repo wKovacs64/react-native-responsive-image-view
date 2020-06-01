@@ -14,7 +14,6 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          cache-key: yarn.lock
           pkg-manager: yarn
       - run: yarn lint
       - run: yarn test --coverage --no-cache --maxWorkers 4
