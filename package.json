@@ -35,8 +35,8 @@
   "scripts": {
     "clean": "rimraf coverage",
     "cm": "git-cz",
-    "format": "prettier --write \"**/*.{js,json,md,yml}\"",
-    "lint": "eslint --ext \".js,.ts,.tsx\" .",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,html,css,json,md,mdx,yml,yaml}\"",
+    "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
     "prepublishOnly": "npm run validate",
     "test": "cross-env NODE_ENV=test jest",
     "validate": "npm-run-all --parallel lint test"
