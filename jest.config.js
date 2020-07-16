@@ -3,7 +3,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/test'],
   coverageReporters: ['html', 'json', 'lcov', 'text'],
-  preset: '@testing-library/react-native',
+  preset: 'react-native',
   setupFilesAfterEnv: ['<rootDir>/test/setupTests.js'],
   watchPlugins: [
     'jest-watch-typeahead/filename',
