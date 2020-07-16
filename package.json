@@ -55,7 +55,6 @@
     "@babel/core": "7.10.5",
     "@commitlint/cli": "9.1.1",
     "@commitlint/config-conventional": "9.1.1",
-    "@testing-library/react-native": "5.0.3",
     "@wkovacs64/prettier-config": "3.0.0",
     "babel-jest": "26.1.0",
     "codecov": "3.7.0",
@@ -76,6 +75,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "0.62.2",
+    "react-native-testing-library": "2.1.1",
     "react-test-renderer": "16.13.1",
     "rimraf": "3.0.2",
     "semantic-release": "17.1.1"
