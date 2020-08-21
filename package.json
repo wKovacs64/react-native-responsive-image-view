@@ -58,7 +58,7 @@
     "@wkovacs64/prettier-config": "3.0.0",
     "babel-jest": "26.3.0",
     "codecov": "3.7.2",
-    "commitizen": "4.1.3",
+    "commitizen": "4.1.5",
     "cross-env": "7.0.2",
     "cz-conventional-changelog": "3.2.0",
     "doctoc": "1.4.0",
