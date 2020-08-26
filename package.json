@@ -60,7 +60,7 @@
     "codecov": "3.7.2",
     "commitizen": "4.2.1",
     "cross-env": "7.0.2",
-    "cz-conventional-changelog": "3.2.1",
+    "cz-conventional-changelog": "3.3.0",
     "doctoc": "1.4.0",
     "eslint": "7.7.0",
     "eslint-plugin-wkovacs64": "8.0.0",
