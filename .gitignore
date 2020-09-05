@@ -232,5 +232,6 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/windows,linux,osx,node,intellij,sublimetext,visualstudiocode
 
+yarn.lock
 package-lock.json
 .npmrc
