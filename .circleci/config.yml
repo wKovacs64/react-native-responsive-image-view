@@ -36,7 +36,8 @@ workflows:
       - test
       - release:
           context:
-            - semantic-release
+            - release
+            - publish
           requires:
             - test
           filters:
