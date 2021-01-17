@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { render, act } from '@testing-library/react-native';
 import {
   mockUriGood,
   mockUriBad,
@@ -62,6 +62,19 @@ describe('error', () => {
         error: '',
       }),
     );
+  });
+});
+
+describe('retry', () => {
+  it('retries', () => {
+    const { children } = renderHook({ source: { uri: mockUriBad } });
+    const { retry } = children.mock.calls[1][0];
+    expect(children.mock.calls[1][0].loading).toBe(false);
+    act(() => {
+      retry();
+    });
+    expect(children.mock.calls[2][0].loading).toBe(true);
+    expect(children.mock.calls[3][0].loading).toBe(false);
   });
 });
 
