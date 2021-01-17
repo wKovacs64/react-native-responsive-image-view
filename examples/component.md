@@ -61,12 +61,12 @@ const MyTouchableComponent = ({ imageUri, onPress }) => (
 
 ```jsx
 import React from 'react';
-import { ActivityIndicator, Image, Text, View } from 'react-native';
+import { ActivityIndicator, Image, Text, Button, View } from 'react-native';
 import ResponsiveImageView from 'react-native-responsive-image-view';
 
 const MyComponent = ({ imageUri }) => (
   <ResponsiveImageView source={{ uri: imageUri }}>
-    {({ error, loading, getViewProps, getImageProps }) => {
+    {({ error, loading, retry, getViewProps, getImageProps }) => {
       if (loading) {
         return <ActivityIndicator animating={true} size="large" />;
       }
@@ -74,6 +74,7 @@ const MyComponent = ({ imageUri }) => (
         return (
           <View>
             <Text>{error}</Text>
+            <Button onPress={retry} title="Retry" />
           </View>
         );
       }

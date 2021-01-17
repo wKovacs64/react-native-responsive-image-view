@@ -52,6 +52,7 @@ component][render-props] and a [custom hook][hooks-intro].
     - [`getViewProps`](#getviewprops)
     - [`getImageProps`](#getimageprops)
   - [state](#state)
+  - [utils](#utils)
 - [Examples](#examples)
 - [Snack Playground](#snack-playground)
 - [Inspiration](#inspiration)
@@ -237,7 +238,7 @@ Regardless of whether you are using the component or the hook, the results are
 an object containing important properties you'll need for rendering. It will be
 passed to the [Render Prop Function](#render-prop-function) when using the
 component, and returned from the hook invocation when using the hook. The
-properties of this object can be split into two categories as indicated below:
+properties of this object can be split into the following categories:
 
 ### prop getters
 
@@ -282,6 +283,14 @@ These are values that represent the current state of the component.
 | --------- | --------- | -------------------------------------------------------------- |
 | `loading` | `boolean` | whether or not the image is currently loading                  |
 | `error`   | `string`  | an error message if the image failed to load (`''` on success) |
+
+### utils
+
+These are miscellaneous helpers that don't fit in the other major categories.
+
+| property | type         | description                                           |
+| -------- | ------------ | ----------------------------------------------------- |
+| `retry`  | `function()` | force another attempt to resolve the image dimensions |
 
 ## Examples
 

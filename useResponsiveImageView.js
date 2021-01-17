@@ -30,6 +30,7 @@ function getImageSize(uri, onImageSizeSuccess, onImageSizeFailure) {
 const initialState = {
   loading: true,
   error: '',
+  retryCount: 0,
   aspectRatio: undefined,
 };
 
@@ -39,6 +40,7 @@ function reducer(state, action) {
       return {
         ...initialState,
         loading: false,
+        retryCount: state.retryCount,
         aspectRatio: action.payload,
       };
     case 'FAILURE':
@@ -46,10 +48,16 @@ function reducer(state, action) {
         ...initialState,
         loading: false,
         error: action.payload,
+        retryCount: state.retryCount,
+      };
+    case 'RETRY':
+      return {
+        ...initialState,
+        retryCount: state.retryCount + 1,
       };
     /* istanbul ignore next: this will never happen */
     default:
-      return state;
+      throw new Error(`Unexpected action type: ${action.type}`);
   }
 }
 
@@ -66,6 +74,10 @@ function useResponsiveImageView({
   }
 
   const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  function retry() {
+    dispatch({ type: 'RETRY' });
+  }
 
   function isAspectRatioControlled() {
     return controlledAspectRatio !== undefined;
@@ -131,15 +143,16 @@ function useResponsiveImageView({
       pendingGetImageSize.cancel();
     };
     // Using JSON.stringify here because the `source` parameter can be a nested
-    // object. The alternative is requiring the user to memoize the parameters,
-    // but that would add usage overhead and potential confusion (at least in
-    // the early days of hooks).
+    // object. The alternative is requiring the user to memoize it, by why make
+    // them do that when we don't have to? (Note: they already have to memoize
+    // onLoad and onError, but those are much less likely to be used.)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(initialSource), onLoad, onError]);
+  }, [JSON.stringify(initialSource), onLoad, onError, state.retryCount]);
 
   return {
     loading: state.loading,
     error: state.error,
+    retry,
     getViewProps,
     getImageProps,
   };
