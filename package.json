@@ -80,7 +80,7 @@
     "prop-types": "15.7.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "react-native": "0.63.4",
+    "react-native": "0.64.0",
     "react-test-renderer": "16.14.0",
     "rimraf": "3.0.2",
     "semantic-release": "17.4.2"
