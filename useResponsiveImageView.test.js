@@ -197,7 +197,9 @@ describe('completion callbacks', () => {
       onLoad,
       onError,
     });
-    unmount();
+    act(() => {
+      unmount();
+    });
     expect(onError).toHaveBeenCalledTimes(0);
     expect(onLoad).toHaveBeenCalledTimes(0);
   });
