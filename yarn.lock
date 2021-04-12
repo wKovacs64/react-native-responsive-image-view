@@ -4615,10 +4615,10 @@ eslint-plugin-testing-library@^4.0.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.21.0"
 
-eslint-plugin-wkovacs64@13.0.0:
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.0.0.tgz#abddf65dcbeb6379ddfaca937e092b68f6d0a2e1"
-  integrity sha512-VKAvTf1WlZFMLjDAgAwYX5xS9HWvGy33sN0LS6CJt8dvnXSpDGySwEdXF/qHowQ9SR/jb0MzRqTUgOt6FClbaw==
+eslint-plugin-wkovacs64@13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.0.1.tgz#b07a9b7dcab8aa5e0f541a1e04d4b99110f71fc7"
+  integrity sha512-dDoNxI3qi/MZ3U8jjI+WLkOHW/wieBBi7zZwImwM5bWnOYlTVAXu3TyZDki1AByQk7+JQT1s+RcuIQnfpTatFg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.21.0"
     "@typescript-eslint/parser" "^4.21.0"
