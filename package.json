@@ -69,7 +69,7 @@
     "eslint": "7.27.0",
     "eslint-plugin-wkovacs64": "13.3.0",
     "husky": "6.0.0",
-    "jest": "27.0.3",
+    "jest": "27.0.4",
     "jest-watch-typeahead": "0.6.4",
     "lint-staged": "11.0.0",
     "metro-react-native-babel-preset": "0.66.0",
