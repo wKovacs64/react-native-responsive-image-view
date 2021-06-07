@@ -65,7 +65,7 @@
     "commitizen": "4.2.4",
     "cross-env": "7.0.3",
     "cz-conventional-changelog": "3.3.0",
-    "doctoc": "2.0.0",
+    "doctoc": "2.0.1",
     "eslint": "7.28.0",
     "eslint-plugin-wkovacs64": "13.3.0",
     "husky": "6.0.0",
