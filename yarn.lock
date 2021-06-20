@@ -4994,10 +4994,10 @@ eslint-plugin-jsx-a11y@^6.4.1:
     jsx-ast-utils "^3.1.0"
     language-tags "^1.0.5"
 
-eslint-plugin-react-hooks@0.0.0-51ebccc37:
-  version "0.0.0-51ebccc37"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-0.0.0-51ebccc37.tgz#e2afbb7da8da7c479c47384f776b62cd28bfaf2b"
-  integrity sha512-7e90DH/KAzCxFKdPYh7jr6PURda1iDlhXUEk4No6v2XDN4ldJK0udae+oV75tQC63ic1pn5Bn7lVtS/DnxE3yA==
+eslint-plugin-react-hooks@4.2.1-alpha-568dc3532:
+  version "4.2.1-alpha-568dc3532"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.1-alpha-568dc3532.tgz#84c4c731fb5a008cba2ad8680a1c25f130bb6fab"
+  integrity sha512-heiGYEjdlybvGHqHTNWHtzjNZDZhLXntCzxTPmoUj2/dCCkDJDEwjGsM/0tM2+dauoeRwznrWYKFZgXqX6iCvQ==
 
 eslint-plugin-react@^7.23.2:
   version "7.23.2"
@@ -5024,10 +5024,10 @@ eslint-plugin-testing-library@^4.5.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.21.0"
 
-eslint-plugin-wkovacs64@13.3.0:
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.3.0.tgz#03e885b361230be475b2660d9c75bd672af392a1"
-  integrity sha512-eBlbrsLEll3TVm0hE9NhuTEJKFhf49hTOdLdU7L/S7sYB0aW3bAtAEp5pxWw0Q0ikp6hwuY8R7saL993RqDO1g==
+eslint-plugin-wkovacs64@13.3.1:
+  version "13.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.3.1.tgz#fa64f74f035161480d270701a4394bc3beca3c57"
+  integrity sha512-O+OZ1wvt2VVVWwRsVME6GhaPLApDW4VcY4NzSzK5IQSCM90E5BGwZVovRnNRb0J9fL3FiAoHx3yo9nPyp2IZzw==
   dependencies:
     "@babel/core" "^7.14.3"
     "@babel/eslint-parser" "^7.14.3"
@@ -5042,7 +5042,7 @@ eslint-plugin-wkovacs64@13.3.0:
     eslint-plugin-jest-dom "^3.9.0"
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-react "^7.23.2"
-    eslint-plugin-react-hooks "0.0.0-51ebccc37"
+    eslint-plugin-react-hooks "4.2.1-alpha-568dc3532"
     eslint-plugin-testing-library "^4.5.0"
     merge "^2.1.1"
 
