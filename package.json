@@ -61,7 +61,7 @@
     "@testing-library/react-native": "7.2.0",
     "@wkovacs64/prettier-config": "3.0.0",
     "babel-jest": "27.0.6",
-    "codecov": "3.8.2",
+    "codecov": "3.8.3",
     "commitizen": "4.2.4",
     "cross-env": "7.0.3",
     "cz-conventional-changelog": "3.3.0",
