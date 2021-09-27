@@ -357,8 +357,7 @@ end of the day, these features proved to be too opinionated.
 [expo-client]: https://expo.io/tools#client
 [kodefox]: https://github.com/kodefox
 [mjackson]: https://github.com/mjackson
-[use-a-render-prop]:
-  https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
+[use-a-render-prop]: https://medium.com/@mjackson/use-a-render-prop-50de598f11ce
 [faccs-and-ci]: http://americanexpress.io/faccs-are-an-antipattern/
 [kentcdodds]: https://github.com/kentcdodds
 [kent-prop-getters]:
