@@ -5164,7 +5164,7 @@ eslint-module-utils@^2.7.0:
     find-up "^2.1.0"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@^2.24.2:
+eslint-plugin-import@^2.25.2:
   version "2.25.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.2.tgz#b3b9160efddb702fc1636659e71ba1d10adbe9e9"
   integrity sha512-qCwQr9TYfoBHOFcVGKY9C9unq05uOxxdklmBXLVvcwo68y5Hta6/GzCZEMx2zQiu0woKNEER0LE7ZgaOfBU14g==
@@ -5192,7 +5192,7 @@ eslint-plugin-jest-dom@^3.9.2:
     "@testing-library/dom" "^7.28.1"
     requireindex "^1.2.0"
 
-eslint-plugin-jest@^25.0.0:
+eslint-plugin-jest@^25.2.2:
   version "25.2.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-25.2.2.tgz#aada85113268e79d4e7423f8ad4e1b740f112e71"
   integrity sha512-frn5yhOF60U4kcqozO3zKTNZQUk+mfx037XOy2iiYL8FhorEkuCuL3/flzKcY1ECDP2WYT9ydmvlO3fRW9o4mg==
@@ -5248,10 +5248,10 @@ eslint-plugin-testing-library@^4.12.4:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.30.0"
 
-eslint-plugin-wkovacs64@13.5.2:
-  version "13.5.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.5.2.tgz#48c44de4692e03df34608e783d482132abfbd595"
-  integrity sha512-ng0Tc+aiRH0be3WomR6AYoxbaOK5hVVyOKYfOJUIN5amRxD+CQV2OTMuMEeESlBsNfvNFQ+u47o4J1Tm7Jxy4Q==
+eslint-plugin-wkovacs64@13.6.0:
+  version "13.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.6.0.tgz#a86dbf729554cabf388ee76fc51529d9c5957ab4"
+  integrity sha512-0nDbrSlaaDCu9mNgLogkSvQiudqHgfAJWZo8RTlPQS8lpUnBnk+NaZLwH7Du3D6ywJmUwjw51EivNvJB9MOuEg==
   dependencies:
     "@babel/core" "^7.15.8"
     "@babel/eslint-parser" "^7.15.8"
@@ -5261,8 +5261,8 @@ eslint-plugin-wkovacs64@13.5.2:
     eslint-config-airbnb "^18.2.1"
     eslint-config-airbnb-base "^14.2.1"
     eslint-config-prettier "^8.3.0"
-    eslint-plugin-import "^2.24.2"
-    eslint-plugin-jest "^25.0.0"
+    eslint-plugin-import "^2.25.2"
+    eslint-plugin-jest "^25.2.2"
     eslint-plugin-jest-dom "^3.9.2"
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-react "^7.26.1"
