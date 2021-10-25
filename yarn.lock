@@ -5164,7 +5164,7 @@ eslint-module-utils@^2.7.0:
     find-up "^2.1.0"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@^2.25.2:
+eslint-plugin-import@^2.24.2:
   version "2.25.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.2.tgz#b3b9160efddb702fc1636659e71ba1d10adbe9e9"
   integrity sha512-qCwQr9TYfoBHOFcVGKY9C9unq05uOxxdklmBXLVvcwo68y5Hta6/GzCZEMx2zQiu0woKNEER0LE7ZgaOfBU14g==
@@ -5248,10 +5248,10 @@ eslint-plugin-testing-library@^4.12.4:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.30.0"
 
-eslint-plugin-wkovacs64@13.6.0:
-  version "13.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.6.0.tgz#a86dbf729554cabf388ee76fc51529d9c5957ab4"
-  integrity sha512-0nDbrSlaaDCu9mNgLogkSvQiudqHgfAJWZo8RTlPQS8lpUnBnk+NaZLwH7Du3D6ywJmUwjw51EivNvJB9MOuEg==
+eslint-plugin-wkovacs64@13.6.1:
+  version "13.6.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.6.1.tgz#29af6c0239128b41290fde8d312da40ef67a0bae"
+  integrity sha512-ru2x+7WJ78UjttuBft0zGX7fzeNqWnyhGntm7vh/RnR3CNTRmhI3GHoLOqWEiEmx5wG9YsNPf4UGS1woBIP1Wg==
   dependencies:
     "@babel/core" "^7.15.8"
     "@babel/eslint-parser" "^7.15.8"
@@ -5261,7 +5261,7 @@ eslint-plugin-wkovacs64@13.6.0:
     eslint-config-airbnb "^18.2.1"
     eslint-config-airbnb-base "^14.2.1"
     eslint-config-prettier "^8.3.0"
-    eslint-plugin-import "^2.25.2"
+    eslint-plugin-import "^2.24.2"
     eslint-plugin-jest "^25.2.2"
     eslint-plugin-jest-dom "^3.9.2"
     eslint-plugin-jsx-a11y "^6.4.1"
