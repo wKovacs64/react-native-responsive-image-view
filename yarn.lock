@@ -5386,7 +5386,7 @@ eslint-module-utils@^2.7.0:
     find-up "^2.1.0"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@^2.25.2:
+eslint-plugin-import@^2.24.2:
   version "2.25.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.2.tgz#b3b9160efddb702fc1636659e71ba1d10adbe9e9"
   integrity sha512-qCwQr9TYfoBHOFcVGKY9C9unq05uOxxdklmBXLVvcwo68y5Hta6/GzCZEMx2zQiu0woKNEER0LE7ZgaOfBU14g==
@@ -5414,10 +5414,10 @@ eslint-plugin-jest-dom@^3.9.2:
     "@testing-library/dom" "^7.28.1"
     requireindex "^1.2.0"
 
-eslint-plugin-jest@^25.2.3:
-  version "25.2.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-25.2.3.tgz#7a841eca91b4e21f31fe0a5403f55bc7779dd7b3"
-  integrity sha512-Yoa0at3euTjERDvPGPWiItY1uuqKYQ5Ov2SmkSLmKRq9OFiVdEehw0rWuK4PA538k7CNqnvmkztjAB9l+HJ7kQ==
+eslint-plugin-jest@^25.2.4:
+  version "25.2.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-25.2.4.tgz#bb9f6a0bd1fd524ffb0b8b7a159cd70a58a1a793"
+  integrity sha512-HRyinpgmEdkVr7pNPaYPHCoGqEzpgk79X8pg/xCeoAdurbyQjntJQ4pTzHl7BiVEBlam/F1Qsn+Dk0HtJO7Aaw==
   dependencies:
     "@typescript-eslint/experimental-utils" "^5.0.0"
 
@@ -5470,10 +5470,10 @@ eslint-plugin-testing-library@^5.0.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^5.0.0"
 
-eslint-plugin-wkovacs64@13.7.0:
-  version "13.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.7.0.tgz#831500c4beb946608987a0bba5d22f7c831d246b"
-  integrity sha512-I0HGvVbHRD/IGUrLE9kbGN8h8zLMxYXOU9ny7AXZh5PdeiBEEuqcwoPf2213622RJuLI3qckNvSH4BAgEHiDLQ==
+eslint-plugin-wkovacs64@13.7.1:
+  version "13.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.7.1.tgz#4f48f61929aa5715af5ccfc63156517787cfe884"
+  integrity sha512-Rucn2CUTiEMSdrZg8cmflsVOpMkK6Y8hMgcEJpayjRdCvzXWEPE2eeXpkBAwhHqk0DEdtYoJ2JCiHhCXUw09lA==
   dependencies:
     "@babel/core" "^7.16.0"
     "@babel/eslint-parser" "^7.16.0"
@@ -5483,8 +5483,8 @@ eslint-plugin-wkovacs64@13.7.0:
     eslint-config-airbnb "^18.2.1"
     eslint-config-airbnb-base "^14.2.1"
     eslint-config-prettier "^8.3.0"
-    eslint-plugin-import "^2.25.2"
-    eslint-plugin-jest "^25.2.3"
+    eslint-plugin-import "^2.24.2"
+    eslint-plugin-jest "^25.2.4"
     eslint-plugin-jest-dom "^3.9.2"
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-react "^7.26.1"
