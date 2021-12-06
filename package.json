@@ -58,7 +58,7 @@
     "@babel/plugin-proposal-class-properties": "7.16.0",
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
-    "@testing-library/react-native": "8.0.0",
+    "@testing-library/react-native": "9.0.0",
     "@wkovacs64/prettier-config": "3.0.0",
     "babel-jest": "27.4.2",
     "codecov": "3.8.3",
