@@ -67,7 +67,7 @@
     "cz-conventional-changelog": "3.3.0",
     "doctoc": "2.1.0",
     "eslint": "7.32.0",
-    "eslint-plugin-wkovacs64": "13.8.0",
+    "eslint-plugin-wkovacs64": "13.9.0",
     "husky": "7.0.4",
     "jest": "27.4.7",
     "jest-watch-typeahead": "1.0.0",
