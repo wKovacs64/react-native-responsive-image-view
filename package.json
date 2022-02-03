@@ -54,7 +54,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.16.12",
+    "@babel/core": "7.17.0",
     "@babel/plugin-proposal-class-properties": "7.16.7",
     "@commitlint/cli": "16.1.0",
     "@commitlint/config-conventional": "16.0.0",
