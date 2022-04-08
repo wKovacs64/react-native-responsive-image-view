@@ -15,7 +15,7 @@ jobs:
       - checkout
       - node/install-packages
       - run: npm run lint
-      - run: npm run test --coverage --no-cache --maxWorkers 4
+      - run: npm run test:coverage
       - run: npx codecov
       - persist_to_workspace:
           root: ~/

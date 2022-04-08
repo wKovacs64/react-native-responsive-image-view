@@ -41,6 +41,7 @@
     "prepare": "npm run husky:install",
     "prepublishOnly": "npm run --silent validate",
     "test": "cross-env NODE_ENV=test jest",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "validate": "npm-run-all --parallel lint test"
   },
   "config": {
