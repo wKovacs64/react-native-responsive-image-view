@@ -231,6 +231,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/windows,linux,osx,node,intellij,sublimetext,visualstudiocode
-
-package-lock.json
-.npmrc
