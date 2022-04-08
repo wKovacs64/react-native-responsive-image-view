@@ -72,13 +72,8 @@ import { ActivityIndicator, Image, Text, Button, View } from 'react-native';
 import { useResponsiveImageView } from 'react-native-responsive-image-view';
 
 const MyComponent = ({ imageUri }) => {
-  const {
-    error,
-    loading,
-    retry,
-    getViewProps,
-    getImageProps,
-  } = useResponsiveImageView({ source: { uri: imageUri } });
+  const { error, loading, retry, getViewProps, getImageProps } =
+    useResponsiveImageView({ source: { uri: imageUri } });
 
   if (loading) {
     return <ActivityIndicator animating={true} size="large" />;
