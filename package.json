@@ -40,8 +40,8 @@
     "husky:install": "husky install",
     "prepare": "npm run husky:install",
     "prepublishOnly": "npm run --silent validate",
-    "test": "cross-env NODE_ENV=test jest",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "validate": "npm-run-all --parallel lint test"
   },
   "config": {
@@ -53,7 +53,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.17.9",
     "@babel/plugin-proposal-class-properties": "7.16.7",
@@ -64,7 +63,6 @@
     "babel-jest": "28.0.1",
     "codecov": "3.8.3",
     "commitizen": "4.2.4",
-    "cross-env": "7.0.3",
     "cz-conventional-changelog": "3.3.0",
     "doctoc": "2.1.0",
     "eslint": "8.14.0",
