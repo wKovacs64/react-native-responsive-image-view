@@ -59,7 +59,7 @@
     "@commitlint/cli": "16.2.3",
     "@commitlint/config-conventional": "16.2.1",
     "@testing-library/react-native": "9.2.0",
-    "@wkovacs64/prettier-config": "3.0.1",
+    "@wkovacs64/prettier-config": "3.0.2",
     "babel-jest": "28.0.2",
     "codecov": "3.8.3",
     "commitizen": "4.2.4",
