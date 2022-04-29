@@ -54,7 +54,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/core": "7.17.9",
+    "@babel/core": "7.17.10",
     "@babel/plugin-proposal-class-properties": "7.16.7",
     "@commitlint/cli": "16.2.4",
     "@commitlint/config-conventional": "16.2.4",
