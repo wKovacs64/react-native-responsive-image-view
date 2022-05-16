@@ -54,8 +54,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/core": "7.17.10",
-    "@babel/plugin-proposal-class-properties": "7.16.7",
+    "@babel/core": "7.17.12",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
     "@commitlint/cli": "17.0.0",
     "@commitlint/config-conventional": "17.0.0",
     "@testing-library/react-native": "9.2.0",
