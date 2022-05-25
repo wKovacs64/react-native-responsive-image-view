@@ -56,7 +56,7 @@
   "devDependencies": {
     "@babel/core": "7.18.2",
     "@babel/plugin-proposal-class-properties": "7.17.12",
-    "@commitlint/cli": "17.0.0",
+    "@commitlint/cli": "17.0.1",
     "@commitlint/config-conventional": "17.0.0",
     "@testing-library/react-native": "9.2.0",
     "@wkovacs64/prettier-config": "3.0.2",
