@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { render } from '@testing-library/react-native';
+import { render, screen } from '@testing-library/react-native';
 import {
   mockUriGood,
   mockUriBad,
@@ -86,21 +86,19 @@ describe('rendering order (component > render > FAC > children > null)', () => {
   });
 
   it('renders children if no component, render prop, or FAC was provided', () => {
-    const { getByText } = render(
+    render(
       <ResponsiveImageView source={{ uri: mockUriGood }}>
         <View>
           <Text>Hello from non-functional children!</Text>
         </View>
       </ResponsiveImageView>,
     );
-    expect(getByText(/Hello/i)).toBeTruthy();
+    expect(screen.getByText(/Hello/i)).toBeTruthy();
   });
 
   it('renders null if no renderer was provided', () => {
-    const { queryByText } = render(
-      <ResponsiveImageView source={{ uri: mockUriGood }} />,
-    );
-    expect(queryByText(/.*/)).toBeNull();
+    render(<ResponsiveImageView source={{ uri: mockUriGood }} />);
+    expect(screen.queryByText(/.*/)).toBeNull();
   });
 });
 

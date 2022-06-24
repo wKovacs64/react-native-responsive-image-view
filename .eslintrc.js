@@ -5,7 +5,4 @@ module.exports = {
     'plugin:wkovacs64/testing-library',
     'prettier',
   ],
-  rules: {
-    'testing-library/prefer-screen-queries': 'off',
-  },
 };
