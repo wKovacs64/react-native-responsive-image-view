@@ -35,7 +35,7 @@
   "scripts": {
     "clean": "rimraf coverage",
     "cm": "git-cz",
-    "format": "prettier --write .",
+    "format": "prettier --cache --write .",
     "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
     "husky:install": "husky install",
     "prepare": "npm run husky:install",

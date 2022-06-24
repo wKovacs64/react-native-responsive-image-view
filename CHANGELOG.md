@@ -1,8 +1,6 @@
 # Change Log
 
-The changelog is automatically updated using
-[semantic-release](https://github.com/semantic-release/semantic-release). You
-can see it on the [releases page](../../releases).
+The changelog is automatically updated using [semantic-release](https://github.com/semantic-release/semantic-release). You can see it on the [releases page](../../releases).
 
 ---
 
@@ -18,8 +16,7 @@ can see it on the [releases page](../../releases).
 
 #### Version 1.1.0 _(2018-02-06)_
 
-- Added support for component injection and function-as-children render patterns
-  ([#1][#1])
+- Added support for component injection and function-as-children render patterns ([#1][#1])
 
 #### Version 1.0.1 _(2017-12-20)_
 
