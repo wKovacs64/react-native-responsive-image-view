@@ -337,12 +337,12 @@ end of the day, these features proved to be too opinionated.
   https://img.shields.io/npm/v/react-native-responsive-image-view.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/react-native-responsive-image-view
 [ci-image]:
-  https://img.shields.io/circleci/project/github/wKovacs64/react-native-responsive-image-view/master.svg?style=flat-square
+  https://img.shields.io/circleci/project/github/wKovacs64/react-native-responsive-image-view/main.svg?style=flat-square
 [ci-url]: https://circleci.com/gh/wKovacs64/react-native-responsive-image-view
 [coverage-image]:
-  https://img.shields.io/codecov/c/github/wKovacs64/react-native-responsive-image-view/master.svg?style=flat-square
+  https://img.shields.io/codecov/c/github/wKovacs64/react-native-responsive-image-view/main.svg?style=flat-square
 [coverage-url]:
-  https://codecov.io/gh/wKovacs64/react-native-responsive-image-view/branch/master
+  https://codecov.io/gh/wKovacs64/react-native-responsive-image-view/branch/main
 [semantic-release-image]:
   https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
@@ -363,6 +363,6 @@ end of the day, these features proved to be too opinionated.
 [kent-prop-getters]:
   https://kentcdodds.com/blog/how-to-give-rendering-control-to-users-with-prop-getters
 [examples-directory]:
-  https://github.com/wKovacs64/react-native-responsive-image-view/tree/master/examples
+  https://github.com/wKovacs64/react-native-responsive-image-view/tree/main/examples
 [license]:
-  https://github.com/wKovacs64/react-native-responsive-image-view/tree/master/LICENSE.txt
+  https://github.com/wKovacs64/react-native-responsive-image-view/tree/main/LICENSE.txt
