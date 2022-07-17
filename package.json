@@ -34,15 +34,13 @@
   ],
   "scripts": {
     "clean": "rimraf coverage",
-    "cm": "git-cz",
     "format": "prettier --cache --write .",
-    "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
+    "lint": "eslint .",
     "husky:install": "husky install",
     "prepare": "npm run husky:install",
-    "prepublishOnly": "npm run --silent validate",
+    "prepublishOnly": "run-p --silent lint test",
     "test": "jest",
-    "test:coverage": "jest --coverage",
-    "validate": "npm-run-all --parallel lint test"
+    "test:coverage": "jest --coverage"
   },
   "config": {
     "commitizen": {
