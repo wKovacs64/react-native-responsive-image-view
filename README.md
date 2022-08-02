@@ -3,9 +3,9 @@
 _React Native component for scaling an `Image` within the parent `View`_
 
 [![npm Version][npm-image]][npm-url]
+[![Build Status][ci-image]][ci-url]
 [![Code Coverage][coverage-image]][coverage-url]
 [![semantic-release][semantic-release-image]][semantic-release-url]
-[![Build Status][ci-image]][ci-url]
 
 ## The problem
 
@@ -338,9 +338,9 @@ end of the day, these features proved to be too opinionated.
   https://img.shields.io/npm/v/react-native-responsive-image-view.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/react-native-responsive-image-view
 [ci-image]:
-  https://github.com/wKovacs64/react-native-responsive-image-view/actions/workflows/ci.yml/badge.svg?event=push
+  https://img.shields.io/github/workflow/status/wKovacs64/react-native-responsive-image-view/%F0%9F%A4%96%20CI/main?logo=github&style=flat-square
 [ci-url]:
-  https://github.com/wKovacs64/react-native-responsive-image-view/actions/workflows/ci.yml
+  https://github.com/wKovacs64/react-native-responsive-image-view/actions?query=workflow%3Aci
 [coverage-image]:
   https://img.shields.io/codecov/c/github/wKovacs64/react-native-responsive-image-view/main.svg?style=flat-square
 [coverage-url]:
