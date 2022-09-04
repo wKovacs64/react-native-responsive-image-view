@@ -3,12 +3,12 @@
 exports[`getImageProps composes consumer props with own props: onLayout 1`] = `[MockFunction Image#onLayout]`;
 
 exports[`getImageProps composes consumer props with own props: style 1`] = `
-Array [
-  Object {
+[
+  {
     "height": "50%",
     "width": "50%",
   },
-  Object {
+  {
     "height": "100%",
     "width": "100%",
   },
@@ -16,7 +16,7 @@ Array [
 `;
 
 exports[`getViewProps composes consumer props with own props: hitSlop 1`] = `
-Object {
+{
   "bottom": 10,
   "left": 0,
   "right": 0,
@@ -25,11 +25,11 @@ Object {
 `;
 
 exports[`getViewProps composes consumer props with own props: style 1`] = `
-Array [
-  Object {
+[
+  {
     "padding": 20,
   },
-  Object {
+  {
     "aspectRatio": 1.3333333333333333,
   },
 ]
