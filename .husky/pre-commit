@@ -1,5 +1,0 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-echo "✔ Running pre-commit hooks..."
-FORCE_COLOR=1 npx --no-install lint-staged --quiet
