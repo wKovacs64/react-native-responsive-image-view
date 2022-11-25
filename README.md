@@ -2,8 +2,7 @@
 
 _React Native component for scaling an `Image` within the parent `View`_
 
-[![npm Version][npm-image]][npm-url]
-[![Build Status][ci-image]][ci-url]
+[![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
 [![Code Coverage][coverage-image]][coverage-url]
 [![semantic-release][semantic-release-image]][semantic-release-url]
 
