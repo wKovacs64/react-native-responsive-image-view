@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import useResponsiveImageView from './useResponsiveImageView';
 
+function noop() {}
+
 function ResponsiveImageView({
-  component: ComponentOrFunction,
-  render,
-  children,
-  aspectRatio,
+  component: ComponentOrFunction = undefined,
+  render = undefined,
+  children = undefined,
+  aspectRatio = undefined,
   source,
-  onLoad,
-  onError,
+  onLoad = noop,
+  onError = noop,
 }) {
   const bag = useResponsiveImageView({ aspectRatio, source, onLoad, onError });
 
@@ -57,15 +59,6 @@ ResponsiveImageView.propTypes = {
       uri: PropTypes.string.isRequired,
     }),
   ]).isRequired,
-};
-
-ResponsiveImageView.defaultProps = {
-  aspectRatio: undefined,
-  component: undefined,
-  render: undefined,
-  children: undefined,
-  onError: () => {},
-  onLoad: () => {},
 };
 
 export { useResponsiveImageView };
