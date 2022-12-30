@@ -337,7 +337,7 @@ end of the day, these features proved to be too opinionated.
   https://img.shields.io/npm/v/react-native-responsive-image-view.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/react-native-responsive-image-view
 [ci-image]:
-  https://img.shields.io/github/workflow/status/wKovacs64/react-native-responsive-image-view/%F0%9F%A4%96%20CI/main?logo=github&style=flat-square
+  https://img.shields.io/github/actions/workflow/status/wKovacs64/react-native-responsive-image-view/ci.yml?logo=github&style=flat-square
 [ci-url]:
   https://github.com/wKovacs64/react-native-responsive-image-view/actions?query=workflow%3Aci
 [coverage-image]:
