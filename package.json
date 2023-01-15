@@ -69,7 +69,7 @@
     "react-dom": "18.2.0",
     "react-native": "0.71.0",
     "react-test-renderer": "18.2.0",
-    "rimraf": "4.0.5"
+    "rimraf": "4.0.6"
   },
   "peerDependencies": {
     "prop-types": ">=15",
