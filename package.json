@@ -27,18 +27,36 @@
   "bugs": {
     "url": "https://github.com/wKovacs64/react-native-responsive-image-view/issues"
   },
-  "main": "ResponsiveImageView.js",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/typescript/src/index.d.ts",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
   "files": [
-    "ResponsiveImageView.js",
-    "useResponsiveImageView.js"
+    "src",
+    "dist/commonjs",
+    "dist/module",
+    "dist/typescript/src",
+    "!**/__fixtures__",
+    "!**/__tests__"
   ],
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "dist",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
   "scripts": {
-    "clean": "rimraf coverage",
+    "clean": "rimraf coverage dist",
     "changeset": "changeset",
     "changeset:version": "changeset version && npm install --package-lock-only",
     "changeset:publish": "changeset publish",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
+    "prepack": "bob build",
     "prepublishOnly": "run-p --silent lint test",
     "test": "jest",
     "test:coverage": "jest --coverage"
@@ -53,6 +71,9 @@
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.0",
     "@testing-library/react-native": "11.5.0",
+    "@types/jest": "29.2.5",
+    "@types/react": "18.0.26",
+    "@types/react-native": "0.71.0",
     "@wkovacs64/prettier-config": "3.0.3",
     "babel-jest": "29.3.1",
     "codecov": "3.8.3",
@@ -64,15 +85,15 @@
     "metro-react-native-babel-preset": "0.74.0",
     "npm-run-all": "4.1.5",
     "prettier": "2.8.3",
-    "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.0",
+    "react-native-builder-bob": "0.20.3",
     "react-test-renderer": "18.2.0",
-    "rimraf": "4.1.0"
+    "rimraf": "4.1.0",
+    "typescript": "4.9.4"
   },
   "peerDependencies": {
-    "prop-types": ">=15",
     "react": ">=16.8.3",
     "react-native": ">=0.59.0"
   }

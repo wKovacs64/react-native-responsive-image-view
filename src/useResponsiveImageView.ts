@@ -1,9 +1,46 @@
-import React from 'react';
-import { Image } from 'react-native';
+import * as React from 'react';
+import {
+  Image,
+  type ViewProps,
+  type ImageProps,
+  type ImageURISource,
+  type ImageRequireSource,
+} from 'react-native';
+
+type ImagePropsWithSourceIgnored = { source?: ImageProps['source'] } & Omit<
+  ImageProps,
+  'source'
+>;
+
+export interface ResponsiveImageViewBag {
+  loading: boolean;
+  error: string;
+  retry: () => void;
+  getViewProps: (props?: ViewProps) => ViewProps;
+  getImageProps: (props?: ImagePropsWithSourceIgnored) => ImageProps;
+}
+
+type RenderFunctionReturnType = React.ReactElement | null;
+
+export interface ResponsiveImageViewProps {
+  aspectRatio?: number;
+  component?: React.ComponentType | React.FunctionComponent;
+  render?: (bag: ResponsiveImageViewBag) => RenderFunctionReturnType;
+  children?:
+    | ((bag: ResponsiveImageViewBag) => RenderFunctionReturnType)
+    | React.ReactNode;
+  onError?: (errMessage: string) => void;
+  onLoad?: () => void;
+  source: ImageURISource | ImageRequireSource;
+}
 
 // A cancelable version of Image.getSize, adapted from
 // https://github.com/kodefox/react-native-flex-image
-function getImageSize(uri, onImageSizeSuccess, onImageSizeFailure) {
+function getImageSize(
+  uri: string,
+  onImageSizeSuccess: (width: number, height: number) => void,
+  onImageSizeFailure: (err: any) => void,
+) {
   let totallyCanceled = false;
 
   Image.getSize(
@@ -27,14 +64,26 @@ function getImageSize(uri, onImageSizeSuccess, onImageSizeFailure) {
   };
 }
 
-const initialState = {
+interface State {
+  loading: boolean;
+  error: string;
+  retryCount: number;
+  aspectRatio: number | undefined;
+}
+
+type Action =
+  | { type: 'SUCCESS'; payload: number }
+  | { type: 'FAILURE'; payload: string }
+  | { type: 'RETRY' };
+
+const initialState: State = {
   loading: true,
   error: '',
   retryCount: 0,
   aspectRatio: undefined,
 };
 
-function reducer(state, action) {
+function reducer(state: State, action: Action) {
   switch (action.type) {
     case 'SUCCESS':
       return {
@@ -57,18 +106,19 @@ function reducer(state, action) {
       };
     /* istanbul ignore next: this will never happen */
     default:
-      throw new Error(`Unexpected action type: ${action.type}`);
+      throw new Error('Unexpected action type');
   }
 }
 
-const noop = () => {};
+function defaultOnLoad() {}
+function defaultOnError(_: string) {}
 
-function useResponsiveImageView({
+export function useResponsiveImageView({
   aspectRatio: controlledAspectRatio,
   source: initialSource,
-  onLoad = noop,
-  onError = noop,
-}) {
+  onLoad = defaultOnLoad,
+  onError = defaultOnError,
+}: ResponsiveImageViewProps): ResponsiveImageViewBag {
   if (!initialSource) {
     throw new Error('"source" is required');
   }
@@ -89,7 +139,11 @@ function useResponsiveImageView({
       : state.aspectRatio;
   }
 
-  function getImageProps({ source, style = {}, ...props } = {}) {
+  function getImageProps({
+    source,
+    style = {},
+    ...props
+  }: Parameters<ResponsiveImageViewBag['getImageProps']>[0] = {}) {
     return {
       source: initialSource,
       style: [style, { height: '100%', width: '100%' }],
@@ -97,7 +151,10 @@ function useResponsiveImageView({
     };
   }
 
-  function getViewProps({ style = {}, ...props } = {}) {
+  function getViewProps({
+    style = {},
+    ...props
+  }: Parameters<ResponsiveImageViewBag['getViewProps']>[0] = {}) {
     return {
       style: [style, { aspectRatio: getAspectRatio() }],
       ...props,
@@ -109,17 +166,21 @@ function useResponsiveImageView({
       cancel: /* istanbul ignore next: just a stub  */ () => {},
     };
 
-    function handleImageSizeSuccess(width, height) {
+    function handleImageSizeSuccess(width: number, height: number) {
       onLoad();
       dispatch({ type: 'SUCCESS', payload: width / height });
     }
 
-    function handleImageSizeFailure(err) {
-      onError(err.message);
-      dispatch({ type: 'FAILURE', payload: err.message });
+    function handleImageSizeFailure(err: any) {
+      const errMessage =
+        err instanceof Error
+          ? err.message
+          : /* istanbul ignore next */ String(err);
+      onError(errMessage);
+      dispatch({ type: 'FAILURE', payload: errMessage });
     }
 
-    if (initialSource.uri) {
+    if (typeof initialSource === 'object' && initialSource.uri) {
       // Retrieve image dimensions from URI
       pendingGetImageSize = getImageSize(
         initialSource.uri,
@@ -157,5 +218,3 @@ function useResponsiveImageView({
     getImageProps,
   };
 }
-
-export default useResponsiveImageView;
