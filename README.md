@@ -62,20 +62,14 @@ component][render-props] and a [custom hook][hooks-intro].
 
 ## Installation
 
-Using [yarn][yarn]:
-
-```shell
-yarn add react-native-responsive-image-view
-```
-
-Or, [npm][npm]:
+Using [npm][npm]:
 
 ```shell
 npm install react-native-responsive-image-view
 ```
 
-> This package also depends on `react`, `prop-types`, and `react-native`. Please
-> make sure you have those installed as well.
+> This package also depends on `react` and `react-native`. Please make sure you
+> have those installed as well.
 
 ## Usage
 
@@ -90,15 +84,17 @@ import React from 'react';
 import { Image, View } from 'react-native';
 import ResponsiveImageView from 'react-native-responsive-image-view';
 
-export default ({ imageUri }) => (
-  <ResponsiveImageView source={{ uri: imageUri }}>
-    {({ getViewProps, getImageProps }) => (
-      <View {...getViewProps()}>
-        <Image {...getImageProps()} />
-      </View>
-    )}
-  </ResponsiveImageView>
-);
+export default function MyComponent({ imageUri }) {
+  return (
+    <ResponsiveImageView source={{ uri: imageUri }}>
+      {({ getViewProps, getImageProps }) => (
+        <View {...getViewProps()}>
+          <Image {...getImageProps()} />
+        </View>
+      )}
+    </ResponsiveImageView>
+  );
+}
 ```
 
 **N.B.** This component doesn't render anything itself, it just calls your
@@ -117,7 +113,7 @@ import React from 'react';
 import { Image, View } from 'react-native';
 import { useResponsiveImageView } from 'react-native-responsive-image-view';
 
-export default ({ imageUri }) => {
+export default function MyComponent({ imageUri }) {
   const { getViewProps, getImageProps } = useResponsiveImageView({
     source: { uri: imageUri },
   });
@@ -127,7 +123,7 @@ export default ({ imageUri }) => {
       <Image {...getImageProps()} />
     </View>
   );
-};
+}
 ```
 
 ## Input
@@ -300,8 +296,8 @@ component and the hook.
 
 Check out the [Snack Playground][snack-playground] for an interactive experience
 where you can try out the various usage patterns. You can see the code run live
-on your own device via the [Expo client][expo-client], or enable the Preview
-option to use the in-browser simulators!
+on your own device via [Expo Go][expo-go], or enable the Preview option to use
+the in-browser simulators!
 
 ## Inspiration
 
@@ -348,10 +344,9 @@ end of the day, these features proved to be too opinionated.
 [render-props]: https://reactjs.org/docs/render-props.html
 [hooks-intro]: https://reactjs.org/docs/hooks-intro.html
 [npm]: https://www.npmjs.com/
-[yarn]: https://yarnpkg.com/
 [react-native-flex-image]: https://github.com/kodefox/react-native-flex-image
-[snack-playground]: https://snack.expo.io/@wkovacs64/responsiveimageview
-[expo-client]: https://expo.io/tools#client
+[snack-playground]: https://snack.expo.dev/@wkovacs64/responsiveimageview
+[expo-go]: https://expo.dev/client
 [kodefox]: https://github.com/kodefox
 [mjackson]: https://github.com/mjackson
 [use-a-render-prop]: https://medium.com/@mjackson/use-a-render-prop-50de598f11ce
