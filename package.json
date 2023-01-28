@@ -74,6 +74,7 @@
     "@types/jest": "29.2.6",
     "@types/react": "18.0.27",
     "@types/react-native": "0.71.0",
+    "@types/react-test-renderer": "18.0.0",
     "@wkovacs64/prettier-config": "3.0.3",
     "babel-jest": "29.3.1",
     "codecov": "3.8.3",
