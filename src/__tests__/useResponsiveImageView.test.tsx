@@ -83,11 +83,11 @@ describe('error', () => {
 type Bags = Array<ReturnType<typeof useResponsiveImageView>>;
 
 describe('retry', () => {
-  it('retries', () => {
+  it('retries', async () => {
     const { children } = renderHook({ source: { uri: mockUriBad } });
     const { retry } = (children.mock.calls[1] as Bags)[0];
     expect((children.mock.calls[1] as Bags)[0].loading).toBe(false);
-    act(() => {
+    await act(() => {
       retry();
     });
     expect((children.mock.calls[2] as Bags)[0].loading).toBe(true);
