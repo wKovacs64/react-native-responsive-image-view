@@ -73,7 +73,7 @@
     "@testing-library/react-native": "11.5.2",
     "@types/jest": "29.4.0",
     "@types/react": "18.0.28",
-    "@types/react-native": "0.71.2",
+    "@types/react-native": "0.71.3",
     "@types/react-test-renderer": "18.0.0",
     "@wkovacs64/prettier-config": "3.0.3",
     "babel-jest": "29.4.2",
