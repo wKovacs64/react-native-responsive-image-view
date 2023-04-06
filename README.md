@@ -299,6 +299,13 @@ where you can try out the various usage patterns. You can see the code run live
 on your own device via [Expo Go][expo-go], or enable the Preview option to use
 the in-browser simulators!
 
+> Note: Snack's underlying build system, `snackager`,
+> [cannot currently handle](https://github.com/expo/snack/issues/383) some
+> TypeScript features used in this library, so the version showcased in the
+> playground is pinned to the latest pre-TypeScript implementation. We hope the
+> Expo team can resolve this soon, but it should still provide a useful
+> environment to try out the library in the meantime.
+
 ## Inspiration
 
 I was heavily inspired by [`react-native-flex-image`][react-native-flex-image]
