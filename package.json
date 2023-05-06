@@ -77,7 +77,6 @@
     "@types/react-test-renderer": "18.0.0",
     "@wkovacs64/prettier-config": "3.0.3",
     "babel-jest": "29.5.0",
-    "codecov": "3.8.3",
     "doctoc": "2.2.1",
     "eslint": "8.40.0",
     "eslint-plugin-wkovacs64": "14.1.0",
