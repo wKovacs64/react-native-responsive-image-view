@@ -20,10 +20,12 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
+          cache: npm
+          cache-dependency-path: ./package.json
           node-version-file: '.nvmrc'
 
-      - name: 📥 Download deps
-        uses: bahmutov/npm-install@v1
+      - name: 📥 Install deps
+        run: npm install
 
       - name: 💅 Format check
         run: npx prettier --cache --check .
@@ -38,10 +40,12 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
+          cache: npm
+          cache-dependency-path: ./package.json
           node-version-file: '.nvmrc'
 
-      - name: 📥 Download deps
-        uses: bahmutov/npm-install@v1
+      - name: 📥 Install deps
+        run: npm install
 
       - name: 🔬 Lint
         run: npm run lint
@@ -56,10 +60,12 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
+          cache: npm
+          cache-dependency-path: ./package.json
           node-version-file: '.nvmrc'
 
-      - name: 📥 Download deps
-        uses: bahmutov/npm-install@v1
+      - name: 📥 Install deps
+        run: npm install
 
       - name: 🃏 Jest with coverage
         run: npm run test:coverage
@@ -79,10 +85,12 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
+          cache: npm
+          cache-dependency-path: ./package.json
           node-version-file: '.nvmrc'
 
-      - name: 📥 Download deps
-        uses: bahmutov/npm-install@v1
+      - name: 📥 Install deps
+        run: npm install
 
       - name: 🦋 Create Release Pull Request or Publish to npm
         id: changesets
