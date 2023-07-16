@@ -14,8 +14,8 @@ import {
 } from '../__fixtures__';
 import { useResponsiveImageView } from '../useResponsiveImageView';
 
-function objectKeys<Obj extends object>(obj: Obj): Array<keyof Obj> {
-  return Object.keys(obj) as Array<keyof Obj>;
+function objectKeys<Obj extends object>(obj: Obj): (keyof Obj)[] {
+  return Object.keys(obj) as (keyof Obj)[];
 }
 
 function Comp({
@@ -66,7 +66,7 @@ describe('error', () => {
         error: expect.any(String) as string,
       }),
     );
-    // @ts-ignore
+    // @ts-expect-error
     expect(children.mock.calls[1][0].error).not.toHaveLength(0);
   });
 
@@ -80,7 +80,7 @@ describe('error', () => {
   });
 });
 
-type Bags = Array<ReturnType<typeof useResponsiveImageView>>;
+type Bags = ReturnType<typeof useResponsiveImageView>[];
 
 describe('retry', () => {
   it('retries', async () => {
