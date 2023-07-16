@@ -144,11 +144,12 @@ export function useResponsiveImageView({
     style = {},
     ...props
   }: Parameters<ResponsiveImageViewBag['getImageProps']>[0] = {}) {
-    return {
+    const imageProps: ImageProps = {
       source: initialSource,
       style: [style, { height: '100%', width: '100%' }],
       ...props,
     };
+    return imageProps;
   }
 
   function getViewProps({

@@ -1,3 +1,5 @@
+import type { ImageProps } from 'react-native';
+
 export const mockUriGood = 'mockUriGood';
 export const mockUriBad = 'mockUriBad';
 export const mockUriSlowGood = 'mockUriSlowGood';
@@ -19,7 +21,7 @@ export const consumerViewProps = {
     padding: 20,
   },
 };
-export const consumerImageProps = {
+export const consumerImageProps: Partial<ImageProps> = {
   onLayout: jest.fn().mockName('Image#onLayout'),
   style: {
     height: '50%',
