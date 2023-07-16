@@ -73,10 +73,29 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
 
+  build:
+    name: ⚒️ Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version-file: '.nvmrc'
+
+      - name: 📥 Install deps
+        run: npm install
+
+      - name: ⚙️ Build
+        run: npm run prepack
+
   release:
     name: 🚀 Release
     runs-on: ubuntu-latest
-    needs: [prettier, lint, test]
+    needs: [prettier, lint, test, build]
     if: github.ref == 'refs/heads/main'
     steps:
       - name: ⬇️ Checkout repo
