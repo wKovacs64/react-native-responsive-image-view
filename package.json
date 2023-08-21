@@ -76,7 +76,7 @@
     "@types/react-native": "0.72.2",
     "@types/react-test-renderer": "18.0.0",
     "@wkovacs64/prettier-config": "3.0.3",
-    "babel-jest": "29.6.2",
+    "babel-jest": "29.6.3",
     "doctoc": "2.2.1",
     "eslint": "8.47.0",
     "eslint-plugin-wkovacs64": "15.0.1",
