@@ -348,7 +348,8 @@ end of the day, these features proved to be too opinionated.
   https://codecov.io/gh/wKovacs64/react-native-responsive-image-view/branch/main
 [aspectratio]:
   https://facebook.github.io/react-native/docs/layout-props#aspectratio
-[render-props]: https://react.dev/reference/react/Children#calling-a-render-prop-to-customize-rendering
+[render-props]:
+  https://react.dev/reference/react/Children#calling-a-render-prop-to-customize-rendering
 [custom-hooks]: https://react.dev/learn/reusing-logic-with-custom-hooks
 [npm]: https://www.npmjs.com/
 [react-native-flex-image]: https://github.com/kodefox/react-native-flex-image
