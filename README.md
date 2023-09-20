@@ -23,7 +23,7 @@ looking for. The secret sauce is setting both the `height` and `width`
 attributes of the `style` prop on the `Image` to `100%` and wrapping it with a
 `View` that has its [`aspectRatio`][aspectratio] style property set to match the
 aspect ratio you want. The package provides both a [render prop
-component][render-props] and a [custom hook][hooks-intro].
+component][render-props] and a [custom hook][custom-hooks].
 
 ## Table of Contents
 
@@ -348,8 +348,8 @@ end of the day, these features proved to be too opinionated.
   https://codecov.io/gh/wKovacs64/react-native-responsive-image-view/branch/main
 [aspectratio]:
   https://facebook.github.io/react-native/docs/layout-props#aspectratio
-[render-props]: https://reactjs.org/docs/render-props.html
-[hooks-intro]: https://reactjs.org/docs/hooks-intro.html
+[render-props]: https://react.dev/reference/react/Children#calling-a-render-prop-to-customize-rendering
+[custom-hooks]: https://react.dev/learn/reusing-logic-with-custom-hooks
 [npm]: https://www.npmjs.com/
 [react-native-flex-image]: https://github.com/kodefox/react-native-flex-image
 [snack-playground]: https://snack.expo.dev/@wkovacs64/responsiveimageview
