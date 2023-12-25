@@ -1,4 +1,4 @@
-import { Image, type ImageSourcePropType } from 'react-native';
+import { Image } from 'react-native';
 import {
   mockUriGood,
   mockUriBad,
@@ -32,12 +32,11 @@ jest
     }
   });
 
-jest.mock(
-  'react-native/Libraries/Image/resolveAssetSource',
-  () => (source: ImageSourcePropType) => {
-    if (source === mockResourceGood) {
-      return { width: mockWidth, height: mockHeight };
-    }
-    return null;
-  },
-);
+// @ts-expect-error: contrary to what TS thinks, the current implementation of
+// resolveAssetSource _can_ return `null`, so this is a valid mock.
+jest.spyOn(Image, 'resolveAssetSource').mockImplementation((source) => {
+  if (source === mockResourceGood) {
+    return { width: mockWidth, height: mockHeight };
+  }
+  return null;
+});
