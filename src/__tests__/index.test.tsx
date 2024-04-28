@@ -10,6 +10,7 @@ import {
   mockResourceBad,
 } from '../__fixtures__';
 import type { ResponsiveImageViewBag } from '../useResponsiveImageView';
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import ResponsiveImageView from '..';
 
 const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
