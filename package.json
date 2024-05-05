@@ -59,7 +59,8 @@
     "prepack": "bob build",
     "prepublishOnly": "run-p --silent lint test",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "private": false,
   "publishConfig": {
