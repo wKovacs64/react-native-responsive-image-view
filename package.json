@@ -59,7 +59,8 @@
     "prepack": "bob build",
     "prepublishOnly": "run-p --silent lint test",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "private": false,
   "publishConfig": {
@@ -73,7 +74,6 @@
     "@testing-library/react-native": "12.5.0",
     "@types/jest": "29.5.12",
     "@types/react": "18.2.79",
-    "@types/react-native": "0.73.0",
     "@types/react-test-renderer": "18.3.0",
     "@wkovacs64/prettier-config": "3.0.3",
     "babel-jest": "29.7.0",
@@ -87,7 +87,7 @@
     "prettier": "3.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.73.7",
+    "react-native": "0.74.1",
     "react-native-builder-bob": "0.23.2",
     "react-test-renderer": "18.2.0",
     "rimraf": "5.0.5",
