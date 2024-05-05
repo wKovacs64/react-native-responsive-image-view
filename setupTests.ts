@@ -13,22 +13,29 @@ jest
   .spyOn(Image, 'getSize')
   .mockImplementation((uri, onLoad = () => {}, onError = () => {}) => {
     switch (uri) {
-      case mockUriGood:
+      case mockUriGood: {
         onLoad(mockWidth, mockHeight);
         break;
-      case mockUriBad:
+      }
+      case mockUriBad: {
         onError(new Error(uri));
         break;
-      case mockUriSlowGood:
-        setImmediate(onLoad);
+      }
+      case mockUriSlowGood: {
+        setImmediate(() => {
+          onLoad(mockWidth, mockHeight);
+        });
         break;
-      case mockUriSlowBad:
+      }
+      case mockUriSlowBad: {
         setImmediate(() => {
           onError(uri);
         });
         break;
-      default:
+      }
+      default: {
         throw new Error(`Unexpected URI value in test: ${uri}`);
+      }
     }
   });
 
