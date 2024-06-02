@@ -75,7 +75,7 @@
     "@types/jest": "29.5.12",
     "@types/react": "18.2.79",
     "@types/react-test-renderer": "18.3.0",
-    "@wkovacs64/prettier-config": "3.0.3",
+    "@wkovacs64/prettier-config": "4.0.0",
     "babel-jest": "29.7.0",
     "doctoc": "2.2.1",
     "eslint": "8.57.0",
