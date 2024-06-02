@@ -66,6 +66,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "prettier": "@wkovacs64/prettier-config",
   "devDependencies": {
     "@babel/core": "7.24.6",
     "@babel/plugin-proposal-class-properties": "7.18.6",
