@@ -16,8 +16,7 @@
 
 #### Version 1.1.0 _(2018-02-06)_
 
-- Added support for component injection and function-as-children render patterns
-  ([#1][#1])
+- Added support for component injection and function-as-children render patterns ([#1][#1])
 
 #### Version 1.0.1 _(2017-12-20)_
 

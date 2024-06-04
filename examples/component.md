@@ -141,11 +141,7 @@ class MyClassComponent extends React.Component {
     const { imageUri } = this.props;
 
     return (
-      <ResponsiveImageView
-        onLoad={this.onLoad}
-        onError={this.onError}
-        source={{ uri: imageUri }}
-      >
+      <ResponsiveImageView onLoad={this.onLoad} onError={this.onError} source={{ uri: imageUri }}>
         {this.renderImageView}
       </ResponsiveImageView>
     );

@@ -21,9 +21,7 @@ function objectKeys<Obj extends object>(obj: Obj): (keyof Obj)[] {
 function Comp({
   children,
   ...props
-}: { children: React.FunctionComponent } & Parameters<
-  typeof useResponsiveImageView
->[0]) {
+}: { children: React.FunctionComponent } & Parameters<typeof useResponsiveImageView>[0]) {
   return children(useResponsiveImageView(props));
 }
 
@@ -49,12 +47,8 @@ describe('parameter validation', () => {
 describe('loading', () => {
   it('is true while loading and otherwise false', () => {
     const { children } = renderHook({ source: { uri: mockUriGood } });
-    expect(children).toHaveBeenCalledWith(
-      expect.objectContaining({ loading: true }),
-    );
-    expect(children).toHaveBeenCalledWith(
-      expect.objectContaining({ loading: false }),
-    );
+    expect(children).toHaveBeenCalledWith(expect.objectContaining({ loading: true }));
+    expect(children).toHaveBeenCalledWith(expect.objectContaining({ loading: false }));
   });
 });
 

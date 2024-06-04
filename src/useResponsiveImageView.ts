@@ -7,10 +7,7 @@ import {
   type ImageRequireSource,
 } from 'react-native';
 
-type ImagePropsWithSourceIgnored = { source?: ImageProps['source'] } & Omit<
-  ImageProps,
-  'source'
->;
+type ImagePropsWithSourceIgnored = { source?: ImageProps['source'] } & Omit<ImageProps, 'source'>;
 
 export interface ResponsiveImageViewBag {
   loading: boolean;
@@ -26,9 +23,7 @@ export interface ResponsiveImageViewProps {
   aspectRatio?: number;
   component?: React.ComponentType | React.FunctionComponent;
   render?: (bag: ResponsiveImageViewBag) => RenderFunctionReturnType;
-  children?:
-    | ((bag: ResponsiveImageViewBag) => RenderFunctionReturnType)
-    | React.ReactNode;
+  children?: ((bag: ResponsiveImageViewBag) => RenderFunctionReturnType) | React.ReactNode;
   onError?: (errMessage: string) => void;
   onLoad?: () => void;
   source: ImageURISource | ImageRequireSource;
@@ -134,9 +129,7 @@ export function useResponsiveImageView({
   }
 
   function getAspectRatio() {
-    return isAspectRatioControlled()
-      ? controlledAspectRatio
-      : state.aspectRatio;
+    return isAspectRatioControlled() ? controlledAspectRatio : state.aspectRatio;
   }
 
   function getImageProps({
@@ -174,9 +167,7 @@ export function useResponsiveImageView({
 
     function handleImageSizeFailure(err: any) {
       const errMessage =
-        err instanceof Error
-          ? err.message
-          : /* istanbul ignore next */ String(err);
+        err instanceof Error ? err.message : /* istanbul ignore next */ String(err);
       onError(errMessage);
       dispatch({ type: 'FAILURE', payload: errMessage });
     }
@@ -195,9 +186,7 @@ export function useResponsiveImageView({
       if (imageSource) {
         handleImageSizeSuccess(imageSource.width, imageSource.height);
       } else {
-        handleImageSizeFailure(
-          new Error('Failed to retrieve image dimensions.'),
-        );
+        handleImageSizeFailure(new Error('Failed to retrieve image dimensions.'));
       }
     }
 
