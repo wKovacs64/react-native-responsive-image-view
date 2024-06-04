@@ -12,10 +12,7 @@ const config: Config = {
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   preset: 'react-native',
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
-  watchPlugins: [
-    'jest-watch-typeahead/filename',
-    'jest-watch-typeahead/testname',
-  ],
+  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };
 
 export default config;

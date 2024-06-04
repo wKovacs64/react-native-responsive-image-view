@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  useResponsiveImageView,
-  type ResponsiveImageViewProps,
-} from './useResponsiveImageView';
+import { useResponsiveImageView, type ResponsiveImageViewProps } from './useResponsiveImageView';
 
 function defaultOnLoad() {}
 function defaultOnError(_: string) {}

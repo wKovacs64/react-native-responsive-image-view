@@ -17,9 +17,7 @@ const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
   loading: expect.any(Boolean) as ResponsiveImageViewBag['loading'],
   error: expect.any(String) as ResponsiveImageViewBag['error'],
   getViewProps: expect.any(Function) as ResponsiveImageViewBag['getViewProps'],
-  getImageProps: expect.any(
-    Function,
-  ) as ResponsiveImageViewBag['getImageProps'],
+  getImageProps: expect.any(Function) as ResponsiveImageViewBag['getImageProps'],
   retry: expect.any(Function) as ResponsiveImageViewBag['retry'],
 }) as ResponsiveImageViewBag;
 
@@ -82,11 +80,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
 
   it('calls children function if no component or render prop was provided', () => {
     const children = jest.fn(() => null);
-    render(
-      <ResponsiveImageView source={{ uri: mockUriGood }}>
-        {children}
-      </ResponsiveImageView>,
-    );
+    render(<ResponsiveImageView source={{ uri: mockUriGood }}>{children}</ResponsiveImageView>);
     expect(children).toHaveBeenCalledWith(expectedShape);
   });
 
@@ -109,69 +103,41 @@ describe('rendering order (component > render > FAC > children > null)', () => {
 
 describe('completion callbacks', () => {
   it("doesn't throw on success if no onLoad was provided", () => {
-    expect(() =>
-      render(<ResponsiveImageView source={{ uri: mockUriGood }} />),
-    ).not.toThrow();
+    expect(() => render(<ResponsiveImageView source={{ uri: mockUriGood }} />)).not.toThrow();
   });
 
   it("doesn't throw on failure if no onError was provided", () => {
-    expect(() =>
-      render(<ResponsiveImageView source={{ uri: mockUriBad }} />),
-    ).not.toThrow();
+    expect(() => render(<ResponsiveImageView source={{ uri: mockUriBad }} />)).not.toThrow();
   });
 
   it('calls provided onLoad on URI success', () =>
     new Promise<void>((resolve, reject) => {
       render(
-        <ResponsiveImageView
-          source={{ uri: mockUriGood }}
-          onLoad={resolve}
-          onError={reject}
-        />,
+        <ResponsiveImageView source={{ uri: mockUriGood }} onLoad={resolve} onError={reject} />,
       );
     }));
 
   it('calls provided onError on URI failure', () =>
     new Promise<string>((resolve, reject) => {
       render(
-        <ResponsiveImageView
-          source={{ uri: mockUriBad }}
-          onLoad={reject}
-          onError={resolve}
-        />,
+        <ResponsiveImageView source={{ uri: mockUriBad }} onLoad={reject} onError={resolve} />,
       );
     }));
 
   it('calls provided onLoad on imported resource success', () =>
     new Promise<void>((resolve, reject) => {
-      render(
-        <ResponsiveImageView
-          source={mockResourceGood}
-          onLoad={resolve}
-          onError={reject}
-        />,
-      );
+      render(<ResponsiveImageView source={mockResourceGood} onLoad={resolve} onError={reject} />);
     }));
 
   it('calls provided onError on imported resource failure', () =>
     new Promise<string>((resolve, reject) => {
-      render(
-        <ResponsiveImageView
-          source={mockResourceBad}
-          onLoad={reject}
-          onError={resolve}
-        />,
-      );
+      render(<ResponsiveImageView source={mockResourceBad} onLoad={reject} onError={resolve} />);
     }));
 
   it('does not call onLoad on success after unmounting', () =>
     new Promise<void>((resolve, reject) => {
       const { unmount } = render(
-        <ResponsiveImageView
-          source={{ uri: mockUriSlowGood }}
-          onLoad={reject}
-          onError={reject}
-        />,
+        <ResponsiveImageView source={{ uri: mockUriSlowGood }} onLoad={reject} onError={reject} />,
       );
       unmount();
       setImmediate(resolve);
@@ -180,11 +146,7 @@ describe('completion callbacks', () => {
   it('does not call onError on failure after unmounting', () =>
     new Promise<void>((resolve, reject) => {
       const { unmount } = render(
-        <ResponsiveImageView
-          source={{ uri: mockUriSlowBad }}
-          onLoad={reject}
-          onError={reject}
-        />,
+        <ResponsiveImageView source={{ uri: mockUriSlowBad }} onLoad={reject} onError={reject} />,
       );
       unmount();
       setImmediate(resolve);

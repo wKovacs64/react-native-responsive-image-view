@@ -1,3 +1,5 @@
+.changeset
 coverage
+dist
 package.json
-dist/
+package-lock.json
