@@ -1,5 +1,5 @@
+# .gitignore and...
+
 .changeset
-coverage
-dist
 package.json
 package-lock.json
