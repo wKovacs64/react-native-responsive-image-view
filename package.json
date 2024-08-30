@@ -74,7 +74,7 @@
     "@changesets/cli": "2.27.7",
     "@testing-library/react-native": "12.6.1",
     "@types/jest": "29.5.12",
-    "@types/react": "18.3.4",
+    "@types/react": "18.3.5",
     "@types/react-test-renderer": "18.3.0",
     "@wkovacs64/prettier-config": "4.1.1",
     "babel-jest": "29.7.0",
