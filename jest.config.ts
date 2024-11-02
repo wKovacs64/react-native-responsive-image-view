@@ -12,6 +12,11 @@ const config: Config = {
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   preset: 'react-native',
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  // TODO: remove custom transform once the react-native preset is fixed for RN v0.76, maybe?
+  transform: {
+    '^.+\\.(js)$': ['babel-jest', { plugins: ['babel-plugin-syntax-hermes-parser'] }],
+    '^.+\\.(ts|tsx)$': 'babel-jest',
+  },
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };
 
