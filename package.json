@@ -90,7 +90,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native": "0.76.2",
-    "react-native-builder-bob": "0.33.0",
+    "react-native-builder-bob": "0.33.1",
     "react-test-renderer": "18.3.1",
     "rimraf": "6.0.1",
     "ts-node": "10.9.2",
