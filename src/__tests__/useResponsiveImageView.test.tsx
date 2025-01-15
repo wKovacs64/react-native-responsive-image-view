@@ -81,7 +81,7 @@ describe('retry', () => {
     const { children } = renderHook({ source: { uri: mockUriBad } });
     const { retry } = (children.mock.calls[1] as Bags)[0];
     expect((children.mock.calls[1] as Bags)[0].loading).toBe(false);
-    await act(() => {
+    act(() => {
       retry();
     });
     expect((children.mock.calls[2] as Bags)[0].loading).toBe(true);
