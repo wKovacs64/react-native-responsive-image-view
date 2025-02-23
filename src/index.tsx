@@ -5,14 +5,14 @@ function defaultOnLoad() {}
 function defaultOnError(_: string) {}
 
 function isFunctionComponent(
-  ComponentOrFunction: React.ComponentType | React.FunctionComponent,
-): ComponentOrFunction is React.FunctionComponent {
+  component: React.ComponentType | React.FunctionComponent,
+): component is React.FunctionComponent {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  return !ComponentOrFunction.prototype.isReactComponent;
+  return !component.prototype?.isReactComponent;
 }
 
 function ResponsiveImageView({
-  component: ComponentOrFunction = undefined,
+  component: Component = undefined,
   render = undefined,
   children = undefined,
   aspectRatio = undefined,
@@ -23,14 +23,15 @@ function ResponsiveImageView({
   const bag = useResponsiveImageView({ aspectRatio, source, onLoad, onError });
 
   // component injection
-  if (ComponentOrFunction) {
+  if (Component) {
     // function component
-    if (isFunctionComponent(ComponentOrFunction)) {
-      return ComponentOrFunction(bag);
+    if (isFunctionComponent(Component)) {
+      // casting to synchronous as RN doesn't support async function components (RSC)
+      return Component(bag) as React.ReactElement<ResponsiveImageViewProps>;
     }
 
     // class component
-    return <ComponentOrFunction {...bag} />;
+    return <Component {...bag} />;
   }
 
   // render prop

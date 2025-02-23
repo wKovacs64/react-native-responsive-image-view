@@ -24,26 +24,26 @@ const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
 describe('rendering order (component > render > FAC > children > null)', () => {
   describe('renders component if provided', () => {
     it('function', () => {
-      const MyRenderComponent = jest.fn(() => null);
+      const MyFunctionComponent = jest.fn(() => null);
       const renderProp = jest.fn(() => null);
       const children = jest.fn(() => null);
       render(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
-          component={MyRenderComponent}
+          component={MyFunctionComponent}
           render={renderProp}
         >
           {children}
         </ResponsiveImageView>,
       );
-      expect(MyRenderComponent).toHaveBeenCalledWith(expectedShape);
+      expect(MyFunctionComponent).toHaveBeenCalledWith(expectedShape);
       expect(renderProp).not.toHaveBeenCalled();
       expect(children).not.toHaveBeenCalled();
     });
 
     it('class', () => {
       const classRenderMethod = jest.fn((_props) => null);
-      class MyRenderClassComponent extends React.Component {
+      class MyClassComponent extends React.Component {
         render() {
           return classRenderMethod(this.props);
         }
@@ -54,7 +54,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
       render(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
-          component={MyRenderClassComponent}
+          component={MyClassComponent}
           render={renderProp}
         >
           {children}
