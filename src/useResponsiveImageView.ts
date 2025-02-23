@@ -17,7 +17,7 @@ export interface ResponsiveImageViewBag {
   getImageProps: (props?: ImagePropsWithSourceIgnored) => ImageProps;
 }
 
-type RenderFunctionReturnType = React.ReactElement | null;
+type RenderFunctionReturnType = React.ReactElement<ResponsiveImageViewProps> | null;
 
 export interface ResponsiveImageViewProps {
   aspectRatio?: number;
@@ -71,12 +71,7 @@ type Action =
   | { type: 'FAILURE'; payload: string }
   | { type: 'RETRY' };
 
-const initialState: State = {
-  loading: true,
-  error: '',
-  retryCount: 0,
-  aspectRatio: undefined,
-};
+const initialState: State = { loading: true, error: '', retryCount: 0, aspectRatio: undefined };
 
 function reducer(state: State, action: Action) {
   switch (action.type) {
@@ -95,10 +90,7 @@ function reducer(state: State, action: Action) {
         retryCount: state.retryCount,
       };
     case 'RETRY':
-      return {
-        ...initialState,
-        retryCount: state.retryCount + 1,
-      };
+      return { ...initialState, retryCount: state.retryCount + 1 };
     /* istanbul ignore next: this will never happen */
     default:
       throw new Error('Unexpected action type');
@@ -149,16 +141,11 @@ export function useResponsiveImageView({
     style = {},
     ...props
   }: Parameters<ResponsiveImageViewBag['getViewProps']>[0] = {}) {
-    return {
-      style: [style, { aspectRatio: getAspectRatio() }],
-      ...props,
-    };
+    return { style: [style, { aspectRatio: getAspectRatio() }], ...props };
   }
 
   React.useEffect(() => {
-    let pendingGetImageSize = {
-      cancel: /* istanbul ignore next: just a stub  */ () => {},
-    };
+    let pendingGetImageSize = { cancel: /* istanbul ignore next: just a stub  */ () => {} };
 
     function handleImageSizeSuccess(width: number, height: number) {
       onLoad();
@@ -200,11 +187,5 @@ export function useResponsiveImageView({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(initialSource), onLoad, onError, state.retryCount]);
 
-  return {
-    loading: state.loading,
-    error: state.error,
-    retry,
-    getViewProps,
-    getImageProps,
-  };
+  return { loading: state.loading, error: state.error, retry, getViewProps, getImageProps };
 }
