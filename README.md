@@ -76,12 +76,12 @@ appropriate for your project.
 
 ### Component
 
-```jsx
-import React from 'react';
+```tsx
+import * as React from 'react';
 import { Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
+import { ResponsiveImageView } from 'react-native-responsive-image-view';
 
-export default function MyComponent({ imageUri }) {
+function MyComponent({ imageUri }) {
   return (
     <ResponsiveImageView source={{ uri: imageUri }}>
       {({ getViewProps, getImageProps }) => (
@@ -104,15 +104,13 @@ render the `Image` inside the `View` in your `render` function.
 
 ### Hook
 
-```jsx
-import React from 'react';
+```tsx
+import * as React from 'react';
 import { Image, View } from 'react-native';
 import { useResponsiveImageView } from 'react-native-responsive-image-view';
 
-export default function MyComponent({ imageUri }) {
-  const { getViewProps, getImageProps } = useResponsiveImageView({
-    source: { uri: imageUri },
-  });
+function MyComponent({ imageUri }) {
+  const { getViewProps, getImageProps } = useResponsiveImageView({ source: { uri: imageUri } });
 
   return (
     <View {...getViewProps()}>
@@ -171,7 +169,7 @@ It's just a function or component, available in a few different ways. Read Donav
 opinionated but informative [post about them][faccs-and-ci] for more information. They all receive
 the same props, so it is purely a stylistic choice left up to you as the consumer.
 
-```jsx
+```tsx
 // component injection
 <ResponsiveImageView component={/* right here */} />
 
