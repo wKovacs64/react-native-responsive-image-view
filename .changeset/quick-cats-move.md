@@ -13,6 +13,8 @@
   +import { ResponsiveImageView } from 'react-native-responsive-image-view';
   ```
 
+- You shouldn't have to memoize the `onLoad` and `onError` callbacks anymore if you were doing so previously.
+
 #### TypeScript
 
 - `ResponsiveImageViewProps` is now a type rather than an interface (should only impact you if you were extending it)

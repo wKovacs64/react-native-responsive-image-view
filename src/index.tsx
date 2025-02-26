@@ -118,6 +118,15 @@ export function useResponsiveImageView({
     throw new Error('"source" is required');
   }
 
+  // Latest ref pattern for callbacks
+  const onLoadRef = React.useRef(onLoad);
+  const onErrorRef = React.useRef(onError);
+
+  React.useEffect(() => {
+    onLoadRef.current = onLoad;
+    onErrorRef.current = onError;
+  }, [onError, onLoad]);
+
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   function retry() {
@@ -156,14 +165,14 @@ export function useResponsiveImageView({
     let pendingGetImageSize = { cancel: /* istanbul ignore next: just a stub  */ () => {} };
 
     function handleImageSizeSuccess(width: number, height: number) {
-      onLoad();
+      onLoadRef.current();
       dispatch({ type: 'SUCCESS', payload: width / height });
     }
 
     function handleImageSizeFailure(err: any) {
       const errMessage =
         err instanceof Error ? err.message : /* istanbul ignore next */ String(err);
-      onError(errMessage);
+      onErrorRef.current(errMessage);
       dispatch({ type: 'FAILURE', payload: errMessage });
     }
 
@@ -190,10 +199,9 @@ export function useResponsiveImageView({
     };
     // Using JSON.stringify here because the `source` parameter can be a nested
     // object. The alternative is requiring the user to memoize it, by why make
-    // them do that when we don't have to? (Note: they already have to memoize
-    // onLoad and onError, but those are much less likely to be used.)
+    // them do that when we don't have to?
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(initialSource), onLoad, onError, state.retryCount]);
+  }, [JSON.stringify(initialSource), state.retryCount]);
 
   return { loading: state.loading, error: state.error, retry, getViewProps, getImageProps };
 }
