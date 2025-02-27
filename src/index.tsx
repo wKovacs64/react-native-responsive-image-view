@@ -127,6 +127,15 @@ export function useResponsiveImageView({
     onErrorRef.current = onError;
   }, [onError, onLoad]);
 
+  // Extract and memoize only the relevant information
+  const imageIdOrUri = React.useMemo(() => {
+    const imgIdOrUri = typeof initialSource === 'number' ? initialSource : initialSource.uri;
+    if (!imgIdOrUri) {
+      throw new Error(`"source" must be a valid URI or resource`);
+    }
+    return imgIdOrUri;
+  }, [initialSource]);
+
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   function retry() {
@@ -176,16 +185,16 @@ export function useResponsiveImageView({
       dispatch({ type: 'FAILURE', payload: errMessage });
     }
 
-    if (typeof initialSource === 'object' && initialSource.uri) {
+    if (typeof imageIdOrUri === 'string') {
       // Retrieve image dimensions from URI
       pendingGetImageSize = getImageSize(
-        initialSource.uri,
+        imageIdOrUri,
         handleImageSizeSuccess,
         handleImageSizeFailure,
       );
     } else {
       // Retrieve image dimensions from imported resource
-      const imageSource = Image.resolveAssetSource(initialSource);
+      const imageSource = Image.resolveAssetSource(imageIdOrUri);
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (imageSource) {
         handleImageSizeSuccess(imageSource.width, imageSource.height);
@@ -197,11 +206,7 @@ export function useResponsiveImageView({
     return () => {
       pendingGetImageSize.cancel();
     };
-    // Using JSON.stringify here because the `source` parameter can be a nested
-    // object. The alternative is requiring the user to memoize it, by why make
-    // them do that when we don't have to?
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(initialSource), state.retryCount]);
+  }, [imageIdOrUri, state.retryCount]);
 
   return { loading: state.loading, error: state.error, retry, getViewProps, getImageProps };
 }
