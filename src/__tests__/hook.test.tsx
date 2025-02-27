@@ -32,12 +32,12 @@ const renderHook = (props: UseResponsiveImageViewOptions) => {
 
 describe('parameter validation', () => {
   it('requires a source', () => {
-    // Prevent React from logging errors
-    jest.spyOn(console, 'error').mockImplementation(() => {});
     // @ts-expect-error: source is required but we're testing its omission
     expect(() => renderHook({})).toThrow(/source/);
-    // eslint-disable-next-line no-console
-    (console.error as jest.MockedFunction<typeof console.error>).mockRestore();
+  });
+
+  it('requires a valid source', () => {
+    expect(() => renderHook({ source: {} })).toThrow(/source/);
   });
 });
 
