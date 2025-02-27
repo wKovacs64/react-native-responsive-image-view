@@ -2,6 +2,8 @@
 'react-native-responsive-image-view': major
 ---
 
+Update react-native, React, and refactor some things.
+
 ### Breaking Changes
 
 #### Component Import
@@ -19,4 +21,4 @@
 
 - `ResponsiveImageViewProps` is now a type rather than an interface (should only impact you if you were extending it)
 - `ResponsiveImageView` return type changed from `React.ReactElement<ResponsiveImageViewProps> | null` to `React.JSX.Element | null` which is more accurate
-- new `UseResponsiveImageViewOptions` type exported
+- New `UseResponsiveImageViewOptions` type for hook options
