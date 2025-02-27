@@ -1,0 +1,42 @@
+name: 🌐 CD
+
+on:
+  push:
+  pull_request:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  publish_to_pkg_pr_new:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    if: |
+      github.event_name != 'push' ||
+      !contains(github.event.head_commit.message, 'chore: release')
+    steps:
+      - name: Bail early if PR is from a fork and not approved
+        if: |
+          github.event_name == 'pull_request_review' &&
+          github.event.pull_request.head.repo.fork == true &&
+          github.event.review.state != 'approved'
+        run: |
+          echo "PR from fork is not approved. Skipping workflow."
+          exit 78
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version-file: '.nvmrc'
+
+      - name: 📥 Install deps
+        run: npm install
+
+      - name: 🛠️ Build
+        run: npm run prepack
+
+      - name: ⚡ pkg.pr.new
+        run: npx --yes pkg-pr-new publish --compact
