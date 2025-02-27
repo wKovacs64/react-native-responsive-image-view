@@ -9,9 +9,7 @@ import {
   mockResourceGood,
   mockResourceBad,
 } from '../__fixtures__';
-import type { ResponsiveImageViewBag } from '../useResponsiveImageView';
-// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
-import ResponsiveImageView from '..';
+import { ResponsiveImageView, type ResponsiveImageViewBag } from '..';
 
 const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
   loading: expect.any(Boolean) as ResponsiveImageViewBag['loading'],
@@ -24,37 +22,37 @@ const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
 describe('rendering order (component > render > FAC > children > null)', () => {
   describe('renders component if provided', () => {
     it('function', () => {
-      const MyRenderComponent = jest.fn(() => null);
-      const renderProp = jest.fn(() => null);
-      const children = jest.fn(() => null);
+      const MyFunctionComponent = jest.fn(() => <View />);
+      const renderProp = jest.fn(() => <View />);
+      const children = jest.fn(() => <View />);
       render(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
-          component={MyRenderComponent}
+          component={MyFunctionComponent}
           render={renderProp}
         >
           {children}
         </ResponsiveImageView>,
       );
-      expect(MyRenderComponent).toHaveBeenCalledWith(expectedShape);
+      // the second argument is the context (undefined in this case), which we don't care about
+      expect(MyFunctionComponent).toHaveBeenCalledWith(expectedShape, undefined);
       expect(renderProp).not.toHaveBeenCalled();
       expect(children).not.toHaveBeenCalled();
     });
 
     it('class', () => {
-      const classRenderMethod = jest.fn((_props) => null);
-      class MyRenderClassComponent extends React.Component {
+      const classRenderMethod = jest.fn((_props) => <View />);
+      class MyClassComponent extends React.Component {
         render() {
           return classRenderMethod(this.props);
         }
       }
-
-      const renderProp = jest.fn(() => null);
-      const children = jest.fn(() => null);
+      const renderProp = jest.fn(() => <View />);
+      const children = jest.fn(() => <View />);
       render(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
-          component={MyRenderClassComponent}
+          component={MyClassComponent}
           render={renderProp}
         >
           {children}
@@ -67,8 +65,8 @@ describe('rendering order (component > render > FAC > children > null)', () => {
   });
 
   it('calls render if no component was provided', () => {
-    const renderProp = jest.fn(() => null);
-    const children = jest.fn(() => null);
+    const renderProp = jest.fn(() => <View />);
+    const children = jest.fn(() => <View />);
     render(
       <ResponsiveImageView source={{ uri: mockUriGood }} render={renderProp}>
         {children}
@@ -79,7 +77,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
   });
 
   it('calls children function if no component or render prop was provided', () => {
-    const children = jest.fn(() => null);
+    const children = jest.fn(() => <View />);
     render(<ResponsiveImageView source={{ uri: mockUriGood }}>{children}</ResponsiveImageView>);
     expect(children).toHaveBeenCalledWith(expectedShape);
   });

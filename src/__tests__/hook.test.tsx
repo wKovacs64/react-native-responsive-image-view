@@ -12,7 +12,7 @@ import {
   consumerViewProps,
   consumerImageProps,
 } from '../__fixtures__';
-import { useResponsiveImageView } from '../useResponsiveImageView';
+import { useResponsiveImageView, type UseResponsiveImageViewOptions } from '..';
 
 function objectKeys<Obj extends object>(obj: Obj): (keyof Obj)[] {
   return Object.keys(obj) as (keyof Obj)[];
@@ -21,26 +21,23 @@ function objectKeys<Obj extends object>(obj: Obj): (keyof Obj)[] {
 function Comp({
   children,
   ...props
-}: { children: React.FunctionComponent } & Parameters<typeof useResponsiveImageView>[0]) {
+}: { children: React.FunctionComponent } & UseResponsiveImageViewOptions) {
   return children(useResponsiveImageView(props));
 }
 
-const renderHook = (props: Parameters<typeof useResponsiveImageView>[0]) => {
+const renderHook = (props: UseResponsiveImageViewOptions) => {
   const children = jest.fn(() => null);
-  return {
-    children,
-    ...render(<Comp {...props}>{children}</Comp>),
-  };
+  return { children, ...render(<Comp {...props}>{children}</Comp>) };
 };
 
 describe('parameter validation', () => {
   it('requires a source', () => {
-    // Prevent React from logging errors
-    jest.spyOn(console, 'error').mockImplementation(() => {});
     // @ts-expect-error: source is required but we're testing its omission
     expect(() => renderHook({})).toThrow(/source/);
-    // eslint-disable-next-line no-console
-    (console.error as jest.MockedFunction<typeof console.error>).mockRestore();
+  });
+
+  it('requires a valid source', () => {
+    expect(() => renderHook({ source: {} })).toThrow(/source/);
   });
 });
 
@@ -56,9 +53,7 @@ describe('error', () => {
   it('contains an error message on failure', () => {
     const { children } = renderHook({ source: { uri: mockUriBad } });
     expect(children).toHaveBeenCalledWith(
-      expect.objectContaining({
-        error: expect.any(String) as string,
-      }),
+      expect.objectContaining({ error: expect.any(String) as string }),
     );
     // @ts-expect-error
     expect(children.mock.calls[1][0].error).not.toHaveLength(0);
@@ -66,11 +61,7 @@ describe('error', () => {
 
   it('is empty on success', () => {
     const { children } = renderHook({ source: { uri: mockUriGood } });
-    expect(children).toHaveBeenCalledWith(
-      expect.objectContaining({
-        error: '',
-      }),
-    );
+    expect(children).toHaveBeenCalledWith(expect.objectContaining({ error: '' }));
   });
 });
 
@@ -96,17 +87,13 @@ describe('getViewProps', () => {
       source: { uri: mockUriGood },
     });
     const { getViewProps } = (children.mock.calls[1] as Bags)[0];
-    expect(getViewProps().style).toContainEqual({
-      aspectRatio: controlledAspectRatio,
-    });
+    expect(getViewProps().style).toContainEqual({ aspectRatio: controlledAspectRatio });
   });
 
   it('includes calculated aspectRatio if not provided', () => {
     const { children } = renderHook({ source: { uri: mockUriGood } });
     const { getViewProps } = (children.mock.calls[1] as Bags)[0];
-    expect(getViewProps().style).toContainEqual({
-      aspectRatio: computedAspectRatio,
-    });
+    expect(getViewProps().style).toContainEqual({ aspectRatio: computedAspectRatio });
   });
 
   it('composes consumer props with own props', () => {
@@ -124,10 +111,7 @@ describe('getImageProps', () => {
   it('sets height and width to 100%', () => {
     const { children } = renderHook({ source: { uri: mockUriGood } });
     const { getImageProps } = (children.mock.calls[1] as Bags)[0];
-    expect(getImageProps().style).toContainEqual({
-      height: '100%',
-      width: '100%',
-    });
+    expect(getImageProps().style).toContainEqual({ height: '100%', width: '100%' });
   });
 
   it('composes consumer props with own props', () => {
@@ -190,11 +174,7 @@ describe('completion callbacks', () => {
   it('does not call onLoad on success after unmounting', () => {
     expect(onLoad).toHaveBeenCalledTimes(0);
     expect(onError).toHaveBeenCalledTimes(0);
-    const { unmount } = renderHook({
-      source: { uri: mockUriSlowGood },
-      onLoad,
-      onError,
-    });
+    const { unmount } = renderHook({ source: { uri: mockUriSlowGood }, onLoad, onError });
     unmount();
     expect(onError).toHaveBeenCalledTimes(0);
     expect(onLoad).toHaveBeenCalledTimes(0);
@@ -203,11 +183,7 @@ describe('completion callbacks', () => {
   it('does not call onError on failure after unmounting', () => {
     expect(onLoad).toHaveBeenCalledTimes(0);
     expect(onError).toHaveBeenCalledTimes(0);
-    const { unmount } = renderHook({
-      source: { uri: mockUriSlowBad },
-      onLoad,
-      onError,
-    });
+    const { unmount } = renderHook({ source: { uri: mockUriSlowBad }, onLoad, onError });
     unmount();
     expect(onError).toHaveBeenCalledTimes(0);
     expect(onLoad).toHaveBeenCalledTimes(0);
