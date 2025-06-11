@@ -17,7 +17,6 @@ const config: Config = {
     '^.+\\.(js)$': ['babel-jest', { plugins: ['babel-plugin-syntax-hermes-parser'] }],
     '^.+\\.(ts|tsx)$': 'babel-jest',
   },
-  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };
 
 export default config;

@@ -83,7 +83,6 @@
     "eslint": "8.57.1",
     "eslint-plugin-wkovacs64": "16.2.0",
     "jest": "30.0.0",
-    "jest-watch-typeahead": "2.2.2",
     "metro-react-native-babel-preset": "0.77.0",
     "npm-run-all2": "8.0.4",
     "prettier": "3.5.3",
