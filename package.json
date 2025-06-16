@@ -73,7 +73,7 @@
     "@changesets/changelog-github": "0.5.1",
     "@changesets/cli": "2.29.4",
     "@testing-library/react-native": "13.2.0",
-    "@types/jest": "29.5.14",
+    "@types/jest": "30.0.0",
     "@types/react": "19.1.8",
     "@types/react-test-renderer": "19.1.0",
     "@wkovacs64/prettier-config": "4.2.1",
