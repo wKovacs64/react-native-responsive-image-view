@@ -82,7 +82,7 @@
     "doctoc": "2.2.1",
     "eslint": "8.57.1",
     "eslint-plugin-wkovacs64": "16.2.0",
-    "jest": "30.0.2",
+    "jest": "30.0.3",
     "metro-react-native-babel-preset": "0.77.0",
     "npm-run-all2": "8.0.4",
     "prettier": "3.6.0",
