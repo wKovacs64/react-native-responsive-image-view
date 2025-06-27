@@ -85,7 +85,7 @@
     "jest": "30.0.3",
     "metro-react-native-babel-preset": "0.77.0",
     "npm-run-all2": "8.0.4",
-    "prettier": "3.6.1",
+    "prettier": "3.6.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.80.0",
