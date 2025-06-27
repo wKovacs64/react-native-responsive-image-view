@@ -78,7 +78,7 @@
     "@types/react-test-renderer": "19.1.0",
     "@wkovacs64/prettier-config": "4.2.1",
     "babel-jest": "30.0.2",
-    "babel-plugin-syntax-hermes-parser": "0.29.0",
+    "babel-plugin-syntax-hermes-parser": "0.29.1",
     "doctoc": "2.2.1",
     "eslint": "8.57.1",
     "eslint-plugin-wkovacs64": "16.2.0",
