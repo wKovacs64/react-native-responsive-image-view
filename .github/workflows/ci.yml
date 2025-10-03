@@ -2,6 +2,9 @@ name: 🤖 CI
 
 on: [push]
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -96,6 +99,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prettier, lint, test, build]
     if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v5
@@ -119,4 +126,3 @@ jobs:
           title: 'chore: release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
