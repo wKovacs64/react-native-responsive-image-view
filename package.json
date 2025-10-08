@@ -87,7 +87,7 @@
     "prettier": "3.6.2",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-native": "0.81.4",
+    "react-native": "0.82.0",
     "react-native-builder-bob": "0.40.13",
     "react-test-renderer": "19.2.0",
     "rimraf": "6.0.1",
