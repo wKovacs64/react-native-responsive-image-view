@@ -2,6 +2,8 @@ import type { Config } from 'jest';
 
 const config: Config = {
   clearMocks: true,
+  // Handle pnpm's node_modules structure
+  transformIgnorePatterns: ['node_modules/(?!(.pnpm|react-native|@react-native)/)'],
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
