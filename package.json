@@ -48,10 +48,11 @@
       "typescript"
     ]
   },
+  "packageManager": "pnpm@10.25.0",
   "scripts": {
     "clean": "rimraf coverage dist",
     "changeset": "changeset",
-    "changeset:version": "changeset version && npm install --package-lock-only",
+    "changeset:version": "changeset version && pnpm install",
     "changeset:publish": "changeset publish",
     "format": "prettier --cache --write .",
     "lint": "eslint .",

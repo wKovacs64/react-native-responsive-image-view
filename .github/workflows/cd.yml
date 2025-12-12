@@ -26,17 +26,20 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v6
 
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: ⎔ Setup node
         uses: actions/setup-node@v6
         with:
-          cache: npm
+          cache: pnpm
           node-version-file: '.nvmrc'
 
       - name: 📥 Install deps
-        run: npm install
+        run: pnpm install
 
       - name: 🛠️ Build
-        run: npm run prepack
+        run: pnpm run prepack
 
       - name: ⚡ pkg.pr.new
-        run: npx --yes pkg-pr-new publish --compact
+        run: pnpm dlx pkg-pr-new publish --compact
