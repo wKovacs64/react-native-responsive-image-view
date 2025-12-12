@@ -75,7 +75,7 @@
     "@types/jest": "30.0.0",
     "@types/react": "19.2.7",
     "@types/react-test-renderer": "19.1.0",
-    "@wkovacs64/prettier-config": "4.2.2",
+    "@wkovacs64/prettier-config": "4.2.3",
     "babel-jest": "30.2.0",
     "babel-plugin-syntax-hermes-parser": "0.32.1",
     "doctoc": "2.2.1",
