@@ -89,7 +89,7 @@
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "react-native": "0.82.1",
-    "react-native-builder-bob": "0.40.16",
+    "react-native-builder-bob": "0.40.17",
     "react-test-renderer": "19.2.1",
     "rimraf": "6.1.2",
     "ts-node": "10.9.2",

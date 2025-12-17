@@ -72,8 +72,8 @@ importers:
         specifier: 0.82.1
         version: 0.82.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.1)
       react-native-builder-bob:
-        specifier: 0.40.16
-        version: 0.40.16
+        specifier: 0.40.17
+        version: 0.40.17
       react-test-renderer:
         specifier: 19.2.1
         version: 19.2.1(react@19.2.1)
@@ -3762,13 +3762,13 @@ packages:
   react-is@19.2.3:
     resolution: {integrity: sha512-qJNJfu81ByyabuG7hPFEbXqNcWSU3+eVus+KJs+0ncpGfMyYdvSmxiJxbWR65lYi1I+/0HBcliO029gc4F+PnA==}
 
-  react-native-builder-bob@0.40.16:
-    resolution: {integrity: sha512-BA4XZGyEiLNYH4CYE/O9yZV/8RZcIknyd+3D4EU+PmTI4trGP/EQI+ZrbRRaJYeV2vbE0TqpYMlxGwlu+j6lFg==}
+  react-native-builder-bob@0.40.17:
+    resolution: {integrity: sha512-FCVSpPxHixGdvbiKHqV5w7fwwZH0fLuY3zzUB2ie9e4eR6nu9+3QvBdcl/kdcP03yywdBBnYhtYWyLWSc0yMiA==}
     engines: {node: ^20.19.0 || ^22.12.0 || >= 23.4.0}
     hasBin: true
 
-  react-native-monorepo-config@0.1.10:
-    resolution: {integrity: sha512-v0rlaLZiCUg95Mpw6xNRQce5k9yio0qscKjNQaPtFYMNL75YugS2UPUItIPLIRbZubK+s2/LRzBjX+mdyUgh4g==}
+  react-native-monorepo-config@0.3.1:
+    resolution: {integrity: sha512-Ha/FxhAeDxs3Gt2EH0JnBz/DJMuPT0Wjm0XVHJ7lGAg6yJrZohCqW6ZCpX1i9kvtqrL97ZnoWoQ7KIP5cpfWng==}
 
   react-native@0.82.1:
     resolution: {integrity: sha512-tFAqcU7Z4g49xf/KnyCEzI4nRTu1Opcx05Ov2helr8ZTg1z7AJR/3sr2rZ+AAVlAs2IXk+B0WOxXGmdD3+4czA==}
@@ -9223,7 +9223,7 @@ snapshots:
 
   react-is@19.2.3: {}
 
-  react-native-builder-bob@0.40.16:
+  react-native-builder-bob@0.40.17:
     dependencies:
       '@babel/core': 7.28.5
       '@babel/plugin-transform-flow-strip-types': 7.27.1(@babel/core@7.28.5)
@@ -9244,13 +9244,13 @@ snapshots:
       json5: 2.2.3
       kleur: 4.1.5
       prompts: 2.4.2
-      react-native-monorepo-config: 0.1.10
+      react-native-monorepo-config: 0.3.1
       which: 2.0.2
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
 
-  react-native-monorepo-config@0.1.10:
+  react-native-monorepo-config@0.3.1:
     dependencies:
       escape-string-regexp: 5.0.0
       fast-glob: 3.3.3
