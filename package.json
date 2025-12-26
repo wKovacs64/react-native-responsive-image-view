@@ -48,7 +48,7 @@
       "typescript"
     ]
   },
-  "packageManager": "pnpm@10.26.0",
+  "packageManager": "pnpm@10.26.1",
   "scripts": {
     "clean": "rimraf coverage dist",
     "changeset": "changeset",
