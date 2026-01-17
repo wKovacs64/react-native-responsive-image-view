@@ -22,13 +22,13 @@ importers:
         version: 2.29.8(@types/node@25.0.0)
       '@testing-library/react-native':
         specifier: 13.3.3
-        version: 13.3.3(jest@30.2.0(@types/node@25.0.0)(ts-node@10.9.2(@types/node@25.0.0)(typescript@5.9.3)))(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.3))(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 13.3.3(jest@30.2.0(@types/node@25.0.0)(ts-node@10.9.2(@types/node@25.0.0)(typescript@5.9.3)))(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.8)(react@19.2.3))(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)
       '@types/jest':
         specifier: 30.0.0
         version: 30.0.0
       '@types/react':
-        specifier: 19.2.7
-        version: 19.2.7
+        specifier: 19.2.8
+        version: 19.2.8
       '@types/react-test-renderer':
         specifier: 19.1.0
         version: 19.1.0
@@ -70,7 +70,7 @@ importers:
         version: 19.2.3(react@19.2.3)
       react-native:
         specifier: 0.83.1
-        version: 0.83.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.3)
+        version: 0.83.1(@babel/core@7.28.5)(@types/react@19.2.8)(react@19.2.3)
       react-native-builder-bob:
         specifier: 0.40.17
         version: 0.40.17
@@ -1293,8 +1293,8 @@ packages:
   '@types/react-test-renderer@19.1.0':
     resolution: {integrity: sha512-XD0WZrHqjNrxA/MaR9O22w/RNidWR9YZmBdRGI7wcnWGrv/3dA8wKCJ8m63Sn+tLJhcjmuhOi629N66W6kgWzQ==}
 
-  '@types/react@19.2.7':
-    resolution: {integrity: sha512-MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==}
+  '@types/react@19.2.8':
+    resolution: {integrity: sha512-3MbSL37jEchWZz2p2mjntRZtPt837ij10ApxKfgmXCTuHWagYg7iA5bqPw6C8BMPfwidlvfPI/fxOc42HLhcyg==}
 
   '@types/semver@7.7.1':
     resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
@@ -5995,14 +5995,14 @@ snapshots:
 
   '@react-native/normalize-colors@0.83.1': {}
 
-  '@react-native/virtualized-lists@0.83.1(@types/react@19.2.7)(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.3))(react@19.2.3)':
+  '@react-native/virtualized-lists@0.83.1(@types/react@19.2.8)(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.8)(react@19.2.3))(react@19.2.3)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
       react: 19.2.3
-      react-native: 0.83.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.3)
+      react-native: 0.83.1(@babel/core@7.28.5)(@types/react@19.2.8)(react@19.2.3)
     optionalDependencies:
-      '@types/react': 19.2.7
+      '@types/react': 19.2.8
 
   '@rtsao/scc@1.1.0': {}
 
@@ -6024,13 +6024,13 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
-  '@testing-library/react-native@13.3.3(jest@30.2.0(@types/node@25.0.0)(ts-node@10.9.2(@types/node@25.0.0)(typescript@5.9.3)))(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.3))(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@testing-library/react-native@13.3.3(jest@30.2.0(@types/node@25.0.0)(ts-node@10.9.2(@types/node@25.0.0)(typescript@5.9.3)))(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.8)(react@19.2.3))(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       jest-matcher-utils: 30.2.0
       picocolors: 1.1.1
       pretty-format: 30.2.0
       react: 19.2.3
-      react-native: 0.83.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.3)
+      react-native: 0.83.1(@babel/core@7.28.5)(@types/react@19.2.8)(react@19.2.3)
       react-test-renderer: 19.2.3(react@19.2.3)
       redent: 3.0.0
     optionalDependencies:
@@ -6121,9 +6121,9 @@ snapshots:
 
   '@types/react-test-renderer@19.1.0':
     dependencies:
-      '@types/react': 19.2.7
+      '@types/react': 19.2.8
 
-  '@types/react@19.2.7':
+  '@types/react@19.2.8':
     dependencies:
       csstype: 3.2.3
 
@@ -9236,7 +9236,7 @@ snapshots:
       escape-string-regexp: 5.0.0
       fast-glob: 3.3.3
 
-  react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.3):
+  react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.8)(react@19.2.3):
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native/assets-registry': 0.83.1
@@ -9245,7 +9245,7 @@ snapshots:
       '@react-native/gradle-plugin': 0.83.1
       '@react-native/js-polyfills': 0.83.1
       '@react-native/normalize-colors': 0.83.1
-      '@react-native/virtualized-lists': 0.83.1(@types/react@19.2.7)(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.7)(react@19.2.3))(react@19.2.3)
+      '@react-native/virtualized-lists': 0.83.1(@types/react@19.2.8)(react-native@0.83.1(@babel/core@7.28.5)(@types/react@19.2.8)(react@19.2.3))(react@19.2.3)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1
@@ -9275,7 +9275,7 @@ snapshots:
       ws: 7.5.10
       yargs: 17.7.2
     optionalDependencies:
-      '@types/react': 19.2.7
+      '@types/react': 19.2.8
     transitivePeerDependencies:
       - '@babel/core'
       - '@react-native-community/cli'
