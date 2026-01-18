@@ -21,6 +21,7 @@
   "license": "MIT",
   "homepage": "https://npm.im/react-native-responsive-image-view",
   "repository": {
+    "type": "git",
     "url": "git+https://github.com/wKovacs64/react-native-responsive-image-view.git"
   },
   "bugs": {
