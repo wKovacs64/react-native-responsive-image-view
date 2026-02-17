@@ -72,8 +72,8 @@ importers:
         specifier: 0.83.2
         version: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.4)
       react-native-builder-bob:
-        specifier: 0.40.17
-        version: 0.40.17
+        specifier: 0.40.18
+        version: 0.40.18
       react-test-renderer:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
@@ -3801,13 +3801,13 @@ packages:
   react-is@19.2.4:
     resolution: {integrity: sha512-W+EWGn2v0ApPKgKKCy/7s7WHXkboGcsrXE+2joLyVxkbyVQfO3MUEaUQDHoSmb8TFFrSKYa9mw64WZHNHSDzYA==}
 
-  react-native-builder-bob@0.40.17:
-    resolution: {integrity: sha512-FCVSpPxHixGdvbiKHqV5w7fwwZH0fLuY3zzUB2ie9e4eR6nu9+3QvBdcl/kdcP03yywdBBnYhtYWyLWSc0yMiA==}
+  react-native-builder-bob@0.40.18:
+    resolution: {integrity: sha512-vGd6l/iaMirnVucQlm2OJWTDQjxbYxHNmqXtDRWXMRubwotKKycx1ARj/aJYbzbCdzHBB00bGzYEhUcq4sbGog==}
     engines: {node: ^20.19.0 || ^22.12.0 || >= 23.4.0}
     hasBin: true
 
-  react-native-monorepo-config@0.3.1:
-    resolution: {integrity: sha512-Ha/FxhAeDxs3Gt2EH0JnBz/DJMuPT0Wjm0XVHJ7lGAg6yJrZohCqW6ZCpX1i9kvtqrL97ZnoWoQ7KIP5cpfWng==}
+  react-native-monorepo-config@0.3.3:
+    resolution: {integrity: sha512-d1kjHRVsbd/yVkFb5rYxWYiWVzCqJgUzcc499ejfc8jH6q6XYB4U+dNpX/HsxdXZLpzEhmKvgq0PsjRAIdAVeA==}
 
   react-native@0.83.2:
     resolution: {integrity: sha512-ZDma3SLkRN2U2dg0/EZqxNBAx4of/oTnPjXAQi299VLq2gdnbZowGy9hzqv+O7sTA62g+lM1v+2FM5DUnJ/6hg==}
@@ -5320,7 +5320,7 @@ snapshots:
 
   '@babel/preset-env@7.28.5(@babel/core@7.29.0)':
     dependencies:
-      '@babel/compat-data': 7.28.5
+      '@babel/compat-data': 7.28.6
       '@babel/core': 7.29.0
       '@babel/helper-compilation-targets': 7.28.6
       '@babel/helper-plugin-utils': 7.27.1
@@ -9296,7 +9296,7 @@ snapshots:
 
   react-is@19.2.4: {}
 
-  react-native-builder-bob@0.40.17:
+  react-native-builder-bob@0.40.18:
     dependencies:
       '@babel/core': 7.29.0
       '@babel/plugin-transform-flow-strip-types': 7.27.1(@babel/core@7.29.0)
@@ -9317,13 +9317,13 @@ snapshots:
       json5: 2.2.3
       kleur: 4.1.5
       prompts: 2.4.2
-      react-native-monorepo-config: 0.3.1
+      react-native-monorepo-config: 0.3.3
       which: 2.0.2
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
 
-  react-native-monorepo-config@0.3.1:
+  react-native-monorepo-config@0.3.3:
     dependencies:
       escape-string-regexp: 5.0.0
       fast-glob: 3.3.3
