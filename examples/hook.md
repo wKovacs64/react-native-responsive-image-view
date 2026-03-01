@@ -3,9 +3,9 @@
 #### Responsive Remote Image
 
 ```jsx
-import React from 'react';
-import { Image, View } from 'react-native';
-import { useResponsiveImageView } from 'react-native-responsive-image-view';
+import React from "react";
+import { Image, View } from "react-native";
+import { useResponsiveImageView } from "react-native-responsive-image-view";
 
 const MyComponent = ({ imageUri }) => {
   const { getViewProps, getImageProps } = useResponsiveImageView({
@@ -23,10 +23,10 @@ const MyComponent = ({ imageUri }) => {
 #### Fixed (Controlled) Aspect Ratio and Local Image Resource
 
 ```jsx
-import React from 'react';
-import { Image, View } from 'react-native';
-import { useResponsiveImageView } from 'react-native-responsive-image-view';
-import headerImage from './header.jpg';
+import React from "react";
+import { Image, View } from "react-native";
+import { useResponsiveImageView } from "react-native-responsive-image-view";
+import headerImage from "./header.jpg";
 
 const DrawerHeader = () => {
   const { getViewProps, getImageProps } = useResponsiveImageView({
@@ -45,9 +45,9 @@ const DrawerHeader = () => {
 #### Touchable
 
 ```jsx
-import React from 'react';
-import { Image, TouchableHighlight, View } from 'react-native';
-import { useResponsiveImageView } from 'react-native-responsive-image-view';
+import React from "react";
+import { Image, TouchableHighlight, View } from "react-native";
+import { useResponsiveImageView } from "react-native-responsive-image-view";
 
 const MyTouchableComponent = ({ imageUri, onPress }) => {
   const { getViewProps, getImageProps } = useResponsiveImageView({
@@ -67,14 +67,15 @@ const MyTouchableComponent = ({ imageUri, onPress }) => {
 #### Loading and Error Handling
 
 ```jsx
-import React from 'react';
-import { ActivityIndicator, Image, Text, Button, View } from 'react-native';
-import { useResponsiveImageView } from 'react-native-responsive-image-view';
+import React from "react";
+import { ActivityIndicator, Image, Text, Button, View } from "react-native";
+import { useResponsiveImageView } from "react-native-responsive-image-view";
 
 const MyComponent = ({ imageUri }) => {
-  const { error, loading, retry, getViewProps, getImageProps } = useResponsiveImageView({
-    source: { uri: imageUri },
-  });
+  const { error, loading, retry, getViewProps, getImageProps } =
+    useResponsiveImageView({
+      source: { uri: imageUri },
+    });
 
   if (loading) {
     return <ActivityIndicator animating={true} size="large" />;
@@ -100,16 +101,16 @@ const MyComponent = ({ imageUri }) => {
 #### Composing Props
 
 ```jsx
-import React from 'react';
-import { StyleSheet, Image, View } from 'react-native';
-import { useResponsiveImageView } from 'react-native-responsive-image-view';
+import React from "react";
+import { StyleSheet, Image, View } from "react-native";
+import { useResponsiveImageView } from "react-native-responsive-image-view";
 
 const styles = StyleSheet.create({
   imageContainer: {
     padding: 20, // will be merged into RNRIV View props!
   },
   image: {
-    width: '50%', // will be overwritten by RNRIV Image props!
+    width: "50%", // will be overwritten by RNRIV Image props!
   },
 });
 
@@ -129,13 +130,13 @@ const MyComponent = ({ imageUri }) => {
 #### Success/Failure Callbacks
 
 ```jsx
-import React from 'react';
-import { Image, Text, View } from 'react-native';
-import { useResponsiveImageView } from 'react-native-responsive-image-view';
+import React from "react";
+import { Image, Text, View } from "react-native";
+import { useResponsiveImageView } from "react-native-responsive-image-view";
 
 const MyComponentWithCallbacks = ({ imageUri }) => {
   const onLoad = React.useCallback(() => {
-    console.log('Image has been loaded.');
+    console.log("Image has been loaded.");
   }, []);
 
   const onError = React.useCallback((err) => {

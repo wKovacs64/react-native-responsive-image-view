@@ -1,9 +1,9 @@
-import type { ImageProps } from 'react-native';
+import type { ImageProps } from "react-native";
 
-export const mockUriGood = 'mockUriGood';
-export const mockUriBad = 'mockUriBad';
-export const mockUriSlowGood = 'mockUriSlowGood';
-export const mockUriSlowBad = 'mockUriSlowBad';
+export const mockUriGood = "mockUriGood";
+export const mockUriBad = "mockUriBad";
+export const mockUriSlowGood = "mockUriSlowGood";
+export const mockUriSlowBad = "mockUriSlowBad";
 export const mockResourceGood = 1000;
 export const mockResourceBad = 9999;
 export const mockWidth = 800;
@@ -22,9 +22,9 @@ export const consumerViewProps = {
   },
 };
 export const consumerImageProps: Partial<ImageProps> = {
-  onLayout: jest.fn().mockName('Image#onLayout'),
+  onLayout: jest.fn().mockName("Image#onLayout"),
   style: {
-    height: '50%',
-    width: '50%',
+    height: "50%",
+    width: "50%",
   },
 };

@@ -3,9 +3,9 @@
 #### Responsive Remote Image
 
 ```jsx
-import React from 'react';
-import { Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
+import React from "react";
+import { Image, View } from "react-native";
+import ResponsiveImageView from "react-native-responsive-image-view";
 
 const MyComponent = ({ imageUri }) => (
   <ResponsiveImageView source={{ uri: imageUri }}>
@@ -21,10 +21,10 @@ const MyComponent = ({ imageUri }) => (
 #### Fixed (Controlled) Aspect Ratio and Local Image Resource
 
 ```jsx
-import React from 'react';
-import { Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
-import headerImage from './header.jpg';
+import React from "react";
+import { Image, View } from "react-native";
+import ResponsiveImageView from "react-native-responsive-image-view";
+import headerImage from "./header.jpg";
 
 const DrawerHeader = () => (
   <ResponsiveImageView aspectRatio={16 / 9} source={headerImage}>
@@ -40,9 +40,9 @@ const DrawerHeader = () => (
 #### Touchable
 
 ```jsx
-import React from 'react';
-import { Image, TouchableHighlight, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
+import React from "react";
+import { Image, TouchableHighlight, View } from "react-native";
+import ResponsiveImageView from "react-native-responsive-image-view";
 
 const MyTouchableComponent = ({ imageUri, onPress }) => (
   <ResponsiveImageView source={{ uri: imageUri }}>
@@ -60,9 +60,9 @@ const MyTouchableComponent = ({ imageUri, onPress }) => (
 #### Loading and Error Handling
 
 ```jsx
-import React from 'react';
-import { ActivityIndicator, Image, Text, Button, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
+import React from "react";
+import { ActivityIndicator, Image, Text, Button, View } from "react-native";
+import ResponsiveImageView from "react-native-responsive-image-view";
 
 const MyComponent = ({ imageUri }) => (
   <ResponsiveImageView source={{ uri: imageUri }}>
@@ -91,16 +91,16 @@ const MyComponent = ({ imageUri }) => (
 #### Composing Props
 
 ```jsx
-import React from 'react';
-import { StyleSheet, Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
+import React from "react";
+import { StyleSheet, Image, View } from "react-native";
+import ResponsiveImageView from "react-native-responsive-image-view";
 
 const styles = StyleSheet.create({
   imageContainer: {
     padding: 20, // will be merged into ResponsiveImageView View props!
   },
   image: {
-    width: '50%', // will be overwritten by ResponsiveImageView Image props!
+    width: "50%", // will be overwritten by ResponsiveImageView Image props!
   },
 });
 
@@ -118,13 +118,13 @@ const MyComponent = ({ imageUri }) => (
 #### Success/Failure Callbacks
 
 ```jsx
-import React from 'react';
-import { Image, View } from 'react-native';
-import ResponsiveImageView from 'react-native-responsive-image-view';
+import React from "react";
+import { Image, View } from "react-native";
+import ResponsiveImageView from "react-native-responsive-image-view";
 
 class MyClassComponent extends React.Component {
   onLoad = () => {
-    console.log('Image has been loaded.');
+    console.log("Image has been loaded.");
   };
 
   onError = (err) => {
@@ -141,7 +141,11 @@ class MyClassComponent extends React.Component {
     const { imageUri } = this.props;
 
     return (
-      <ResponsiveImageView onLoad={this.onLoad} onError={this.onError} source={{ uri: imageUri }}>
+      <ResponsiveImageView
+        onLoad={this.onLoad}
+        onError={this.onError}
+        source={{ uri: imageUri }}
+      >
         {this.renderImageView}
       </ResponsiveImageView>
     );

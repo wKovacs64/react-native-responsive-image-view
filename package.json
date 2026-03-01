@@ -1,36 +1,33 @@
 {
   "name": "react-native-responsive-image-view",
   "version": "3.0.0",
+  "private": false,
   "description": "React Native component for scaling an Image within the parent View",
   "keywords": [
+    "aspect-ratio",
+    "fit",
+    "flexible",
+    "hook",
+    "image",
     "react",
     "react-native",
     "responsive",
-    "flexible",
-    "fit",
-    "aspect-ratio",
-    "image",
-    "view",
-    "hook"
+    "view"
   ],
+  "homepage": "https://npm.im/react-native-responsive-image-view",
+  "bugs": {
+    "url": "https://github.com/wKovacs64/react-native-responsive-image-view/issues"
+  },
+  "license": "MIT",
   "author": {
     "name": "Justin Hall",
     "email": "justin.r.hall@gmail.com"
   },
   "contributors": [],
-  "license": "MIT",
-  "homepage": "https://npm.im/react-native-responsive-image-view",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wKovacs64/react-native-responsive-image-view.git"
   },
-  "bugs": {
-    "url": "https://github.com/wKovacs64/react-native-responsive-image-view/issues"
-  },
-  "main": "dist/commonjs/index.js",
-  "module": "dist/module/index.js",
-  "types": "dist/typescript/src/index.d.ts",
-  "react-native": "src/index.tsx",
   "source": "src/index.tsx",
   "files": [
     "src",
@@ -40,16 +37,13 @@
     "!**/__fixtures__",
     "!**/__tests__"
   ],
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "dist",
-    "targets": [
-      "commonjs",
-      "module",
-      "typescript"
-    ]
+  "main": "dist/commonjs/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/typescript/src/index.d.ts",
+  "react-native": "src/index.tsx",
+  "publishConfig": {
+    "access": "public"
   },
-  "packageManager": "pnpm@10.30.1",
   "scripts": {
     "clean": "rimraf coverage dist",
     "changeset": "changeset",
@@ -62,10 +56,6 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "typecheck": "tsc --noEmit"
-  },
-  "private": false,
-  "publishConfig": {
-    "access": "public"
   },
   "devDependencies": {
     "@babel/core": "7.29.0",
@@ -97,5 +87,15 @@
   "peerDependencies": {
     "react": ">=16.8.3",
     "react-native": ">=0.59.0"
+  },
+  "packageManager": "pnpm@10.30.1",
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "dist",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
   }
 }

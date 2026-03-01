@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Text, View } from 'react-native';
-import { render, screen } from '@testing-library/react-native';
+import * as React from "react";
+import { Text, View } from "react-native";
+import { render, screen } from "@testing-library/react-native";
 import {
   mockUriGood,
   mockUriBad,
@@ -8,20 +8,22 @@ import {
   mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
-} from '../__fixtures__';
-import { ResponsiveImageView, type ResponsiveImageViewBag } from '..';
+} from "../__fixtures__";
+import { ResponsiveImageView, type ResponsiveImageViewBag } from "..";
 
 const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
-  loading: expect.any(Boolean) as ResponsiveImageViewBag['loading'],
-  error: expect.any(String) as ResponsiveImageViewBag['error'],
-  getViewProps: expect.any(Function) as ResponsiveImageViewBag['getViewProps'],
-  getImageProps: expect.any(Function) as ResponsiveImageViewBag['getImageProps'],
-  retry: expect.any(Function) as ResponsiveImageViewBag['retry'],
+  loading: expect.any(Boolean) as ResponsiveImageViewBag["loading"],
+  error: expect.any(String) as ResponsiveImageViewBag["error"],
+  getViewProps: expect.any(Function) as ResponsiveImageViewBag["getViewProps"],
+  getImageProps: expect.any(
+    Function,
+  ) as ResponsiveImageViewBag["getImageProps"],
+  retry: expect.any(Function) as ResponsiveImageViewBag["retry"],
 }) as ResponsiveImageViewBag;
 
-describe('rendering order (component > render > FAC > children > null)', () => {
-  describe('renders component if provided', () => {
-    it('function', () => {
+describe("rendering order (component > render > FAC > children > null)", () => {
+  describe("renders component if provided", () => {
+    it("function", () => {
       const MyFunctionComponent = jest.fn(() => <View />);
       const renderProp = jest.fn(() => <View />);
       const children = jest.fn(() => <View />);
@@ -35,12 +37,15 @@ describe('rendering order (component > render > FAC > children > null)', () => {
         </ResponsiveImageView>,
       );
       // the second argument is the context (undefined in this case), which we don't care about
-      expect(MyFunctionComponent).toHaveBeenCalledWith(expectedShape, undefined);
+      expect(MyFunctionComponent).toHaveBeenCalledWith(
+        expectedShape,
+        undefined,
+      );
       expect(renderProp).not.toHaveBeenCalled();
       expect(children).not.toHaveBeenCalled();
     });
 
-    it('class', () => {
+    it("class", () => {
       const classRenderMethod = jest.fn((_props) => <View />);
       class MyClassComponent extends React.Component {
         render() {
@@ -64,7 +69,7 @@ describe('rendering order (component > render > FAC > children > null)', () => {
     });
   });
 
-  it('calls render if no component was provided', () => {
+  it("calls render if no component was provided", () => {
     const renderProp = jest.fn(() => <View />);
     const children = jest.fn(() => <View />);
     render(
@@ -76,13 +81,17 @@ describe('rendering order (component > render > FAC > children > null)', () => {
     expect(children).not.toHaveBeenCalled();
   });
 
-  it('calls children function if no component or render prop was provided', () => {
+  it("calls children function if no component or render prop was provided", () => {
     const children = jest.fn(() => <View />);
-    render(<ResponsiveImageView source={{ uri: mockUriGood }}>{children}</ResponsiveImageView>);
+    render(
+      <ResponsiveImageView source={{ uri: mockUriGood }}>
+        {children}
+      </ResponsiveImageView>,
+    );
     expect(children).toHaveBeenCalledWith(expectedShape);
   });
 
-  it('renders children if no component, render prop, or FAC was provided', () => {
+  it("renders children if no component, render prop, or FAC was provided", () => {
     render(
       <ResponsiveImageView source={{ uri: mockUriGood }}>
         <View>
@@ -93,58 +102,90 @@ describe('rendering order (component > render > FAC > children > null)', () => {
     expect(screen.getByText(/Hello/i)).toBeTruthy();
   });
 
-  it('renders null if no renderer was provided', () => {
+  it("renders null if no renderer was provided", () => {
     render(<ResponsiveImageView source={{ uri: mockUriGood }} />);
     expect(screen.queryByText(/.*/)).toBeNull();
   });
 });
 
-describe('completion callbacks', () => {
+describe("completion callbacks", () => {
   it("doesn't throw on success if no onLoad was provided", () => {
-    expect(() => render(<ResponsiveImageView source={{ uri: mockUriGood }} />)).not.toThrow();
+    expect(() =>
+      render(<ResponsiveImageView source={{ uri: mockUriGood }} />),
+    ).not.toThrow();
   });
 
   it("doesn't throw on failure if no onError was provided", () => {
-    expect(() => render(<ResponsiveImageView source={{ uri: mockUriBad }} />)).not.toThrow();
+    expect(() =>
+      render(<ResponsiveImageView source={{ uri: mockUriBad }} />),
+    ).not.toThrow();
   });
 
-  it('calls provided onLoad on URI success', () =>
+  it("calls provided onLoad on URI success", () =>
     new Promise<void>((resolve, reject) => {
       render(
-        <ResponsiveImageView source={{ uri: mockUriGood }} onLoad={resolve} onError={reject} />,
+        <ResponsiveImageView
+          source={{ uri: mockUriGood }}
+          onLoad={resolve}
+          onError={reject}
+        />,
       );
     }));
 
-  it('calls provided onError on URI failure', () =>
+  it("calls provided onError on URI failure", () =>
     new Promise<string>((resolve, reject) => {
       render(
-        <ResponsiveImageView source={{ uri: mockUriBad }} onLoad={reject} onError={resolve} />,
+        <ResponsiveImageView
+          source={{ uri: mockUriBad }}
+          onLoad={reject}
+          onError={resolve}
+        />,
       );
     }));
 
-  it('calls provided onLoad on imported resource success', () =>
+  it("calls provided onLoad on imported resource success", () =>
     new Promise<void>((resolve, reject) => {
-      render(<ResponsiveImageView source={mockResourceGood} onLoad={resolve} onError={reject} />);
+      render(
+        <ResponsiveImageView
+          source={mockResourceGood}
+          onLoad={resolve}
+          onError={reject}
+        />,
+      );
     }));
 
-  it('calls provided onError on imported resource failure', () =>
+  it("calls provided onError on imported resource failure", () =>
     new Promise<string>((resolve, reject) => {
-      render(<ResponsiveImageView source={mockResourceBad} onLoad={reject} onError={resolve} />);
+      render(
+        <ResponsiveImageView
+          source={mockResourceBad}
+          onLoad={reject}
+          onError={resolve}
+        />,
+      );
     }));
 
-  it('does not call onLoad on success after unmounting', () =>
+  it("does not call onLoad on success after unmounting", () =>
     new Promise<void>((resolve, reject) => {
       const { unmount } = render(
-        <ResponsiveImageView source={{ uri: mockUriSlowGood }} onLoad={reject} onError={reject} />,
+        <ResponsiveImageView
+          source={{ uri: mockUriSlowGood }}
+          onLoad={reject}
+          onError={reject}
+        />,
       );
       unmount();
       setImmediate(resolve);
     }));
 
-  it('does not call onError on failure after unmounting', () =>
+  it("does not call onError on failure after unmounting", () =>
     new Promise<void>((resolve, reject) => {
       const { unmount } = render(
-        <ResponsiveImageView source={{ uri: mockUriSlowBad }} onLoad={reject} onError={reject} />,
+        <ResponsiveImageView
+          source={{ uri: mockUriSlowBad }}
+          onLoad={reject}
+          onError={reject}
+        />,
       );
       unmount();
       setImmediate(resolve);

@@ -1,4 +1,4 @@
-import { Image } from 'react-native';
+import { Image } from "react-native";
 import {
   mockUriGood,
   mockUriBad,
@@ -7,39 +7,41 @@ import {
   mockResourceGood,
   mockWidth,
   mockHeight,
-} from './src/__fixtures__';
+} from "./src/__fixtures__";
 
-jest.spyOn(Image, 'getSize').mockImplementation((uri, onLoad = () => {}, onError = () => {}) => {
-  switch (uri) {
-    case mockUriGood: {
-      onLoad(mockWidth, mockHeight);
-      break;
-    }
-    case mockUriBad: {
-      onError(new Error(uri));
-      break;
-    }
-    case mockUriSlowGood: {
-      setImmediate(() => {
+jest
+  .spyOn(Image, "getSize")
+  .mockImplementation((uri, onLoad = () => {}, onError = () => {}) => {
+    switch (uri) {
+      case mockUriGood: {
         onLoad(mockWidth, mockHeight);
-      });
-      break;
+        break;
+      }
+      case mockUriBad: {
+        onError(new Error(uri));
+        break;
+      }
+      case mockUriSlowGood: {
+        setImmediate(() => {
+          onLoad(mockWidth, mockHeight);
+        });
+        break;
+      }
+      case mockUriSlowBad: {
+        setImmediate(() => {
+          onError(uri);
+        });
+        break;
+      }
+      default: {
+        throw new Error(`Unexpected URI value in test: ${uri}`);
+      }
     }
-    case mockUriSlowBad: {
-      setImmediate(() => {
-        onError(uri);
-      });
-      break;
-    }
-    default: {
-      throw new Error(`Unexpected URI value in test: ${uri}`);
-    }
-  }
-});
+  });
 
 // @ts-expect-error: contrary to what TS thinks, the current implementation of
 // resolveAssetSource _can_ return `null`, so this is a valid mock.
-jest.spyOn(Image, 'resolveAssetSource').mockImplementation((source) => {
+jest.spyOn(Image, "resolveAssetSource").mockImplementation((source) => {
   if (source === mockResourceGood) {
     return { width: mockWidth, height: mockHeight };
   }
