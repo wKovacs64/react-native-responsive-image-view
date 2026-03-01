@@ -13,8 +13,8 @@ env:
   CI: true
 
 jobs:
-  prettier:
-    name: 🅿️ Prettier
+  format:
+    name: 🔤 Oxfmt
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout repo
@@ -32,8 +32,8 @@ jobs:
       - name: 📥 Install deps
         run: pnpm install
 
-      - name: 💅 Format check
-        run: pnpm dlx prettier --cache --check .
+      - name: 🔤 Format check
+        run: pnpm dlx oxfmt --check .
 
   lint:
     name: ⬣ ESLint
@@ -109,7 +109,7 @@ jobs:
   release:
     name: 🚀 Release
     runs-on: ubuntu-latest
-    needs: [prettier, lint, test, build]
+    needs: [format, lint, test, build]
     if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
