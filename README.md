@@ -77,9 +77,9 @@ appropriate for your project.
 ### Component
 
 ```tsx
-import * as React from 'react';
-import { Image, View } from 'react-native';
-import { ResponsiveImageView } from 'react-native-responsive-image-view';
+import * as React from "react";
+import { Image, View } from "react-native";
+import { ResponsiveImageView } from "react-native-responsive-image-view";
 
 function MyComponent({ imageUri }) {
   return (
@@ -105,12 +105,14 @@ render the `Image` inside the `View` in your `render` function.
 ### Hook
 
 ```tsx
-import * as React from 'react';
-import { Image, View } from 'react-native';
-import { useResponsiveImageView } from 'react-native-responsive-image-view';
+import * as React from "react";
+import { Image, View } from "react-native";
+import { useResponsiveImageView } from "react-native-responsive-image-view";
 
 function MyComponent({ imageUri }) {
-  const { getViewProps, getImageProps } = useResponsiveImageView({ source: { uri: imageUri } });
+  const { getViewProps, getImageProps } = useResponsiveImageView({
+    source: { uri: imageUri },
+  });
 
   return (
     <View {...getViewProps()}>
@@ -317,16 +319,12 @@ day, these features proved to be too opinionated.
 
 [npm-image]: https://img.shields.io/npm/v/react-native-responsive-image-view.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/react-native-responsive-image-view
-[ci-image]:
-  https://img.shields.io/github/actions/workflow/status/wKovacs64/react-native-responsive-image-view/ci.yml?logo=github&style=flat-square
-[ci-url]:
-  https://github.com/wKovacs64/react-native-responsive-image-view/actions?query=workflow%3Aci
-[coverage-image]:
-  https://img.shields.io/codecov/c/github/wKovacs64/react-native-responsive-image-view/main.svg?style=flat-square
+[ci-image]: https://img.shields.io/github/actions/workflow/status/wKovacs64/react-native-responsive-image-view/ci.yml?logo=github&style=flat-square
+[ci-url]: https://github.com/wKovacs64/react-native-responsive-image-view/actions?query=workflow%3Aci
+[coverage-image]: https://img.shields.io/codecov/c/github/wKovacs64/react-native-responsive-image-view/main.svg?style=flat-square
 [coverage-url]: https://codecov.io/gh/wKovacs64/react-native-responsive-image-view/branch/main
 [aspectratio]: https://facebook.github.io/react-native/docs/layout-props#aspectratio
-[render-props]:
-  https://react.dev/reference/react/Children#calling-a-render-prop-to-customize-rendering
+[render-props]: https://react.dev/reference/react/Children#calling-a-render-prop-to-customize-rendering
 [custom-hooks]: https://react.dev/learn/reusing-logic-with-custom-hooks
 [npm]: https://www.npmjs.com/
 [react-native-flex-image]: https://github.com/kodefox/react-native-flex-image
@@ -337,8 +335,6 @@ day, these features proved to be too opinionated.
 [use-a-render-prop]: https://medium.com/@mjackson/use-a-render-prop-50de598f11ce
 [faccs-and-ci]: http://americanexpress.io/faccs-are-an-antipattern/
 [kentcdodds]: https://github.com/kentcdodds
-[kent-prop-getters]:
-  https://kentcdodds.com/blog/how-to-give-rendering-control-to-users-with-prop-getters
-[examples-directory]:
-  https://github.com/wKovacs64/react-native-responsive-image-view/tree/main/examples
+[kent-prop-getters]: https://kentcdodds.com/blog/how-to-give-rendering-control-to-users-with-prop-getters
+[examples-directory]: https://github.com/wKovacs64/react-native-responsive-image-view/tree/main/examples
 [license]: https://github.com/wKovacs64/react-native-responsive-image-view/tree/main/LICENSE.txt

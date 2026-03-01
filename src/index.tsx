@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Image,
   type ViewProps,
   type ImageProps,
   type ImageURISource,
   type ImageRequireSource,
-} from 'react-native';
+} from "react-native";
 
 // Output
 export type ResponsiveImageViewBag = {
@@ -14,7 +14,7 @@ export type ResponsiveImageViewBag = {
   retry: () => void;
   getViewProps: (props?: ViewProps) => ViewProps;
   getImageProps: (
-    props?: Omit<ImageProps, 'source'> & { source?: ImageProps['source'] },
+    props?: Omit<ImageProps, "source"> & { source?: ImageProps["source"] },
   ) => ImageProps;
 };
 
@@ -30,7 +30,9 @@ export type UseResponsiveImageViewOptions = {
 export type ResponsiveImageViewProps = UseResponsiveImageViewOptions & {
   component?: React.ComponentType<any>;
   render?: (bag: ResponsiveImageViewBag) => React.JSX.Element;
-  children?: ((bag: ResponsiveImageViewBag) => React.JSX.Element) | React.ReactNode;
+  children?:
+    | ((bag: ResponsiveImageViewBag) => React.JSX.Element)
+    | React.ReactNode;
 };
 
 // A cancelable version of Image.getSize, adapted from
@@ -71,15 +73,20 @@ type State = {
 };
 
 type Action =
-  | { type: 'SUCCESS'; payload: number }
-  | { type: 'FAILURE'; payload: string }
-  | { type: 'RETRY' };
+  | { type: "SUCCESS"; payload: number }
+  | { type: "FAILURE"; payload: string }
+  | { type: "RETRY" };
 
-const initialState: State = { loading: true, error: '', retryCount: 0, aspectRatio: undefined };
+const initialState: State = {
+  loading: true,
+  error: "",
+  retryCount: 0,
+  aspectRatio: undefined,
+};
 
 function reducer(state: State, action: Action) {
   switch (action.type) {
-    case 'SUCCESS': {
+    case "SUCCESS": {
       return {
         ...initialState,
         loading: false,
@@ -87,7 +94,7 @@ function reducer(state: State, action: Action) {
         aspectRatio: action.payload,
       };
     }
-    case 'FAILURE': {
+    case "FAILURE": {
       return {
         ...initialState,
         loading: false,
@@ -95,12 +102,12 @@ function reducer(state: State, action: Action) {
         retryCount: state.retryCount,
       };
     }
-    case 'RETRY': {
+    case "RETRY": {
       return { ...initialState, retryCount: state.retryCount + 1 };
     }
     /* istanbul ignore next: this will never happen */
     default: {
-      throw new Error('Unexpected action type');
+      throw new Error("Unexpected action type");
     }
   }
 }
@@ -129,7 +136,8 @@ export function useResponsiveImageView({
 
   // Extract and memoize only the relevant information
   const imageIdOrUri = React.useMemo(() => {
-    const imgIdOrUri = typeof initialSource === 'number' ? initialSource : initialSource.uri;
+    const imgIdOrUri =
+      typeof initialSource === "number" ? initialSource : initialSource.uri;
     if (!imgIdOrUri) {
       throw new Error(`"source" must be a valid URI or resource`);
     }
@@ -139,7 +147,7 @@ export function useResponsiveImageView({
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   function retry() {
-    dispatch({ type: 'RETRY' });
+    dispatch({ type: "RETRY" });
   }
 
   function isAspectRatioControlled() {
@@ -147,17 +155,19 @@ export function useResponsiveImageView({
   }
 
   function getAspectRatio() {
-    return isAspectRatioControlled() ? controlledAspectRatio : state.aspectRatio;
+    return isAspectRatioControlled()
+      ? controlledAspectRatio
+      : state.aspectRatio;
   }
 
   function getImageProps({
     source,
     style = {},
     ...props
-  }: Parameters<ResponsiveImageViewBag['getImageProps']>[0] = {}) {
+  }: Parameters<ResponsiveImageViewBag["getImageProps"]>[0] = {}) {
     const imageProps: ImageProps = {
       source: initialSource,
-      style: [style, { height: '100%', width: '100%' }],
+      style: [style, { height: "100%", width: "100%" }],
       ...props,
     };
     return imageProps;
@@ -166,26 +176,30 @@ export function useResponsiveImageView({
   function getViewProps({
     style = {},
     ...props
-  }: Parameters<ResponsiveImageViewBag['getViewProps']>[0] = {}) {
+  }: Parameters<ResponsiveImageViewBag["getViewProps"]>[0] = {}) {
     return { style: [style, { aspectRatio: getAspectRatio() }], ...props };
   }
 
   React.useEffect(() => {
-    let pendingGetImageSize = { cancel: /* istanbul ignore next: just a stub  */ () => {} };
+    let pendingGetImageSize = {
+      cancel: /* istanbul ignore next: just a stub  */ () => {},
+    };
 
     function handleImageSizeSuccess(width: number, height: number) {
       onLoadRef.current();
-      dispatch({ type: 'SUCCESS', payload: width / height });
+      dispatch({ type: "SUCCESS", payload: width / height });
     }
 
     function handleImageSizeFailure(err: any) {
       const errMessage =
-        err instanceof Error ? err.message : /* istanbul ignore next */ String(err);
+        err instanceof Error
+          ? err.message
+          : /* istanbul ignore next */ String(err);
       onErrorRef.current(errMessage);
-      dispatch({ type: 'FAILURE', payload: errMessage });
+      dispatch({ type: "FAILURE", payload: errMessage });
     }
 
-    if (typeof imageIdOrUri === 'string') {
+    if (typeof imageIdOrUri === "string") {
       // Retrieve image dimensions from URI
       pendingGetImageSize = getImageSize(
         imageIdOrUri,
@@ -199,7 +213,9 @@ export function useResponsiveImageView({
       if (imageSource) {
         handleImageSizeSuccess(imageSource.width, imageSource.height);
       } else {
-        handleImageSizeFailure(new Error('Failed to retrieve image dimensions.'));
+        handleImageSizeFailure(
+          new Error("Failed to retrieve image dimensions."),
+        );
       }
     }
 
@@ -208,7 +224,13 @@ export function useResponsiveImageView({
     };
   }, [imageIdOrUri, state.retryCount]);
 
-  return { loading: state.loading, error: state.error, retry, getViewProps, getImageProps };
+  return {
+    loading: state.loading,
+    error: state.error,
+    retry,
+    getViewProps,
+    getImageProps,
+  };
 }
 
 export function ResponsiveImageView({
@@ -228,12 +250,12 @@ export function ResponsiveImageView({
   }
 
   // render prop
-  if (typeof render === 'function') {
+  if (typeof render === "function") {
     return render(bag);
   }
 
   // function-as-children
-  if (typeof children === 'function') {
+  if (typeof children === "function") {
     return children(bag);
   }
 
@@ -245,4 +267,4 @@ export function ResponsiveImageView({
   return null;
 }
 
-ResponsiveImageView.displayName = 'ResponsiveImageView';
+ResponsiveImageView.displayName = "ResponsiveImageView";
