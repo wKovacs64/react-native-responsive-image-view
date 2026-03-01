@@ -17,7 +17,7 @@
       "minimumReleaseAge": "7 days"
     },
     {
-      "matchPackageNames": ["eslint"],
+      "matchPackageNames": ["eslint", "@eslint/js"],
       "matchUpdateTypes": ["major"],
       "enabled": false
     },
