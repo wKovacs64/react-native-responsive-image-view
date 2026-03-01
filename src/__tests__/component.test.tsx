@@ -121,6 +121,7 @@ describe("completion callbacks", () => {
     ).not.toThrow();
   });
 
+  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
   it("calls provided onLoad on URI success", () =>
     new Promise<void>((resolve, reject) => {
       render(
@@ -132,6 +133,7 @@ describe("completion callbacks", () => {
       );
     }));
 
+  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
   it("calls provided onError on URI failure", () =>
     new Promise<string>((resolve, reject) => {
       render(
@@ -143,6 +145,7 @@ describe("completion callbacks", () => {
       );
     }));
 
+  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
   it("calls provided onLoad on imported resource success", () =>
     new Promise<void>((resolve, reject) => {
       render(
@@ -154,6 +157,7 @@ describe("completion callbacks", () => {
       );
     }));
 
+  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
   it("calls provided onError on imported resource failure", () =>
     new Promise<string>((resolve, reject) => {
       render(
@@ -165,6 +169,7 @@ describe("completion callbacks", () => {
       );
     }));
 
+  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
   it("does not call onLoad on success after unmounting", () =>
     new Promise<void>((resolve, reject) => {
       const { unmount } = render(
@@ -178,6 +183,7 @@ describe("completion callbacks", () => {
       setImmediate(resolve);
     }));
 
+  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
   it("does not call onError on failure after unmounting", () =>
     new Promise<void>((resolve, reject) => {
       const { unmount } = render(

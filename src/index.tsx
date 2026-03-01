@@ -209,7 +209,6 @@ export function useResponsiveImageView({
     } else {
       // Retrieve image dimensions from imported resource
       const imageSource = Image.resolveAssetSource(imageIdOrUri);
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (imageSource) {
         handleImageSizeSuccess(imageSource.width, imageSource.height);
       } else {
