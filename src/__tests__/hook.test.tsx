@@ -59,7 +59,7 @@ describe("error", () => {
     expect(children).toHaveBeenCalledWith(
       expect.objectContaining({ error: expect.any(String) as string }),
     );
-    // @ts-expect-error
+    // @ts-expect-error accessing untyped mock call args
     expect(children.mock.calls[1][0].error).not.toHaveLength(0);
   });
 
@@ -74,7 +74,7 @@ describe("error", () => {
 type Bags = ReturnType<typeof useResponsiveImageView>[];
 
 describe("retry", () => {
-  it("retries", async () => {
+  it("retries", () => {
     const { children } = renderHook({ source: { uri: mockUriBad } });
     const { retry } = (children.mock.calls[1] as Bags)[0];
     expect((children.mock.calls[1] as Bags)[0].loading).toBe(false);
