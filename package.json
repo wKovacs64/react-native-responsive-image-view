@@ -81,7 +81,7 @@
     "oxfmt": "0.35.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-native": "0.84.0",
+    "react-native": "0.84.1",
     "react-native-builder-bob": "0.40.18",
     "react-test-renderer": "19.2.4",
     "rimraf": "6.1.3",
