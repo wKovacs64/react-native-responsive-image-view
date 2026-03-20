@@ -69,7 +69,7 @@
     "@types/react": "19.2.14",
     "@types/react-test-renderer": "19.1.0",
     "babel-jest": "30.3.0",
-    "babel-plugin-syntax-hermes-parser": "0.33.3",
+    "babel-plugin-syntax-hermes-parser": "0.34.0",
     "doctoc": "2.3.0",
     "eslint": "9.39.4",
     "eslint-plugin-jest": "29.15.0",
