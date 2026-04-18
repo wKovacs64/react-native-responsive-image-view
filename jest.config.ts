@@ -14,9 +14,9 @@ const config: Config = {
   ],
   coverageReporters: ["html", "json", "lcov", "text"],
   modulePathIgnorePatterns: ["<rootDir>/dist/"],
-  preset: "react-native",
+  preset: "@react-native/jest-preset",
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
-  // TODO: remove custom transform once the react-native preset is fixed for RN v0.76, maybe?
+  // TODO: remove custom transform once the preset handles Hermes without extra plugins?
   transform: {
     "^.+\\.(js)$": [
       "babel-jest",
