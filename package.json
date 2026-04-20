@@ -64,7 +64,7 @@
     "@changesets/changelog-github": "0.6.0",
     "@changesets/cli": "2.30.0",
     "@eslint/js": "9.39.4",
-    "@react-native/jest-preset": "0.85.0",
+    "@react-native/jest-preset": "0.85.1",
     "@testing-library/react-native": "13.3.3",
     "@types/jest": "30.0.0",
     "@types/react": "19.2.14",
