@@ -1,6 +1,7 @@
 import path from "node:path";
 import type { Config } from "jest";
 
+// Force Jest's own env package (v30) instead of the RN preset's transitive v29 env.
 const jestConfigDir = path.dirname(require.resolve("jest-config/package.json"));
 
 const config: Config = {
