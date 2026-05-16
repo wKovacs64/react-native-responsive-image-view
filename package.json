@@ -94,7 +94,7 @@
     "react": ">=16.8.3",
     "react-native": ">=0.59.0"
   },
-  "packageManager": "pnpm@11.0.8",
+  "packageManager": "pnpm@11.0.9",
   "react-native-builder-bob": {
     "source": "src",
     "output": "dist",
