@@ -1,2 +1,4 @@
 allowBuilds:
   unrs-resolver: false
+
+minimumReleaseAge: 4320
