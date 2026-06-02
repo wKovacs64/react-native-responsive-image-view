@@ -3,7 +3,6 @@
 _React Native component for scaling an `Image` within the parent `View`_
 
 [![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
-[![Code Coverage][coverage-image]][coverage-url]
 
 ## The problem
 
@@ -321,8 +320,6 @@ day, these features proved to be too opinionated.
 [npm-url]: https://www.npmjs.com/package/react-native-responsive-image-view
 [ci-image]: https://img.shields.io/github/actions/workflow/status/wKovacs64/react-native-responsive-image-view/ci.yml?logo=github&style=flat-square
 [ci-url]: https://github.com/wKovacs64/react-native-responsive-image-view/actions?query=workflow%3Aci
-[coverage-image]: https://img.shields.io/codecov/c/github/wKovacs64/react-native-responsive-image-view/main.svg?style=flat-square
-[coverage-url]: https://codecov.io/gh/wKovacs64/react-native-responsive-image-view/branch/main
 [aspectratio]: https://facebook.github.io/react-native/docs/layout-props#aspectratio
 [render-props]: https://react.dev/reference/react/Children#calling-a-render-prop-to-customize-rendering
 [custom-hooks]: https://react.dev/learn/reusing-logic-with-custom-hooks
