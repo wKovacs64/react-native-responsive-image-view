@@ -79,11 +79,6 @@ jobs:
       - name: 🃏 Jest with coverage
         run: pnpm run test:coverage
 
-      - name: ☂ Codecov
-        uses: codecov/codecov-action@v6
-        with:
-          fail_ci_if_error: true
-
   build:
     name: ⚒️ Build
     runs-on: ubuntu-latest
