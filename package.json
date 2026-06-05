@@ -79,7 +79,7 @@
     "jest": "30.3.0",
     "metro-react-native-babel-preset": "0.77.0",
     "npm-run-all2": "9.0.1",
-    "oxfmt": "0.52.0",
+    "oxfmt": "0.53.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-native": "0.85.3",
