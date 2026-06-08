@@ -67,7 +67,7 @@
     "@react-native/jest-preset": "0.85.3",
     "@testing-library/react-native": "13.3.3",
     "@types/jest": "30.0.0",
-    "@types/react": "19.2.16",
+    "@types/react": "19.2.17",
     "@types/react-test-renderer": "19.1.0",
     "babel-jest": "30.3.0",
     "babel-plugin-syntax-hermes-parser": "0.36.1",
