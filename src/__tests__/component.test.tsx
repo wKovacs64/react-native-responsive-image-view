@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { act, render, screen } from "@testing-library/react-native";
 import {
   mockUriGood,
@@ -8,6 +8,8 @@ import {
   mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
+  mockWidth,
+  mockHeight,
 } from "../__fixtures__";
 import { ResponsiveImageView, type ResponsiveImageViewBag } from "..";
 
@@ -178,7 +180,12 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onLoad on success after unmounting", async () => {
-    jest.useFakeTimers();
+    let completeImageSizeRequest = () => {};
+    jest.spyOn(Image, "getSize").mockImplementationOnce((_uri, onLoad) => {
+      completeImageSizeRequest = () => {
+        onLoad(mockWidth, mockHeight);
+      };
+    });
     const onLoad = jest.fn();
     const onError = jest.fn();
     const { unmount } = await render(
@@ -190,15 +197,21 @@ describe("completion callbacks", () => {
     );
     await unmount();
     await act(() => {
-      jest.runOnlyPendingTimers();
+      completeImageSizeRequest();
     });
     expect(onLoad).not.toHaveBeenCalled();
     expect(onError).not.toHaveBeenCalled();
-    jest.useRealTimers();
   });
 
   it("does not call onError on failure after unmounting", async () => {
-    jest.useFakeTimers();
+    let completeImageSizeRequest = () => {};
+    jest
+      .spyOn(Image, "getSize")
+      .mockImplementationOnce((_uri, _onLoad, onError = () => {}) => {
+        completeImageSizeRequest = () => {
+          onError(mockUriSlowBad);
+        };
+      });
     const onLoad = jest.fn();
     const onError = jest.fn();
     const { unmount } = await render(
@@ -210,10 +223,9 @@ describe("completion callbacks", () => {
     );
     await unmount();
     await act(() => {
-      jest.runOnlyPendingTimers();
+      completeImageSizeRequest();
     });
     expect(onLoad).not.toHaveBeenCalled();
     expect(onError).not.toHaveBeenCalled();
-    jest.useRealTimers();
   });
 });

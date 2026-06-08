@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Image } from "react-native";
 import { render, act } from "@testing-library/react-native";
 import {
   mockUriGood,
@@ -11,6 +12,8 @@ import {
   controlledAspectRatio,
   consumerViewProps,
   consumerImageProps,
+  mockWidth,
+  mockHeight,
 } from "../__fixtures__";
 import { useResponsiveImageView, type UseResponsiveImageViewOptions } from "..";
 
@@ -189,7 +192,12 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onLoad on success after unmounting", async () => {
-    jest.useFakeTimers();
+    let completeImageSizeRequest = () => {};
+    jest.spyOn(Image, "getSize").mockImplementationOnce((_uri, onLoad) => {
+      completeImageSizeRequest = () => {
+        onLoad(mockWidth, mockHeight);
+      };
+    });
     expect(onLoad).toHaveBeenCalledTimes(0);
     expect(onError).toHaveBeenCalledTimes(0);
     const { unmount } = await renderHook({
@@ -199,15 +207,21 @@ describe("completion callbacks", () => {
     });
     await unmount();
     await act(() => {
-      jest.runOnlyPendingTimers();
+      completeImageSizeRequest();
     });
     expect(onError).toHaveBeenCalledTimes(0);
     expect(onLoad).toHaveBeenCalledTimes(0);
-    jest.useRealTimers();
   });
 
   it("does not call onError on failure after unmounting", async () => {
-    jest.useFakeTimers();
+    let completeImageSizeRequest = () => {};
+    jest
+      .spyOn(Image, "getSize")
+      .mockImplementationOnce((_uri, _onLoad, onError = () => {}) => {
+        completeImageSizeRequest = () => {
+          onError(mockUriSlowBad);
+        };
+      });
     expect(onLoad).toHaveBeenCalledTimes(0);
     expect(onError).toHaveBeenCalledTimes(0);
     const { unmount } = await renderHook({
@@ -217,10 +231,9 @@ describe("completion callbacks", () => {
     });
     await unmount();
     await act(() => {
-      jest.runOnlyPendingTimers();
+      completeImageSizeRequest();
     });
     expect(onError).toHaveBeenCalledTimes(0);
     expect(onLoad).toHaveBeenCalledTimes(0);
-    jest.useRealTimers();
   });
 });
