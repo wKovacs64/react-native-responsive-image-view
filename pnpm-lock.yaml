@@ -35,9 +35,6 @@ importers:
       '@types/react':
         specifier: 19.2.16
         version: 19.2.16
-      '@types/react-test-renderer':
-        specifier: 19.1.0
-        version: 19.1.0
       babel-jest:
         specifier: 30.3.0
         version: 30.3.0(@babel/core@7.29.7)
@@ -83,12 +80,12 @@ importers:
       react-native-builder-bob:
         specifier: 0.41.0
         version: 0.41.0
-      react-test-renderer:
-        specifier: 19.2.7
-        version: 19.2.7(react@19.2.7)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
+      test-renderer:
+        specifier: 1.2.0
+        version: 1.2.0(@types/react@19.2.16)(react@19.2.7)
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@25.0.0)(typescript@5.9.3)
@@ -1594,12 +1591,6 @@ packages:
     resolution: {integrity: sha512-HZOXsKT0tGI9LlUw2LuedXsVeB88wFa536vVL0M6vE8zN63nI+sSr1ByxmPToP5K5bukaVscyeCJcF9guVNJ1g==}
     peerDependencies:
       '@types/react': '*'
-
-  '@types/react-test-renderer@19.1.0':
-    resolution: {integrity: sha512-XD0WZrHqjNrxA/MaR9O22w/RNidWR9YZmBdRGI7wcnWGrv/3dA8wKCJ8m63Sn+tLJhcjmuhOi629N66W6kgWzQ==}
-
-  '@types/react@19.2.15':
-    resolution: {integrity: sha512-eRwcGNHve+E8qtEQSSRl6urh+rFop4v8gm6O8rGv25CodbvFdLjA1vVQ1KkiFE0w0UPOnb8tDiFKL5lp0rtY5Q==}
 
   '@types/react@19.2.16':
     resolution: {integrity: sha512-esJiCAnl0kfpNdE69f3So4WJUXy95dLZydX0KwK46riIHDzHM7O9Vtf9xCHW0PXIqvgqNrswl522kA/5yx+F4w==}
@@ -3716,11 +3707,6 @@ packages:
   react-refresh@0.4.3:
     resolution: {integrity: sha512-Hwln1VNuGl/6bVwnd0Xdn1e84gT/8T9aYNL+HAKDArLCS7LWjwr7StE30IEYbIkx0Vi3vs+coQxe+SQDbGbbpA==}
     engines: {node: '>=0.10.0'}
-
-  react-test-renderer@19.2.7:
-    resolution: {integrity: sha512-U4TyPDJ9MsC8rFimXuJum8w40aPc9kbOZYO8Pc2/4A884i8hwJsMNA/JNyuOc/f2/37wHvk7HjpVl1V4re7Dig==}
-    peerDependencies:
-      react: ^19.2.7
 
   react@19.2.7:
     resolution: {integrity: sha512-HNe9WslTbXmFK8o8cmwgAeJFSBvt1bPdHCVKtaaV+WlAN36mpT4hcRpwbf3fY56ar2oIXzsBpOAiIRHAdY0OlQ==}
@@ -6464,14 +6450,6 @@ snapshots:
     dependencies:
       '@types/react': 19.2.16
 
-  '@types/react-test-renderer@19.1.0':
-    dependencies:
-      '@types/react': 19.2.15
-
-  '@types/react@19.2.15':
-    dependencies:
-      csstype: 3.2.3
-
   '@types/react@19.2.16':
     dependencies:
       csstype: 3.2.3
@@ -9143,12 +9121,6 @@ snapshots:
   react-refresh@0.14.2: {}
 
   react-refresh@0.4.3: {}
-
-  react-test-renderer@19.2.7(react@19.2.7):
-    dependencies:
-      react: 19.2.7
-      react-is: 19.2.7
-      scheduler: 0.27.0
 
   react@19.2.7: {}
 

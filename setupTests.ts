@@ -22,15 +22,15 @@ jest
         break;
       }
       case mockUriSlowGood: {
-        setImmediate(() => {
+        setTimeout(() => {
           onLoad(mockWidth, mockHeight);
-        });
+        }, 100);
         break;
       }
       case mockUriSlowBad: {
-        setImmediate(() => {
+        setTimeout(() => {
           onError(uri);
-        });
+        }, 100);
         break;
       }
       default: {
