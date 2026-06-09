@@ -2,8 +2,6 @@ import { Image } from "react-native";
 import {
   mockUriGood,
   mockUriBad,
-  mockUriSlowGood,
-  mockUriSlowBad,
   mockResourceGood,
   mockWidth,
   mockHeight,
@@ -19,18 +17,6 @@ jest
       }
       case mockUriBad: {
         onError(new Error(uri));
-        break;
-      }
-      case mockUriSlowGood: {
-        setImmediate(() => {
-          onLoad(mockWidth, mockHeight);
-        });
-        break;
-      }
-      case mockUriSlowBad: {
-        setImmediate(() => {
-          onError(uri);
-        });
         break;
       }
       default: {

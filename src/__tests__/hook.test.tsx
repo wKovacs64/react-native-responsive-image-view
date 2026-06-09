@@ -1,16 +1,17 @@
 import * as React from "react";
+import { Image } from "react-native";
 import { render, act } from "@testing-library/react-native";
 import {
   mockUriGood,
   mockUriBad,
-  mockUriSlowGood,
-  mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
   computedAspectRatio,
   controlledAspectRatio,
   consumerViewProps,
   consumerImageProps,
+  mockWidth,
+  mockHeight,
 } from "../__fixtures__";
 import { useResponsiveImageView, type UseResponsiveImageViewOptions } from "..";
 
@@ -25,25 +26,25 @@ function Comp({
   return children(useResponsiveImageView(props));
 }
 
-const renderHook = (props: UseResponsiveImageViewOptions) => {
+const renderHook = async (props: UseResponsiveImageViewOptions) => {
   const children = jest.fn(() => null);
-  return { children, ...render(<Comp {...props}>{children}</Comp>) };
+  return { children, ...(await render(<Comp {...props}>{children}</Comp>)) };
 };
 
 describe("parameter validation", () => {
-  it("requires a source", () => {
+  it("requires a source", async () => {
     // @ts-expect-error: source is required but we're testing its omission
-    expect(() => renderHook({})).toThrow(/source/);
+    await expect(renderHook({})).rejects.toThrow(/source/);
   });
 
-  it("requires a valid source", () => {
-    expect(() => renderHook({ source: {} })).toThrow(/source/);
+  it("requires a valid source", async () => {
+    await expect(renderHook({ source: {} })).rejects.toThrow(/source/);
   });
 });
 
 describe("loading", () => {
-  it("is true while loading and otherwise false", () => {
-    const { children } = renderHook({ source: { uri: mockUriGood } });
+  it("is true while loading and otherwise false", async () => {
+    const { children } = await renderHook({ source: { uri: mockUriGood } });
     expect(children).toHaveBeenCalledWith(
       expect.objectContaining({ loading: true }),
     );
@@ -54,8 +55,8 @@ describe("loading", () => {
 });
 
 describe("error", () => {
-  it("contains an error message on failure", () => {
-    const { children } = renderHook({ source: { uri: mockUriBad } });
+  it("contains an error message on failure", async () => {
+    const { children } = await renderHook({ source: { uri: mockUriBad } });
     expect(children).toHaveBeenCalledWith(
       expect.objectContaining({ error: expect.any(String) as string }),
     );
@@ -63,8 +64,8 @@ describe("error", () => {
     expect(children.mock.calls[1][0].error).not.toHaveLength(0);
   });
 
-  it("is empty on success", () => {
-    const { children } = renderHook({ source: { uri: mockUriGood } });
+  it("is empty on success", async () => {
+    const { children } = await renderHook({ source: { uri: mockUriGood } });
     expect(children).toHaveBeenCalledWith(
       expect.objectContaining({ error: "" }),
     );
@@ -74,11 +75,11 @@ describe("error", () => {
 type Bags = ReturnType<typeof useResponsiveImageView>[];
 
 describe("retry", () => {
-  it("retries", () => {
-    const { children } = renderHook({ source: { uri: mockUriBad } });
+  it("retries", async () => {
+    const { children } = await renderHook({ source: { uri: mockUriBad } });
     const { retry } = (children.mock.calls[1] as Bags)[0];
     expect((children.mock.calls[1] as Bags)[0].loading).toBe(false);
-    act(() => {
+    await act(() => {
       retry();
     });
     expect((children.mock.calls[2] as Bags)[0].loading).toBe(true);
@@ -87,8 +88,8 @@ describe("retry", () => {
 });
 
 describe("getViewProps", () => {
-  it("includes controlled aspectRatio", () => {
-    const { children } = renderHook({
+  it("includes controlled aspectRatio", async () => {
+    const { children } = await renderHook({
       aspectRatio: controlledAspectRatio,
       source: { uri: mockUriGood },
     });
@@ -98,17 +99,17 @@ describe("getViewProps", () => {
     });
   });
 
-  it("includes calculated aspectRatio if not provided", () => {
-    const { children } = renderHook({ source: { uri: mockUriGood } });
+  it("includes calculated aspectRatio if not provided", async () => {
+    const { children } = await renderHook({ source: { uri: mockUriGood } });
     const { getViewProps } = (children.mock.calls[1] as Bags)[0];
     expect(getViewProps().style).toContainEqual({
       aspectRatio: computedAspectRatio,
     });
   });
 
-  it("composes consumer props with own props", () => {
+  it("composes consumer props with own props", async () => {
     expect.assertions(objectKeys(consumerViewProps).length);
-    const { children } = renderHook({ source: { uri: mockUriGood } });
+    const { children } = await renderHook({ source: { uri: mockUriGood } });
     const { getViewProps } = (children.mock.calls[1] as Bags)[0];
     const mergedProps = getViewProps(consumerViewProps);
     objectKeys(consumerViewProps).forEach((consumerProp) => {
@@ -118,8 +119,8 @@ describe("getViewProps", () => {
 });
 
 describe("getImageProps", () => {
-  it("sets height and width to 100%", () => {
-    const { children } = renderHook({ source: { uri: mockUriGood } });
+  it("sets height and width to 100%", async () => {
+    const { children } = await renderHook({ source: { uri: mockUriGood } });
     const { getImageProps } = (children.mock.calls[1] as Bags)[0];
     expect(getImageProps().style).toContainEqual({
       height: "100%",
@@ -127,9 +128,9 @@ describe("getImageProps", () => {
     });
   });
 
-  it("composes consumer props with own props", () => {
+  it("composes consumer props with own props", async () => {
     expect.assertions(objectKeys(consumerImageProps).length);
-    const { children } = renderHook({ source: { uri: mockUriGood } });
+    const { children } = await renderHook({ source: { uri: mockUriGood } });
     const { getImageProps } = (children.mock.calls[1] as Bags)[0];
     const mergedProps = getImageProps(consumerImageProps);
     objectKeys(consumerImageProps).forEach((consumerProp) => {
@@ -139,74 +140,93 @@ describe("getImageProps", () => {
 });
 
 describe("completion callbacks", () => {
-  const onLoad = jest.fn();
-  const onError = jest.fn();
-
-  it("doesn't throw on success if no onLoad was provided", () => {
-    expect(() => renderHook({ source: { uri: mockUriGood } })).not.toThrow();
+  it("doesn't throw on success if no onLoad was provided", async () => {
+    await expect(
+      renderHook({ source: { uri: mockUriGood } }),
+    ).resolves.toBeDefined();
   });
 
-  it("doesn't throw on failure if no onError was provided", () => {
-    expect(() => renderHook({ source: { uri: mockUriBad } })).not.toThrow();
+  it("doesn't throw on failure if no onError was provided", async () => {
+    await expect(
+      renderHook({ source: { uri: mockUriBad } }),
+    ).resolves.toBeDefined();
   });
 
-  it("calls provided onLoad on URI success", () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
-    renderHook({ source: { uri: mockUriGood }, onLoad, onError });
-    expect(onError).toHaveBeenCalledTimes(0);
+  it("calls provided onLoad on URI success", async () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    await renderHook({ source: { uri: mockUriGood }, onLoad, onError });
+    expect(onError).not.toHaveBeenCalled();
     expect(onLoad).toHaveBeenCalledTimes(1);
   });
 
-  it("calls provided onError on URI failure", () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
-    renderHook({ source: { uri: mockUriBad }, onLoad, onError });
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(1);
+  it("calls provided onError on URI failure", async () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    await renderHook({ source: { uri: mockUriBad }, onLoad, onError });
+    expect(onLoad).not.toHaveBeenCalled();
     expect(onError).toHaveBeenCalledWith(expect.any(String));
   });
 
-  it("calls provided onLoad on imported resource success", () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
-    renderHook({ source: mockResourceGood, onLoad, onError });
-    expect(onError).toHaveBeenCalledTimes(0);
+  it("calls provided onLoad on imported resource success", async () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    await renderHook({ source: mockResourceGood, onLoad, onError });
+    expect(onError).not.toHaveBeenCalled();
     expect(onLoad).toHaveBeenCalledTimes(1);
   });
 
-  it("calls provided onError on imported resource failure", () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
-    renderHook({ source: mockResourceBad, onLoad, onError });
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(1);
+  it("calls provided onError on imported resource failure", async () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    await renderHook({ source: mockResourceBad, onLoad, onError });
+    expect(onLoad).not.toHaveBeenCalled();
     expect(onError).toHaveBeenCalledWith(expect.any(String));
   });
 
-  it("does not call onLoad on success after unmounting", () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
-    const { unmount } = renderHook({
-      source: { uri: mockUriSlowGood },
+  it("does not call onLoad on success after unmounting", async () => {
+    let completeImageSizeRequest = () => {};
+    jest.spyOn(Image, "getSize").mockImplementationOnce((_uri, onLoad) => {
+      completeImageSizeRequest = () => {
+        onLoad(mockWidth, mockHeight);
+      };
+    });
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    const { unmount } = await renderHook({
+      source: { uri: "pendingLoadUri" },
       onLoad,
       onError,
     });
-    unmount();
-    expect(onError).toHaveBeenCalledTimes(0);
-    expect(onLoad).toHaveBeenCalledTimes(0);
+    await unmount();
+    await act(() => {
+      completeImageSizeRequest();
+    });
+    expect(onError).not.toHaveBeenCalled();
+    expect(onLoad).not.toHaveBeenCalled();
   });
 
-  it("does not call onError on failure after unmounting", () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
-    const { unmount } = renderHook({
-      source: { uri: mockUriSlowBad },
+  it("does not call onError on failure after unmounting", async () => {
+    let completeImageSizeRequest = () => {};
+    jest
+      .spyOn(Image, "getSize")
+      .mockImplementationOnce((_uri, _onLoad, onError = () => {}) => {
+        completeImageSizeRequest = () => {
+          onError("pendingErrorUri");
+        };
+      });
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    const { unmount } = await renderHook({
+      source: { uri: "pendingErrorUri" },
       onLoad,
       onError,
     });
-    unmount();
-    expect(onError).toHaveBeenCalledTimes(0);
-    expect(onLoad).toHaveBeenCalledTimes(0);
+    await unmount();
+    await act(() => {
+      completeImageSizeRequest();
+    });
+    expect(onError).not.toHaveBeenCalled();
+    expect(onLoad).not.toHaveBeenCalled();
   });
 });

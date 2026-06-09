@@ -1,13 +1,13 @@
 import * as React from "react";
-import { Text, View } from "react-native";
-import { render, screen } from "@testing-library/react-native";
+import { Image, Text, View } from "react-native";
+import { act, render, screen } from "@testing-library/react-native";
 import {
   mockUriGood,
   mockUriBad,
-  mockUriSlowGood,
-  mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
+  mockWidth,
+  mockHeight,
 } from "../__fixtures__";
 import { ResponsiveImageView, type ResponsiveImageViewBag } from "..";
 
@@ -23,11 +23,11 @@ const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
 
 describe("rendering order (component > render > FAC > children > null)", () => {
   describe("renders component if provided", () => {
-    it("function", () => {
+    it("function", async () => {
       const MyFunctionComponent = jest.fn(() => <View />);
       const renderProp = jest.fn(() => <View />);
       const children = jest.fn(() => <View />);
-      render(
+      await render(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           component={MyFunctionComponent}
@@ -45,7 +45,7 @@ describe("rendering order (component > render > FAC > children > null)", () => {
       expect(children).not.toHaveBeenCalled();
     });
 
-    it("class", () => {
+    it("class", async () => {
       const classRenderMethod = jest.fn((_props) => <View />);
       class MyClassComponent extends React.Component {
         render() {
@@ -54,7 +54,7 @@ describe("rendering order (component > render > FAC > children > null)", () => {
       }
       const renderProp = jest.fn(() => <View />);
       const children = jest.fn(() => <View />);
-      render(
+      await render(
         <ResponsiveImageView
           source={{ uri: mockUriGood }}
           component={MyClassComponent}
@@ -69,10 +69,10 @@ describe("rendering order (component > render > FAC > children > null)", () => {
     });
   });
 
-  it("calls render if no component was provided", () => {
+  it("calls render if no component was provided", async () => {
     const renderProp = jest.fn(() => <View />);
     const children = jest.fn(() => <View />);
-    render(
+    await render(
       <ResponsiveImageView source={{ uri: mockUriGood }} render={renderProp}>
         {children}
       </ResponsiveImageView>,
@@ -81,9 +81,9 @@ describe("rendering order (component > render > FAC > children > null)", () => {
     expect(children).not.toHaveBeenCalled();
   });
 
-  it("calls children function if no component or render prop was provided", () => {
+  it("calls children function if no component or render prop was provided", async () => {
     const children = jest.fn(() => <View />);
-    render(
+    await render(
       <ResponsiveImageView source={{ uri: mockUriGood }}>
         {children}
       </ResponsiveImageView>,
@@ -91,8 +91,8 @@ describe("rendering order (component > render > FAC > children > null)", () => {
     expect(children).toHaveBeenCalledWith(expectedShape);
   });
 
-  it("renders children if no component, render prop, or FAC was provided", () => {
-    render(
+  it("renders children if no component, render prop, or FAC was provided", async () => {
+    await render(
       <ResponsiveImageView source={{ uri: mockUriGood }}>
         <View>
           <Text>Hello from non-functional children!</Text>
@@ -102,98 +102,128 @@ describe("rendering order (component > render > FAC > children > null)", () => {
     expect(screen.getByText(/Hello/i)).toBeTruthy();
   });
 
-  it("renders null if no renderer was provided", () => {
-    render(<ResponsiveImageView source={{ uri: mockUriGood }} />);
+  it("renders null if no renderer was provided", async () => {
+    await render(<ResponsiveImageView source={{ uri: mockUriGood }} />);
     expect(screen.queryByText(/.*/)).toBeNull();
   });
 });
 
 describe("completion callbacks", () => {
-  it("doesn't throw on success if no onLoad was provided", () => {
-    expect(() =>
+  it("doesn't throw on success if no onLoad was provided", async () => {
+    await expect(
       render(<ResponsiveImageView source={{ uri: mockUriGood }} />),
-    ).not.toThrow();
+    ).resolves.toBeDefined();
   });
 
-  it("doesn't throw on failure if no onError was provided", () => {
-    expect(() =>
+  it("doesn't throw on failure if no onError was provided", async () => {
+    await expect(
       render(<ResponsiveImageView source={{ uri: mockUriBad }} />),
-    ).not.toThrow();
+    ).resolves.toBeDefined();
   });
 
-  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
-  it("calls provided onLoad on URI success", () =>
-    new Promise<void>((resolve, reject) => {
-      render(
-        <ResponsiveImageView
-          source={{ uri: mockUriGood }}
-          onLoad={resolve}
-          onError={reject}
-        />,
-      );
-    }));
+  it("calls provided onLoad on URI success", async () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    await render(
+      <ResponsiveImageView
+        source={{ uri: mockUriGood }}
+        onLoad={onLoad}
+        onError={onError}
+      />,
+    );
+    expect(onLoad).toHaveBeenCalledTimes(1);
+    expect(onError).not.toHaveBeenCalled();
+  });
 
-  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
-  it("calls provided onError on URI failure", () =>
-    new Promise<string>((resolve, reject) => {
-      render(
-        <ResponsiveImageView
-          source={{ uri: mockUriBad }}
-          onLoad={reject}
-          onError={resolve}
-        />,
-      );
-    }));
+  it("calls provided onError on URI failure", async () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    await render(
+      <ResponsiveImageView
+        source={{ uri: mockUriBad }}
+        onLoad={onLoad}
+        onError={onError}
+      />,
+    );
+    expect(onLoad).not.toHaveBeenCalled();
+    expect(onError).toHaveBeenCalledWith(expect.any(String));
+  });
 
-  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
-  it("calls provided onLoad on imported resource success", () =>
-    new Promise<void>((resolve, reject) => {
-      render(
-        <ResponsiveImageView
-          source={mockResourceGood}
-          onLoad={resolve}
-          onError={reject}
-        />,
-      );
-    }));
+  it("calls provided onLoad on imported resource success", async () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    await render(
+      <ResponsiveImageView
+        source={mockResourceGood}
+        onLoad={onLoad}
+        onError={onError}
+      />,
+    );
+    expect(onLoad).toHaveBeenCalledTimes(1);
+    expect(onError).not.toHaveBeenCalled();
+  });
 
-  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
-  it("calls provided onError on imported resource failure", () =>
-    new Promise<string>((resolve, reject) => {
-      render(
-        <ResponsiveImageView
-          source={mockResourceBad}
-          onLoad={reject}
-          onError={resolve}
-        />,
-      );
-    }));
+  it("calls provided onError on imported resource failure", async () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    await render(
+      <ResponsiveImageView
+        source={mockResourceBad}
+        onLoad={onLoad}
+        onError={onError}
+      />,
+    );
+    expect(onLoad).not.toHaveBeenCalled();
+    expect(onError).toHaveBeenCalledWith(expect.any(String));
+  });
 
-  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
-  it("does not call onLoad on success after unmounting", () =>
-    new Promise<void>((resolve, reject) => {
-      const { unmount } = render(
-        <ResponsiveImageView
-          source={{ uri: mockUriSlowGood }}
-          onLoad={reject}
-          onError={reject}
-        />,
-      );
-      unmount();
-      setImmediate(resolve);
-    }));
+  it("does not call onLoad on success after unmounting", async () => {
+    let completeImageSizeRequest = () => {};
+    jest.spyOn(Image, "getSize").mockImplementationOnce((_uri, onLoad) => {
+      completeImageSizeRequest = () => {
+        onLoad(mockWidth, mockHeight);
+      };
+    });
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    const { unmount } = await render(
+      <ResponsiveImageView
+        source={{ uri: "pendingLoadUri" }}
+        onLoad={onLoad}
+        onError={onError}
+      />,
+    );
+    await unmount();
+    await act(() => {
+      completeImageSizeRequest();
+    });
+    expect(onLoad).not.toHaveBeenCalled();
+    expect(onError).not.toHaveBeenCalled();
+  });
 
-  // eslint-disable-next-line jest/expect-expect -- asserts via promise resolve/reject
-  it("does not call onError on failure after unmounting", () =>
-    new Promise<void>((resolve, reject) => {
-      const { unmount } = render(
-        <ResponsiveImageView
-          source={{ uri: mockUriSlowBad }}
-          onLoad={reject}
-          onError={reject}
-        />,
-      );
-      unmount();
-      setImmediate(resolve);
-    }));
+  it("does not call onError on failure after unmounting", async () => {
+    let completeImageSizeRequest = () => {};
+    jest
+      .spyOn(Image, "getSize")
+      .mockImplementationOnce((_uri, _onLoad, onError = () => {}) => {
+        completeImageSizeRequest = () => {
+          onError("pendingErrorUri");
+        };
+      });
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+    const { unmount } = await render(
+      <ResponsiveImageView
+        source={{ uri: "pendingErrorUri" }}
+        onLoad={onLoad}
+        onError={onError}
+      />,
+    );
+    await unmount();
+    await act(() => {
+      completeImageSizeRequest();
+    });
+    expect(onLoad).not.toHaveBeenCalled();
+    expect(onError).not.toHaveBeenCalled();
+  });
 });
