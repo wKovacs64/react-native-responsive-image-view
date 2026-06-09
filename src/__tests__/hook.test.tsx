@@ -4,8 +4,6 @@ import { render, act } from "@testing-library/react-native";
 import {
   mockUriGood,
   mockUriBad,
-  mockUriSlowGood,
-  mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
   computedAspectRatio,
@@ -201,7 +199,7 @@ describe("completion callbacks", () => {
     expect(onLoad).toHaveBeenCalledTimes(0);
     expect(onError).toHaveBeenCalledTimes(0);
     const { unmount } = await renderHook({
-      source: { uri: mockUriSlowGood },
+      source: { uri: "pendingLoadUri" },
       onLoad,
       onError,
     });
@@ -219,13 +217,13 @@ describe("completion callbacks", () => {
       .spyOn(Image, "getSize")
       .mockImplementationOnce((_uri, _onLoad, onError = () => {}) => {
         completeImageSizeRequest = () => {
-          onError(mockUriSlowBad);
+          onError("pendingErrorUri");
         };
       });
     expect(onLoad).toHaveBeenCalledTimes(0);
     expect(onError).toHaveBeenCalledTimes(0);
     const { unmount } = await renderHook({
-      source: { uri: mockUriSlowBad },
+      source: { uri: "pendingErrorUri" },
       onLoad,
       onError,
     });

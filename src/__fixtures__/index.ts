@@ -2,8 +2,6 @@ import type { ImageProps } from "react-native";
 
 export const mockUriGood = "mockUriGood";
 export const mockUriBad = "mockUriBad";
-export const mockUriSlowGood = "mockUriSlowGood";
-export const mockUriSlowBad = "mockUriSlowBad";
 export const mockResourceGood = 1000;
 export const mockResourceBad = 9999;
 export const mockWidth = 800;

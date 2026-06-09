@@ -4,8 +4,6 @@ import { act, render, screen } from "@testing-library/react-native";
 import {
   mockUriGood,
   mockUriBad,
-  mockUriSlowGood,
-  mockUriSlowBad,
   mockResourceGood,
   mockResourceBad,
   mockWidth,
@@ -190,7 +188,7 @@ describe("completion callbacks", () => {
     const onError = jest.fn();
     const { unmount } = await render(
       <ResponsiveImageView
-        source={{ uri: mockUriSlowGood }}
+        source={{ uri: "pendingLoadUri" }}
         onLoad={onLoad}
         onError={onError}
       />,
@@ -209,14 +207,14 @@ describe("completion callbacks", () => {
       .spyOn(Image, "getSize")
       .mockImplementationOnce((_uri, _onLoad, onError = () => {}) => {
         completeImageSizeRequest = () => {
-          onError(mockUriSlowBad);
+          onError("pendingErrorUri");
         };
       });
     const onLoad = jest.fn();
     const onError = jest.fn();
     const { unmount } = await render(
       <ResponsiveImageView
-        source={{ uri: mockUriSlowBad }}
+        source={{ uri: "pendingErrorUri" }}
         onLoad={onLoad}
         onError={onError}
       />,
