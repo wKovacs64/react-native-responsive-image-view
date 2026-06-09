@@ -140,9 +140,6 @@ describe("getImageProps", () => {
 });
 
 describe("completion callbacks", () => {
-  const onLoad = jest.fn();
-  const onError = jest.fn();
-
   it("doesn't throw on success if no onLoad was provided", async () => {
     await expect(
       renderHook({ source: { uri: mockUriGood } }),
@@ -156,36 +153,34 @@ describe("completion callbacks", () => {
   });
 
   it("calls provided onLoad on URI success", async () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
+    const onLoad = jest.fn();
+    const onError = jest.fn();
     await renderHook({ source: { uri: mockUriGood }, onLoad, onError });
-    expect(onError).toHaveBeenCalledTimes(0);
+    expect(onError).not.toHaveBeenCalled();
     expect(onLoad).toHaveBeenCalledTimes(1);
   });
 
   it("calls provided onError on URI failure", async () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
+    const onLoad = jest.fn();
+    const onError = jest.fn();
     await renderHook({ source: { uri: mockUriBad }, onLoad, onError });
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(1);
+    expect(onLoad).not.toHaveBeenCalled();
     expect(onError).toHaveBeenCalledWith(expect.any(String));
   });
 
   it("calls provided onLoad on imported resource success", async () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
+    const onLoad = jest.fn();
+    const onError = jest.fn();
     await renderHook({ source: mockResourceGood, onLoad, onError });
-    expect(onError).toHaveBeenCalledTimes(0);
+    expect(onError).not.toHaveBeenCalled();
     expect(onLoad).toHaveBeenCalledTimes(1);
   });
 
   it("calls provided onError on imported resource failure", async () => {
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
+    const onLoad = jest.fn();
+    const onError = jest.fn();
     await renderHook({ source: mockResourceBad, onLoad, onError });
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(1);
+    expect(onLoad).not.toHaveBeenCalled();
     expect(onError).toHaveBeenCalledWith(expect.any(String));
   });
 
@@ -196,8 +191,8 @@ describe("completion callbacks", () => {
         onLoad(mockWidth, mockHeight);
       };
     });
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
+    const onLoad = jest.fn();
+    const onError = jest.fn();
     const { unmount } = await renderHook({
       source: { uri: "pendingLoadUri" },
       onLoad,
@@ -207,8 +202,8 @@ describe("completion callbacks", () => {
     await act(() => {
       completeImageSizeRequest();
     });
-    expect(onError).toHaveBeenCalledTimes(0);
-    expect(onLoad).toHaveBeenCalledTimes(0);
+    expect(onError).not.toHaveBeenCalled();
+    expect(onLoad).not.toHaveBeenCalled();
   });
 
   it("does not call onError on failure after unmounting", async () => {
@@ -220,8 +215,8 @@ describe("completion callbacks", () => {
           onError("pendingErrorUri");
         };
       });
-    expect(onLoad).toHaveBeenCalledTimes(0);
-    expect(onError).toHaveBeenCalledTimes(0);
+    const onLoad = jest.fn();
+    const onError = jest.fn();
     const { unmount } = await renderHook({
       source: { uri: "pendingErrorUri" },
       onLoad,
@@ -231,7 +226,7 @@ describe("completion callbacks", () => {
     await act(() => {
       completeImageSizeRequest();
     });
-    expect(onError).toHaveBeenCalledTimes(0);
-    expect(onLoad).toHaveBeenCalledTimes(0);
+    expect(onError).not.toHaveBeenCalled();
+    expect(onLoad).not.toHaveBeenCalled();
   });
 });
