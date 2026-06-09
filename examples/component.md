@@ -5,7 +5,7 @@
 ```jsx
 import React from "react";
 import { Image, View } from "react-native";
-import ResponsiveImageView from "react-native-responsive-image-view";
+import { ResponsiveImageView } from "react-native-responsive-image-view";
 
 const MyComponent = ({ imageUri }) => (
   <ResponsiveImageView source={{ uri: imageUri }}>
@@ -23,7 +23,7 @@ const MyComponent = ({ imageUri }) => (
 ```jsx
 import React from "react";
 import { Image, View } from "react-native";
-import ResponsiveImageView from "react-native-responsive-image-view";
+import { ResponsiveImageView } from "react-native-responsive-image-view";
 import headerImage from "./header.jpg";
 
 const DrawerHeader = () => (
@@ -42,7 +42,7 @@ const DrawerHeader = () => (
 ```jsx
 import React from "react";
 import { Image, TouchableHighlight, View } from "react-native";
-import ResponsiveImageView from "react-native-responsive-image-view";
+import { ResponsiveImageView } from "react-native-responsive-image-view";
 
 const MyTouchableComponent = ({ imageUri, onPress }) => (
   <ResponsiveImageView source={{ uri: imageUri }}>
@@ -62,7 +62,7 @@ const MyTouchableComponent = ({ imageUri, onPress }) => (
 ```jsx
 import React from "react";
 import { ActivityIndicator, Image, Text, Button, View } from "react-native";
-import ResponsiveImageView from "react-native-responsive-image-view";
+import { ResponsiveImageView } from "react-native-responsive-image-view";
 
 const MyComponent = ({ imageUri }) => (
   <ResponsiveImageView source={{ uri: imageUri }}>
@@ -93,7 +93,7 @@ const MyComponent = ({ imageUri }) => (
 ```jsx
 import React from "react";
 import { StyleSheet, Image, View } from "react-native";
-import ResponsiveImageView from "react-native-responsive-image-view";
+import { ResponsiveImageView } from "react-native-responsive-image-view";
 
 const styles = StyleSheet.create({
   imageContainer: {
@@ -120,7 +120,7 @@ const MyComponent = ({ imageUri }) => (
 ```jsx
 import React from "react";
 import { Image, View } from "react-native";
-import ResponsiveImageView from "react-native-responsive-image-view";
+import { ResponsiveImageView } from "react-native-responsive-image-view";
 
 class MyClassComponent extends React.Component {
   onLoad = () => {
