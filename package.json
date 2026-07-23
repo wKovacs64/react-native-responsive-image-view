@@ -87,7 +87,7 @@
     "test-renderer": "1.2.0",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.64.0"
+    "typescript-eslint": "8.65.0"
   },
   "peerDependencies": {
     "react": ">=16.8.3",
