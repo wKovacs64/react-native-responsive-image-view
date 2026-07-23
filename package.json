@@ -72,7 +72,7 @@
     "babel-plugin-syntax-hermes-parser": "0.37.0",
     "doctoc": "2.5.0",
     "eslint": "9.39.5",
-    "eslint-plugin-jest": "29.15.4",
+    "eslint-plugin-jest": "29.15.5",
     "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-testing-library": "7.16.2",
     "jest": "30.3.0",
