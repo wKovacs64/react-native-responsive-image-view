@@ -1,0 +1,13 @@
+diff --git a/build/index.js b/build/index.js
+index 4cb3d652eb5112027234ed799f1ba6913654aaa5..4197020c4b802d2db1c82a380d65a2fb93f83470 100644
+--- a/build/index.js
++++ b/build/index.js
+@@ -3781,7 +3781,7 @@ class Runtime {
+     this.transformCache.clearForReset();
+     if (this._environment) {
+       if (this._environment.global) {
+-        this._moduleMocker.clearMocksOnScope(this._environment.global);
++        this._moduleMocker.clearMocksOnScope?.(this._environment.global);
+       }
+       if (this._environment.fakeTimers) {
+         this._environment.fakeTimers.clearAllTimers();

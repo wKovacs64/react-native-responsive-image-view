@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  jest-runtime@30.4.2: 1d2c03df33baaf4bd4a93d4e9871aecd0e48f9f5e1585e289ec1c4c005a3e817
+
 importers:
 
   .:
@@ -5857,7 +5860,7 @@ snapshots:
       jest-resolve: 30.4.1
       jest-resolve-dependencies: 30.4.2(supports-color@8.1.1)
       jest-runner: 30.4.2(supports-color@8.1.1)
-      jest-runtime: 30.4.2(supports-color@8.1.1)
+      jest-runtime: 30.4.2(patch_hash=1d2c03df33baaf4bd4a93d4e9871aecd0e48f9f5e1585e289ec1c4c005a3e817)(supports-color@8.1.1)
       jest-snapshot: 30.4.1(supports-color@8.1.1)
       jest-util: 30.4.1
       jest-validate: 30.4.1
@@ -7769,7 +7772,7 @@ snapshots:
       jest-each: 30.4.1
       jest-matcher-utils: 30.4.1
       jest-message-util: 30.4.1
-      jest-runtime: 30.4.2(supports-color@8.1.1)
+      jest-runtime: 30.4.2(patch_hash=1d2c03df33baaf4bd4a93d4e9871aecd0e48f9f5e1585e289ec1c4c005a3e817)(supports-color@8.1.1)
       jest-snapshot: 30.4.1(supports-color@8.1.1)
       jest-util: 30.4.1
       p-limit: 3.1.0
@@ -8030,7 +8033,7 @@ snapshots:
       jest-leak-detector: 30.4.1
       jest-message-util: 30.4.1
       jest-resolve: 30.4.1
-      jest-runtime: 30.4.2(supports-color@8.1.1)
+      jest-runtime: 30.4.2(patch_hash=1d2c03df33baaf4bd4a93d4e9871aecd0e48f9f5e1585e289ec1c4c005a3e817)(supports-color@8.1.1)
       jest-util: 30.4.1
       jest-watcher: 30.4.1
       jest-worker: 30.4.1
@@ -8039,7 +8042,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-runtime@30.4.2(supports-color@8.1.1):
+  jest-runtime@30.4.2(patch_hash=1d2c03df33baaf4bd4a93d4e9871aecd0e48f9f5e1585e289ec1c4c005a3e817)(supports-color@8.1.1):
     dependencies:
       '@jest/environment': 30.4.1
       '@jest/fake-timers': 30.4.1
