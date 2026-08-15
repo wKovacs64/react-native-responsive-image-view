@@ -209,7 +209,10 @@ export function useResponsiveImageView({
     } else {
       // Retrieve image dimensions from imported resource
       const imageSource = Image.resolveAssetSource(imageIdOrUri);
-      if (imageSource) {
+      if (
+        imageSource?.width !== undefined &&
+        imageSource.height !== undefined
+      ) {
         handleImageSizeSuccess(imageSource.width, imageSource.height);
       } else {
         handleImageSizeFailure(

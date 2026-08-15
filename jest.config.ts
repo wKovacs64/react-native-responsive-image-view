@@ -16,14 +16,6 @@ const config: Config = {
   modulePathIgnorePatterns: ["<rootDir>/dist/"],
   preset: "@react-native/jest-preset",
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
-  // TODO: remove custom transform once the preset handles Hermes without extra plugins?
-  transform: {
-    "^.+\\.(js)$": [
-      "babel-jest",
-      { plugins: ["babel-plugin-syntax-hermes-parser"] },
-    ],
-    "^.+\\.(ts|tsx)$": "babel-jest",
-  },
 };
 
 export default config;
