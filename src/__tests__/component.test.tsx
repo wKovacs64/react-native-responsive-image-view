@@ -12,14 +12,24 @@ import {
 import { ResponsiveImageView, type ResponsiveImageViewBag } from "..";
 
 const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
-  loading: expect.any(Boolean) as ResponsiveImageViewBag["loading"],
-  error: expect.any(String) as ResponsiveImageViewBag["error"],
-  getViewProps: expect.any(Function) as ResponsiveImageViewBag["getViewProps"],
-  getImageProps: expect.any(
-    Function,
-  ) as ResponsiveImageViewBag["getImageProps"],
-  retry: expect.any(Function) as ResponsiveImageViewBag["retry"],
-}) as ResponsiveImageViewBag;
+  loading: expect.any(Boolean),
+  error: expect.any(String),
+  getViewProps: expect.any(Function),
+  getImageProps: expect.any(Function),
+  retry: expect.any(Function),
+});
+
+const noop = () => {};
+
+const completeSuccessfulImageSizeRequest =
+  (onLoad: Parameters<typeof Image.getSize>[1]) => () => {
+    onLoad(mockWidth, mockHeight);
+  };
+
+const completeFailedImageSizeRequest =
+  (onError: NonNullable<Parameters<typeof Image.getSize>[2]>) => () => {
+    onError("pendingErrorUri");
+  };
 
 describe("rendering order (component > render > FAC > children > null)", () => {
   describe("renders component if provided", () => {
@@ -178,11 +188,9 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onLoad on success after unmounting", async () => {
-    let completeImageSizeRequest = () => {};
+    let completeImageSizeRequest = noop;
     jest.spyOn(Image, "getSize").mockImplementationOnce((_uri, onLoad) => {
-      completeImageSizeRequest = () => {
-        onLoad(mockWidth, mockHeight);
-      };
+      completeImageSizeRequest = completeSuccessfulImageSizeRequest(onLoad);
     });
     const onLoad = jest.fn();
     const onError = jest.fn();
@@ -202,13 +210,11 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onError on failure after unmounting", async () => {
-    let completeImageSizeRequest = () => {};
+    let completeImageSizeRequest = noop;
     jest
       .spyOn(Image, "getSize")
-      .mockImplementationOnce((_uri, _onLoad, onError = () => {}) => {
-        completeImageSizeRequest = () => {
-          onError("pendingErrorUri");
-        };
+      .mockImplementationOnce((_uri, _onLoad, onError = noop) => {
+        completeImageSizeRequest = completeFailedImageSizeRequest(onError);
       });
     const onLoad = jest.fn();
     const onError = jest.fn();

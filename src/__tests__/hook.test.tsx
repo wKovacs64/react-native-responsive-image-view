@@ -15,21 +15,33 @@ import {
 } from "../__fixtures__";
 import { useResponsiveImageView, type UseResponsiveImageViewOptions } from "..";
 
-function objectKeys<Obj extends object>(obj: Obj): (keyof Obj)[] {
-  return Object.keys(obj) as (keyof Obj)[];
-}
-
 function Comp({
   children,
   ...props
-}: { children: React.FunctionComponent } & UseResponsiveImageViewOptions) {
+}: {
+  children: (bag: ReturnType<typeof useResponsiveImageView>) => React.ReactNode;
+} & UseResponsiveImageViewOptions) {
   return children(useResponsiveImageView(props));
 }
 
 const renderHook = async (props: UseResponsiveImageViewOptions) => {
-  const children = jest.fn(() => null);
+  const children = jest.fn(
+    (_bag: ReturnType<typeof useResponsiveImageView>) => null,
+  );
   return { children, ...(await render(<Comp {...props}>{children}</Comp>)) };
 };
+
+const noop = () => {};
+
+const completeSuccessfulImageSizeRequest =
+  (onLoad: Parameters<typeof Image.getSize>[1]) => () => {
+    onLoad(mockWidth, mockHeight);
+  };
+
+const completeFailedImageSizeRequest =
+  (onError: NonNullable<Parameters<typeof Image.getSize>[2]>) => () => {
+    onError("pendingErrorUri");
+  };
 
 describe("parameter validation", () => {
   it("requires a source", async () => {
@@ -58,9 +70,8 @@ describe("error", () => {
   it("contains an error message on failure", async () => {
     const { children } = await renderHook({ source: { uri: mockUriBad } });
     expect(children).toHaveBeenCalledWith(
-      expect.objectContaining({ error: expect.any(String) as string }),
+      expect.objectContaining({ error: expect.any(String) }),
     );
-    // @ts-expect-error accessing untyped mock call args
     expect(children.mock.calls[1][0].error).not.toHaveLength(0);
   });
 
@@ -72,18 +83,16 @@ describe("error", () => {
   });
 });
 
-type Bags = ReturnType<typeof useResponsiveImageView>[];
-
 describe("retry", () => {
   it("retries", async () => {
     const { children } = await renderHook({ source: { uri: mockUriBad } });
-    const { retry } = (children.mock.calls[1] as Bags)[0];
-    expect((children.mock.calls[1] as Bags)[0].loading).toBe(false);
+    const { retry } = children.mock.calls[1][0];
+    expect(children.mock.calls[1][0].loading).toBe(false);
     await act(() => {
       retry();
     });
-    expect((children.mock.calls[2] as Bags)[0].loading).toBe(true);
-    expect((children.mock.calls[3] as Bags)[0].loading).toBe(false);
+    expect(children.mock.calls[2][0].loading).toBe(true);
+    expect(children.mock.calls[3][0].loading).toBe(false);
   });
 });
 
@@ -93,7 +102,7 @@ describe("getViewProps", () => {
       aspectRatio: controlledAspectRatio,
       source: { uri: mockUriGood },
     });
-    const { getViewProps } = (children.mock.calls[1] as Bags)[0];
+    const { getViewProps } = children.mock.calls[1][0];
     expect(getViewProps().style).toContainEqual({
       aspectRatio: controlledAspectRatio,
     });
@@ -101,19 +110,21 @@ describe("getViewProps", () => {
 
   it("includes calculated aspectRatio if not provided", async () => {
     const { children } = await renderHook({ source: { uri: mockUriGood } });
-    const { getViewProps } = (children.mock.calls[1] as Bags)[0];
+    const { getViewProps } = children.mock.calls[1][0];
     expect(getViewProps().style).toContainEqual({
       aspectRatio: computedAspectRatio,
     });
   });
 
   it("composes consumer props with own props", async () => {
-    expect.assertions(objectKeys(consumerViewProps).length);
+    expect.assertions(Object.keys(consumerViewProps).length);
     const { children } = await renderHook({ source: { uri: mockUriGood } });
-    const { getViewProps } = (children.mock.calls[1] as Bags)[0];
+    const { getViewProps } = children.mock.calls[1][0];
     const mergedProps = getViewProps(consumerViewProps);
-    objectKeys(consumerViewProps).forEach((consumerProp) => {
-      expect(mergedProps[consumerProp]).toMatchSnapshot(consumerProp);
+    Object.keys(consumerViewProps).forEach((consumerProp) => {
+      expect(Reflect.get(mergedProps, consumerProp)).toMatchSnapshot(
+        consumerProp,
+      );
     });
   });
 });
@@ -121,7 +132,7 @@ describe("getViewProps", () => {
 describe("getImageProps", () => {
   it("sets height and width to 100%", async () => {
     const { children } = await renderHook({ source: { uri: mockUriGood } });
-    const { getImageProps } = (children.mock.calls[1] as Bags)[0];
+    const { getImageProps } = children.mock.calls[1][0];
     expect(getImageProps().style).toContainEqual({
       height: "100%",
       width: "100%",
@@ -129,12 +140,14 @@ describe("getImageProps", () => {
   });
 
   it("composes consumer props with own props", async () => {
-    expect.assertions(objectKeys(consumerImageProps).length);
+    expect.assertions(Object.keys(consumerImageProps).length);
     const { children } = await renderHook({ source: { uri: mockUriGood } });
-    const { getImageProps } = (children.mock.calls[1] as Bags)[0];
+    const { getImageProps } = children.mock.calls[1][0];
     const mergedProps = getImageProps(consumerImageProps);
-    objectKeys(consumerImageProps).forEach((consumerProp) => {
-      expect(mergedProps[consumerProp]).toMatchSnapshot(consumerProp);
+    Object.keys(consumerImageProps).forEach((consumerProp) => {
+      expect(Reflect.get(mergedProps, consumerProp)).toMatchSnapshot(
+        consumerProp,
+      );
     });
   });
 });
@@ -185,11 +198,9 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onLoad on success after unmounting", async () => {
-    let completeImageSizeRequest = () => {};
+    let completeImageSizeRequest = noop;
     jest.spyOn(Image, "getSize").mockImplementationOnce((_uri, onLoad) => {
-      completeImageSizeRequest = () => {
-        onLoad(mockWidth, mockHeight);
-      };
+      completeImageSizeRequest = completeSuccessfulImageSizeRequest(onLoad);
     });
     const onLoad = jest.fn();
     const onError = jest.fn();
@@ -207,13 +218,11 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onError on failure after unmounting", async () => {
-    let completeImageSizeRequest = () => {};
+    let completeImageSizeRequest = noop;
     jest
       .spyOn(Image, "getSize")
-      .mockImplementationOnce((_uri, _onLoad, onError = () => {}) => {
-        completeImageSizeRequest = () => {
-          onError("pendingErrorUri");
-        };
+      .mockImplementationOnce((_uri, _onLoad, onError = noop) => {
+        completeImageSizeRequest = completeFailedImageSizeRequest(onError);
       });
     const onLoad = jest.fn();
     const onError = jest.fn();
