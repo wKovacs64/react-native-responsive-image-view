@@ -24,8 +24,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@react-native/jest-preset':
-        specifier: 0.86.2
-        version: 0.86.2(@babel/core@8.0.1)(react@19.2.8)(supports-color@8.1.1)
+        specifier: 0.87.0
+        version: 0.87.0(@babel/core@8.0.1)(react@19.2.8)(supports-color@8.1.1)
       '@testing-library/react-native':
         specifier: 14.0.1
         version: 14.0.1(jest@30.4.2(@types/node@25.0.0)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@25.0.0)(typescript@7.0.2)))(react-native@0.87.0(@babel/core@8.0.1)(@types/react@19.2.18)(react@19.2.8)(supports-color@8.1.1))(react@19.2.8)(test-renderer@1.2.0(@types/react@19.2.18)(react@19.2.8))
@@ -1580,15 +1580,15 @@ packages:
     resolution: {integrity: sha512-CFOhPsxN4yS6vYjShSGKQiJHDPQFKmbiJG17zZfJuHTvJiaWz7JkpznE/P1RRKXdgvCmACrj31vxJiCHLlI7Gg==}
     engines: {node: ^22.13.0 || ^24.3.0 || >= 26.0.0}
 
-  '@react-native/jest-preset@0.86.2':
-    resolution: {integrity: sha512-wneoqwKWdv6wIcWotVgp6NMlMWcJDjxDnp7fVYym2Pn6JLgAKgkbmuHGmxW0cLCGoa9wtcO680uciv+Kzx0G7w==}
-    engines: {node: '>= 20.19.4'}
+  '@react-native/jest-preset@0.87.0':
+    resolution: {integrity: sha512-aNK/CXEfOIQPIobwywB0SmtsaTANV1ONXZmRx/glwdHeFfudDvoHbYNudKAwH1d/HBzfXZONCJXuc0UtRca60w==}
+    engines: {node: '>= 22.13.0'}
     peerDependencies:
       react: ^19.2.3
 
-  '@react-native/js-polyfills@0.86.2':
-    resolution: {integrity: sha512-bIwNcGBaQ74shB5z1mRkxOpjikimuwsnOCEkZSzL67Z1FTyK1ObpENfyd2QvcvVW9Cjl+tHuw9ynpBnb2jPoJQ==}
-    engines: {node: ^20.19.4 || ^22.13.0 || ^24.3.0 || >= 25.0.0}
+  '@react-native/js-polyfills@0.87.0':
+    resolution: {integrity: sha512-iwX3S/6XnR/TkOIk6Cz+FjeToDM/a4M1Cz/o1tfDakULjhKMI/UBtta1DsJgeg5c4WIJjkD4c8XlAJEb8pWOtg==}
+    engines: {node: ^22.13.0 || ^24.3.0 || >= 26.0.0}
 
   '@react-native/normalize-colors@0.87.0':
     resolution: {integrity: sha512-7aEGyrrquUqpbp+aEgOCp2xr0cTLYhJFCMfUqI4IoJddfwosra9Y5qtbrJU5Z/vBLndCmSIzABrWnHK0lxpwcA==}
@@ -6012,10 +6012,10 @@ snapshots:
 
   '@react-native/gradle-plugin@0.87.0': {}
 
-  '@react-native/jest-preset@0.86.2(@babel/core@8.0.1)(react@19.2.8)(supports-color@8.1.1)':
+  '@react-native/jest-preset@0.87.0(@babel/core@8.0.1)(react@19.2.8)(supports-color@8.1.1)':
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
-      '@react-native/js-polyfills': 0.86.2
+      '@react-native/js-polyfills': 0.87.0
       babel-jest: 29.7.0(@babel/core@8.0.1)(supports-color@8.1.1)
       jest-environment-node: 29.7.0
       react: 19.2.8
@@ -6024,7 +6024,7 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@react-native/js-polyfills@0.86.2': {}
+  '@react-native/js-polyfills@0.87.0': {}
 
   '@react-native/normalize-colors@0.87.0': {}
 
