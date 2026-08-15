@@ -36,7 +36,7 @@ jobs:
         run: pnpm dlx oxfmt --check .
 
   lint:
-    name: ⬣ ESLint
+    name: 🐂 Oxlint
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout repo
