@@ -161,7 +161,7 @@ export function useResponsiveImageView({
   }
 
   function getImageProps({
-    source,
+    source: _unusedSource,
     style = {},
     ...props
   }: Parameters<ResponsiveImageViewBag["getImageProps"]>[0] = {}) {
@@ -234,10 +234,10 @@ export function useResponsiveImageView({
 
 export function ResponsiveImageView({
   source,
-  component: Component = undefined,
-  render = undefined,
-  children = undefined,
-  aspectRatio = undefined,
+  component: Component,
+  render,
+  children,
+  aspectRatio,
   onLoad = defaultOnLoad,
   onError = defaultOnError,
 }: ResponsiveImageViewProps): React.JSX.Element | null {
