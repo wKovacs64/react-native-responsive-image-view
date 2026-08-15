@@ -37,6 +37,7 @@
     "!**/__fixtures__",
     "!**/__tests__"
   ],
+  "type": "module",
   "main": "dist/commonjs/index.js",
   "module": "dist/module/index.js",
   "types": "dist/typescript/src/index.d.ts",
