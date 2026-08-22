@@ -62,7 +62,7 @@
   "devDependencies": {
     "@babel/core": "7.29.7",
     "@changesets/changelog-github": "1.0.0",
-    "@changesets/cli": "3.0.0",
+    "@changesets/cli": "3.0.1",
     "@react-native/babel-preset": "0.87.0",
     "@react-native/jest-preset": "0.87.0",
     "@testing-library/react-native": "14.0.1",
