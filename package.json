@@ -64,7 +64,7 @@
     "@changesets/changelog-github": "1.0.0",
     "@changesets/cli": "3.0.1",
     "@react-native/babel-preset": "0.87.1",
-    "@react-native/jest-preset": "0.87.0",
+    "@react-native/jest-preset": "0.87.1",
     "@testing-library/react-native": "14.0.1",
     "@types/jest": "30.0.0",
     "@types/react": "19.2.18",
