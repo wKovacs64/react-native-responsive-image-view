@@ -224,6 +224,7 @@ export function useResponsiveImageView({
     return () => {
       pendingGetImageSize.cancel();
     };
+    // oxlint-disable-next-line react/exhaustive-effect-dependencies -- Retry count intentionally retriggers image loading.
   }, [imageIdOrUri, state.retryCount]);
 
   return {
