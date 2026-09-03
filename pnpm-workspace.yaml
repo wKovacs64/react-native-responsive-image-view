@@ -1,8 +1,5 @@
 allowBuilds:
+  "@parcel/watcher": false
   unrs-resolver: false
 
 minimumReleaseAge: 4320
-
-patchedDependencies:
-  # Remove when https://github.com/jestjs/jest/pull/16169 is released.
-  jest-runtime@30.4.2: patches/jest-runtime@30.4.2.patch
