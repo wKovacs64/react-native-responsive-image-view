@@ -68,7 +68,7 @@
     "@testing-library/react-native": "14.0.1",
     "@types/jest": "30.0.0",
     "@types/react": "19.2.18",
-    "@wkovacs64/oxlint-config": "0.1.0",
+    "@wkovacs64/oxlint-config": "0.2.2",
     "babel-jest": "30.4.1",
     "doctoc": "2.5.0",
     "jest": "30.4.2",

@@ -36,8 +36,8 @@ importers:
         specifier: 19.2.18
         version: 19.2.18
       '@wkovacs64/oxlint-config':
-        specifier: 0.1.0
-        version: 0.1.0(oxlint-tsgolint@7.0.2001)(oxlint@1.78.0(oxlint-tsgolint@7.0.2001))
+        specifier: 0.2.2
+        version: 0.2.2(oxlint-tsgolint@7.0.2001)(oxlint@1.78.0(oxlint-tsgolint@7.0.2001))
       babel-jest:
         specifier: 30.4.1
         version: 30.4.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1)
@@ -1741,11 +1741,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@wkovacs64/oxlint-config@0.1.0':
-    resolution: {integrity: sha512-Ji6jbwZ/2QMA/K6mOvtLEWeyR+8EsJdSVIZI7F/s22gBWQYH/esKaOPzTGk8swcGx2LDdbfgmxnQjyu2T4FWIQ==}
+  '@wkovacs64/oxlint-config@0.2.2':
+    resolution: {integrity: sha512-CEFeVHclhGQztEkWSnVMl7iVsrc5nSXiYJ7T2XNsD8Xx26Bzsw+E8sZjE9RRRIjn4MUJiNK/Xirv9zfFFtE5Uw==}
     engines: {node: '>=24'}
     peerDependencies:
-      oxlint: '>=1.70.0 <2'
+      oxlint: '>=1.79.0 <2'
       oxlint-tsgolint: '>=7.0.2001'
 
   accepts@2.0.0:
@@ -5605,7 +5605,7 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@wkovacs64/oxlint-config@0.1.0(oxlint-tsgolint@7.0.2001)(oxlint@1.78.0(oxlint-tsgolint@7.0.2001))':
+  '@wkovacs64/oxlint-config@0.2.2(oxlint-tsgolint@7.0.2001)(oxlint@1.78.0(oxlint-tsgolint@7.0.2001))':
     dependencies:
       oxlint: 1.78.0(oxlint-tsgolint@7.0.2001)
       oxlint-tsgolint: 7.0.2001
