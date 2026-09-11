@@ -66,8 +66,8 @@ importers:
         specifier: 0.87.1
         version: 0.87.1(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.8)(supports-color@8.1.1)
       react-native-builder-bob:
-        specifier: 0.43.0
-        version: 0.43.0(supports-color@8.1.1)
+        specifier: 0.43.1
+        version: 0.43.1(supports-color@8.1.1)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -3368,8 +3368,8 @@ packages:
   react-is@19.2.7:
     resolution: {integrity: sha512-kZFnouyVv7eP/Phmrlo9FK+zcAdriZJvzxXHF1Sl1P377WSGe2G/JxVolhTrB/jeV47lKImhNUsijjHAAbcl/A==}
 
-  react-native-builder-bob@0.43.0:
-    resolution: {integrity: sha512-suE1OYf0umMQvzzQ+4Ba+5xMc8jLu60ILQi85x8SCBaBtVUSJfcaGvlv6+34xxXgy+a2PuyNzoOXr9STEweLrQ==}
+  react-native-builder-bob@0.43.1:
+    resolution: {integrity: sha512-TRGDmaAI72gMyRXFbNhWVODLe9YOydJ9HV+SCdLp+BjHnUJLeAImFCnZUmlO/2pUQUC1+yS+S4EMlRZ4rGCwBg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >= 23.4.0}
     hasBin: true
 
@@ -7739,7 +7739,7 @@ snapshots:
 
   react-is@19.2.7: {}
 
-  react-native-builder-bob@0.43.0(supports-color@8.1.1):
+  react-native-builder-bob@0.43.1(supports-color@8.1.1):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/plugin-transform-flow-strip-types': 7.27.1(@babel/core@7.29.7(supports-color@8.1.1))
