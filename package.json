@@ -65,7 +65,7 @@
     "@changesets/cli": "3.0.3",
     "@react-native/babel-preset": "0.87.1",
     "@react-native/jest-preset": "0.87.1",
-    "@testing-library/react-native": "14.0.1",
+    "@testing-library/react-native": "14.1.0",
     "@types/jest": "30.0.0",
     "@types/react": "19.3.0",
     "@wkovacs64/oxlint-config": "0.3.0",
