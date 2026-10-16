@@ -74,7 +74,7 @@
     "jest": "30.5.2",
     "npm-run-all2": "9.0.3",
     "oxfmt": "0.73.0",
-    "oxlint": "1.87.0",
+    "oxlint": "1.88.0",
     "oxlint-tsgolint": "7.0.2004",
     "react": "19.3.0",
     "react-dom": "19.3.0",
