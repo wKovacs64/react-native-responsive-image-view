@@ -3717,10 +3717,6 @@ packages:
     resolution: {integrity: sha512-PcByqNyT/38F2kDNi006HAMRJaULuBzq/FOsw3qdZvX/GA9W/jamDaRskgHjubHiftXK5sIFxLNkvrXUwcof6Q==}
     engines: {node: '>= 0.4'}
 
-  shell-quote@1.8.4:
-    resolution: {integrity: sha512-VsC6n6vz1ihYYyZZwX7YZSF5l5x36ca17OC+a69h94YqB7X6XLwf+5MOgynYir2SLFUbl8gIYvBo8K8RoNQ6bQ==}
-    engines: {node: '>= 0.4'}
-
   signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
 
@@ -7342,7 +7338,7 @@ snapshots:
   launch-editor@2.14.1:
     dependencies:
       picocolors: 1.1.1
-      shell-quote: 1.8.4
+      shell-quote: 1.12.0
 
   leven@3.1.0: {}
 
@@ -8191,8 +8187,6 @@ snapshots:
   shebang-regex@3.0.0: {}
 
   shell-quote@1.12.0: {}
-
-  shell-quote@1.8.4: {}
 
   signal-exit@3.0.7: {}
 
