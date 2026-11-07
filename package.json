@@ -60,7 +60,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@babel/core": "7.29.7",
+    "@babel/core": "7.29.13",
     "@changesets/changelog-github": "1.0.1",
     "@changesets/cli": "3.0.3",
     "@react-native/babel-preset": "0.88.1",
