@@ -11,7 +11,7 @@ import {
 } from "../__fixtures__";
 import { ResponsiveImageView, type ResponsiveImageViewBag } from "..";
 
-const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
+const expectedBag = expect.objectContaining<ResponsiveImageViewBag>({
   loading: expect.any(Boolean),
   error: expect.any(String),
   getViewProps: expect.any(Function),
@@ -19,7 +19,7 @@ const expectedShape = expect.objectContaining<ResponsiveImageViewBag>({
   retry: expect.any(Function),
 });
 
-const noop = () => {};
+const noop = jest.fn();
 
 const completeSuccessfulImageSizeRequest =
   (onLoad: Parameters<typeof Image.getSize>[1]) => () => {
@@ -47,21 +47,20 @@ describe("rendering order (component > render > FAC > children > null)", () => {
         </ResponsiveImageView>,
       );
       // the second argument is the context (undefined in this case), which we don't care about
-      expect(MyFunctionComponent).toHaveBeenCalledWith(
-        expectedShape,
-        undefined,
-      );
+      expect(MyFunctionComponent).toHaveBeenCalledWith(expectedBag, undefined);
       expect(renderProp).not.toHaveBeenCalled();
       expect(children).not.toHaveBeenCalled();
     });
 
     it("class", async () => {
       const classRenderMethod = jest.fn((_props) => <View />);
+
       class MyClassComponent extends React.Component {
         render() {
           return classRenderMethod(this.props);
         }
       }
+
       const renderProp = jest.fn(() => <View />);
       const children = jest.fn(() => <View />);
       await render(
@@ -73,7 +72,7 @@ describe("rendering order (component > render > FAC > children > null)", () => {
           {children}
         </ResponsiveImageView>,
       );
-      expect(classRenderMethod).toHaveBeenCalledWith(expectedShape);
+      expect(classRenderMethod).toHaveBeenCalledWith(expectedBag);
       expect(renderProp).not.toHaveBeenCalled();
       expect(children).not.toHaveBeenCalled();
     });
@@ -87,7 +86,7 @@ describe("rendering order (component > render > FAC > children > null)", () => {
         {children}
       </ResponsiveImageView>,
     );
-    expect(renderProp).toHaveBeenCalledWith(expectedShape);
+    expect(renderProp).toHaveBeenCalledWith(expectedBag);
     expect(children).not.toHaveBeenCalled();
   });
 
@@ -98,7 +97,7 @@ describe("rendering order (component > render > FAC > children > null)", () => {
         {children}
       </ResponsiveImageView>,
     );
-    expect(children).toHaveBeenCalledWith(expectedShape);
+    expect(children).toHaveBeenCalledWith(expectedBag);
   });
 
   it("renders children if no component, render prop, or FAC was provided", async () => {
@@ -188,12 +187,13 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onLoad on success after unmounting", async () => {
-    let completeImageSizeRequest = noop;
+    let completeImageSizeRequest: () => void = noop;
     jest.spyOn(Image, "getSize").mockImplementationOnce((_uri, onLoad) => {
       completeImageSizeRequest = completeSuccessfulImageSizeRequest(onLoad);
     });
     const onLoad = jest.fn();
     const onError = jest.fn();
+
     const { unmount } = await render(
       <ResponsiveImageView
         source={{ uri: "pendingLoadUri" }}
@@ -201,6 +201,7 @@ describe("completion callbacks", () => {
         onError={onError}
       />,
     );
+
     await unmount();
     await act(() => {
       completeImageSizeRequest();
@@ -210,7 +211,7 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onError on failure after unmounting", async () => {
-    let completeImageSizeRequest = noop;
+    let completeImageSizeRequest: () => void = noop;
     jest
       .spyOn(Image, "getSize")
       .mockImplementationOnce((_uri, _onLoad, onError = noop) => {
@@ -218,6 +219,7 @@ describe("completion callbacks", () => {
       });
     const onLoad = jest.fn();
     const onError = jest.fn();
+
     const { unmount } = await render(
       <ResponsiveImageView
         source={{ uri: "pendingErrorUri" }}
@@ -225,6 +227,7 @@ describe("completion callbacks", () => {
         onError={onError}
       />,
     );
+
     await unmount();
     await act(() => {
       completeImageSizeRequest();

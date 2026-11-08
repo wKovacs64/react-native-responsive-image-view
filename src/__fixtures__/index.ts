@@ -8,6 +8,7 @@ export const mockWidth = 800;
 export const mockHeight = 600;
 export const computedAspectRatio = mockWidth / mockHeight;
 export const controlledAspectRatio = 16 / 9;
+
 export const consumerViewProps = {
   hitSlop: {
     top: 10,
@@ -19,6 +20,7 @@ export const consumerViewProps = {
     padding: 20,
   },
 };
+
 export const consumerImageProps: Partial<ImageProps> = {
   onLayout: jest.fn().mockName("Image#onLayout"),
   style: {
