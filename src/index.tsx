@@ -28,6 +28,7 @@ export type UseResponsiveImageViewOptions = {
 
 // Component props
 export type ResponsiveImageViewProps = UseResponsiveImageViewOptions & {
+  // oxlint-disable-next-line typescript/no-explicit-any -- Narrowing to the bag's props rejects existing consumer components, e.g. classes declaring no props.
   component?: React.ComponentType<any>;
   render?: (bag: ResponsiveImageViewBag) => React.JSX.Element;
   children?:
@@ -40,7 +41,7 @@ export type ResponsiveImageViewProps = UseResponsiveImageViewOptions & {
 function getImageSize(
   uri: Parameters<typeof Image.getSize>[0],
   onImageSizeSuccess: Parameters<typeof Image.getSize>[1],
-  onImageSizeFailure: Parameters<typeof Image.getSize>[2],
+  onImageSizeFailure: (errMessage: string) => void,
 ) {
   let totallyCanceled = false;
 
@@ -53,7 +54,11 @@ function getImageSize(
     },
     (err) => {
       if (!totallyCanceled) {
-        onImageSizeFailure?.(err);
+        onImageSizeFailure(
+          err instanceof Error
+            ? err.message
+            : /* istanbul ignore next */ String(err),
+        );
       }
     },
   );
@@ -94,6 +99,7 @@ function reducer(state: State, action: Action) {
         aspectRatio: action.payload,
       };
     }
+
     case "FAILURE": {
       return {
         ...initialState,
@@ -102,9 +108,11 @@ function reducer(state: State, action: Action) {
         retryCount: state.retryCount,
       };
     }
+
     case "RETRY": {
       return { ...initialState, retryCount: state.retryCount + 1 };
     }
+
     /* istanbul ignore next: this will never happen */
     default: {
       throw new Error("Unexpected action type");
@@ -112,16 +120,26 @@ function reducer(state: State, action: Action) {
   }
 }
 
-function defaultOnLoad() {}
-function defaultOnError(_: string) {}
+function isRequireSource(
+  source: ImageRequireSource | ImageURISource | string,
+): source is ImageRequireSource {
+  return typeof source === "number";
+}
+
+function isRenderFunction(
+  renderer: ResponsiveImageViewProps["children"],
+): renderer is (bag: ResponsiveImageViewBag) => React.JSX.Element {
+  return typeof renderer === "function";
+}
 
 export function useResponsiveImageView({
   aspectRatio: controlledAspectRatio,
   source: initialSource,
-  onLoad = defaultOnLoad,
-  onError = defaultOnError,
+  onLoad,
+  onError,
 }: UseResponsiveImageViewOptions): ResponsiveImageViewBag {
-  if (!initialSource) {
+  // Guards untyped callers; the type already requires `source`.
+  if (initialSource === undefined || initialSource === null) {
     throw new Error('"source" is required');
   }
 
@@ -136,11 +154,14 @@ export function useResponsiveImageView({
 
   // Extract and memoize only the relevant information
   const imageIdOrUri = React.useMemo(() => {
-    const imgIdOrUri =
-      typeof initialSource === "number" ? initialSource : initialSource.uri;
-    if (!imgIdOrUri) {
+    const imgIdOrUri = isRequireSource(initialSource)
+      ? initialSource
+      : initialSource.uri;
+
+    if (imgIdOrUri === undefined || imgIdOrUri === "" || imgIdOrUri === 0) {
       throw new Error(`"source" must be a valid URI or resource`);
     }
+
     return imgIdOrUri;
   }, [initialSource]);
 
@@ -170,6 +191,7 @@ export function useResponsiveImageView({
       style: [style, { height: "100%", width: "100%" }],
       ...props,
     };
+
     return imageProps;
   }
 
@@ -181,25 +203,19 @@ export function useResponsiveImageView({
   }
 
   React.useEffect(() => {
-    let pendingGetImageSize = {
-      cancel: /* istanbul ignore next: just a stub  */ () => {},
-    };
+    let pendingGetImageSize: ReturnType<typeof getImageSize> | undefined;
 
     function handleImageSizeSuccess(width: number, height: number) {
-      onLoadRef.current();
+      onLoadRef.current?.();
       dispatch({ type: "SUCCESS", payload: width / height });
     }
 
-    function handleImageSizeFailure(err: any) {
-      const errMessage =
-        err instanceof Error
-          ? err.message
-          : /* istanbul ignore next */ String(err);
-      onErrorRef.current(errMessage);
+    function handleImageSizeFailure(errMessage: string) {
+      onErrorRef.current?.(errMessage);
       dispatch({ type: "FAILURE", payload: errMessage });
     }
 
-    if (typeof imageIdOrUri === "string") {
+    if (!isRequireSource(imageIdOrUri)) {
       // Retrieve image dimensions from URI
       pendingGetImageSize = getImageSize(
         imageIdOrUri,
@@ -209,20 +225,19 @@ export function useResponsiveImageView({
     } else {
       // Retrieve image dimensions from imported resource
       const imageSource = Image.resolveAssetSource(imageIdOrUri);
+
       if (
         imageSource?.width !== undefined &&
         imageSource.height !== undefined
       ) {
         handleImageSizeSuccess(imageSource.width, imageSource.height);
       } else {
-        handleImageSizeFailure(
-          new Error("Failed to retrieve image dimensions."),
-        );
+        handleImageSizeFailure("Failed to retrieve image dimensions.");
       }
     }
 
     return () => {
-      pendingGetImageSize.cancel();
+      pendingGetImageSize?.cancel();
     };
     // oxlint-disable-next-line react/exhaustive-effect-dependencies -- Retry count intentionally retriggers image loading.
   }, [imageIdOrUri, state.retryCount]);
@@ -242,8 +257,8 @@ export function ResponsiveImageView({
   render,
   children,
   aspectRatio,
-  onLoad = defaultOnLoad,
-  onError = defaultOnError,
+  onLoad,
+  onError,
 }: ResponsiveImageViewProps): React.JSX.Element | null {
   const bag = useResponsiveImageView({ aspectRatio, source, onLoad, onError });
 
@@ -253,17 +268,18 @@ export function ResponsiveImageView({
   }
 
   // render prop
-  if (typeof render === "function") {
+  if (isRenderFunction(render)) {
     return render(bag);
   }
 
   // function-as-children
-  if (typeof children === "function") {
+  if (isRenderFunction(children)) {
     return children(bag);
   }
 
   // no renderer provided, but children exist - just render the children as-is
-  if (children && React.Children.count(children) > 0) {
+  // Falsy children (`0`, `""`, `false`, ...) render nothing.
+  if (Boolean(children) && React.Children.count(children) > 0) {
     return <React.Fragment>{React.Children.only(children)}</React.Fragment>;
   }
 

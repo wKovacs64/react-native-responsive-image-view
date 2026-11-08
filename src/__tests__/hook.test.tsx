@@ -28,10 +28,11 @@ const renderHook = async (props: UseResponsiveImageViewOptions) => {
   const children = jest.fn(
     (_bag: ReturnType<typeof useResponsiveImageView>) => null,
   );
+
   return { children, ...(await render(<Comp {...props}>{children}</Comp>)) };
 };
 
-const noop = () => {};
+const noop = jest.fn();
 
 const completeSuccessfulImageSizeRequest =
   (onLoad: Parameters<typeof Image.getSize>[1]) => () => {
@@ -102,6 +103,7 @@ describe("getViewProps", () => {
       aspectRatio: controlledAspectRatio,
       source: { uri: mockUriGood },
     });
+
     const { getViewProps } = children.mock.calls[1][0];
     expect(getViewProps().style).toContainEqual({
       aspectRatio: controlledAspectRatio,
@@ -121,11 +123,8 @@ describe("getViewProps", () => {
     const { children } = await renderHook({ source: { uri: mockUriGood } });
     const { getViewProps } = children.mock.calls[1][0];
     const mergedProps = getViewProps(consumerViewProps);
-    Object.keys(consumerViewProps).forEach((consumerProp) => {
-      expect(Reflect.get(mergedProps, consumerProp)).toMatchSnapshot(
-        consumerProp,
-      );
-    });
+    expect(mergedProps.hitSlop).toMatchSnapshot("hitSlop");
+    expect(mergedProps.style).toMatchSnapshot("style");
   });
 });
 
@@ -144,11 +143,8 @@ describe("getImageProps", () => {
     const { children } = await renderHook({ source: { uri: mockUriGood } });
     const { getImageProps } = children.mock.calls[1][0];
     const mergedProps = getImageProps(consumerImageProps);
-    Object.keys(consumerImageProps).forEach((consumerProp) => {
-      expect(Reflect.get(mergedProps, consumerProp)).toMatchSnapshot(
-        consumerProp,
-      );
-    });
+    expect(mergedProps.onLayout).toMatchSnapshot("onLayout");
+    expect(mergedProps.style).toMatchSnapshot("style");
   });
 });
 
@@ -198,17 +194,19 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onLoad on success after unmounting", async () => {
-    let completeImageSizeRequest = noop;
+    let completeImageSizeRequest: () => void = noop;
     jest.spyOn(Image, "getSize").mockImplementationOnce((_uri, onLoad) => {
       completeImageSizeRequest = completeSuccessfulImageSizeRequest(onLoad);
     });
     const onLoad = jest.fn();
     const onError = jest.fn();
+
     const { unmount } = await renderHook({
       source: { uri: "pendingLoadUri" },
       onLoad,
       onError,
     });
+
     await unmount();
     await act(() => {
       completeImageSizeRequest();
@@ -218,7 +216,7 @@ describe("completion callbacks", () => {
   });
 
   it("does not call onError on failure after unmounting", async () => {
-    let completeImageSizeRequest = noop;
+    let completeImageSizeRequest: () => void = noop;
     jest
       .spyOn(Image, "getSize")
       .mockImplementationOnce((_uri, _onLoad, onError = noop) => {
@@ -226,11 +224,13 @@ describe("completion callbacks", () => {
       });
     const onLoad = jest.fn();
     const onError = jest.fn();
+
     const { unmount } = await renderHook({
       source: { uri: "pendingErrorUri" },
       onLoad,
       onError,
     });
+
     await unmount();
     await act(() => {
       completeImageSizeRequest();
