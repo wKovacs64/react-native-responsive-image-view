@@ -72,7 +72,7 @@
     "babel-jest": "30.5.2",
     "doctoc": "2.5.0",
     "jest": "30.5.2",
-    "npm-run-all2": "9.0.4",
+    "npm-run-all2": "9.1.0",
     "oxfmt": "0.79.0",
     "oxlint": "1.94.0",
     "oxlint-tsgolint": "7.0.2007",
